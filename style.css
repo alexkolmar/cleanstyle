@@ -639,10 +639,12 @@ li#onlinelist {
 
 /* баннеры */
 
-.banners {}
+.banners {
+  padding: var(--pad1);
+}
 
 .banners a {
-  opacity: .5;
+  opacity: .7;
 }
 
 .banners a:hover {
