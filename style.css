@@ -399,6 +399,10 @@ body::before {
   margin-right: 5px;
 }
 
+/* Хлебные крошки */
+
+.crumbs.container {}
+
 /* Копирайт */
 
 #pun-about {}
@@ -945,6 +949,10 @@ img.avatardemo {
 .jGrowl-notification .jGrowl-close {
   position: relative;
   right: 6px;
+}
+
+.tipsy #respect figcaption {
+  margin-top: 0;
 }
 
 /* Кнопки вверх-вниз
