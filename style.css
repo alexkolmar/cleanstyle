@@ -848,6 +848,8 @@ pre {
 #tags .container {
   padding: var(--pad3) !important;
   top: 0 !important;
+  max-height: 300px;
+  overflow: auto;
 }
 
 
