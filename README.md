@@ -18,4 +18,6 @@
 
 **История версий**
 
+[https://github.com/alexkolmar/cleanstyle/releases](url)
+
 Дизайн может обновляться. В случае обнаружения багов просьба обращаться ко мне в телеграм https://t.me/AlexKolmar
