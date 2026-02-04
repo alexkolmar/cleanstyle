@@ -1,11 +1,321 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Тестовый форум | Демо дизайна</title>
+ <!-- Базовый CSS (будет изменяться переключателем) -->
+ <link rel="stylesheet" href="style.css" id="theme-stylesheet">
+ <!-- CSS для демо-переключателя (опционально) -->
+ <style>
+  /* Стили для панели выбора темы */
+  .theme-demo-panel {
+   background: #f5f5f5;
+   padding: 15px;
+   border-bottom: 2px solid #4d9ae1;
+   text-align: center;
+   font-family: sans-serif;
+  }
+
+  .theme-demo-panel label {
+   margin-right: 10px;
+   font-weight: bold;
+  }
+
+  .theme-demo-panel select {
+   padding: 5px 10px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   background: white;
+  }
+
+  /* Подсветка для демо-ссылок */
+  a.demo-highlight {
+   outline: 2px dashed rgba(77, 154, 225, 0.5);
+   outline-offset: 2px;
+   background-color: rgba(77, 154, 225, 0.1);
+  }
+ </style>
 </head>
+
 <body>
-    
+ <!-- Панель выбора темы (можно убрать в финале) -->
+ <div class="theme-demo-panel">
+  <label for="theme-select">Выберите тему для демо:</label>
+  <select id="theme-select">
+   <option value="style_new.css">Чистая (новая)</option>
+   <option value="style.css">Чистая (старая)</option>
+   <option value="themes/cyrodiil/cyrodiil.css">Сиродиил</option>
+   <option value="themes/light.css">Светлая</option>
+   <option value="themes/retro.css">Ретро</option>
+  </select>
+  <small style="margin-left: 15px; color: #666;">Это демо-панель. В финальной версии её можно скрыть.</small>
+ </div>
+
+ <!-- Начало оригинальной структуры форума -->
+ <!-- body-header -->
+<div id="pun_wrap">
+<div id="pun" class="ru isuser ismoderator isadmin gid1">
+<div id="pun-index" class="punbb">
+<!-- html_header -->
+<div id="pun-title" class="section">
+	<table id="title-logo-table" cellspacing="0">
+		<tbody id="title-logo-tbody">
+			<tr id="title-logo-tr">
+				<td id="title-logo-tdl" class="title-logo-tdl">
+					<h1 class="title-logo"><span>тест бродяги</span></h1>
+				</td>
+				<td id="title-logo-tdr" class="title-logo-tdr"><!-- banner_top --></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div id="pun-navlinks" class="section">
+	<h2><span>Меню навигации</span></h2>
+	<ul class="container">
+		<li id="navindex" class="isactive"><a href="#"><span>Форум</span></a></li>
+		<li id="navuserlist"><a href="#" rel="nofollow"><span>Участники</span></a></li>
+		<li id="navsearch"><a href="#"><span>Поиск</span></a></li>
+		<li id="navprofile"><a href="#"><span>Профиль</span></a></li>
+		<li id="navpm"><a href="#"><span data-last-unread="1731253128">Сообщения&#160;(1)</span></a></li>
+		<li id="navadmin"><a href="#"><span>Администрирование</span></a></li>
+		<li id="navlogout"><a href="#"><span>Выход</span></a></li>
+	</ul>
+</div>
+
+<div id="pun-ulinks" class="section" onclick="void(0)">
+	<h2><span>Пользовательские ссылки</span></h2>
+	<ul class="container">
+		<li class="item2" id="h-recent"><a href="https://kulkuri.rusff.me/search.php?action=show_recent">Активные темы</a></li>
+		<li class="item7" id="h-replies"><a href="https://kulkuri.rusff.me/search.php?action=show_replies">Ответы</a></li>
+		<li class="item3" id="h-unanswered"><a href="https://kulkuri.rusff.me/search.php?action=show_unanswered">Темы без ответов</a></li>
+		<li class="item4" id="h-myposts"><a href="https://kulkuri.rusff.me/search.php?action=show_user_posts&amp;user_id=2">Мои сообщения</a></li>
+		<li class="item5" id="h-uploads"><a href="https://kulkuri.rusff.me/profile.php?section=uploads&amp;id=2">Мои загрузки</a></li>
+		<li class="item6" id="h-subscribe"><a href="https://kulkuri.rusff.me/search.php?action=show_subscriptions">Подписка</a></li>
+		<li class="item7" id="h-markread"><a href="https://kulkuri.rusff.me/misc.php?action=markread">Всё прочитано</a></li>
+</ul></div>
+
+<!-- pun_announcement -->
+
+<div id="pun-status" class="section">
+	<h2><span>Информация о пользователе</span></h2>
+	<p class="container">
+		<span class="item1">Привет, <strong>бродяга</strong>.</span> 
+		<span class="item2">Ваш последний визит: <strong>Вчера 13:34:13</strong>.</span> <span class="item4 status-right"><a href="/vip.php">Улучшить аккаунт</a></span>
+	</p>
+</div>
+
+<div id="pun-break1" class="divider"><hr /></div>
+
+<div id="pun-crumbs1" class="section">
+	<p class="container crumbs"><strong>Вы здесь</strong> <em>&#187;&#160;</em><span>тест бродяги</span></p>
+</div>
+
+<div id="pun-break2" class="divider"><hr /></div>
+
+<div class="section" style="border:0 !important;max-width:100%;overflow:hidden;display:flex;justify-content:center;max-height:250px;overflow:hidden;min-width:300px;">
+</div>
+
+<div id="pun-main" class="main">
+	<h1><span>Форум</span></h1>
+	<div id="pun-category1" class="category category-1">
+		<h2><div class="catleft"><!-- --></div><span>Good Place to Begin With</span><div class="catright"><!-- --></div></h2>
+		<div class="container">
+			<table cellspacing="0" summary="Список форумов в категории: Good Place to Begin With">
+			<thead>
+				<tr>
+					<th class="tcl" scope="col">Форум</th>
+					<th class="tc2" scope="col">Тем</th>
+					<th class="tc3" scope="col">Сообщений</th>
+					<th class="tcr" scope="col">Последнее сообщение</th>
+				</tr>
+			</thead>
+			<tbody class="hasicon">
+			<tr id="forum_f1" class="alt2">
+				<td class="tcl">
+					<div class="intd">
+						<div class="icon"><!-- --></div>
+						<div class="tclcon"><h3><a href="https://kulkuri.rusff.me/viewforum.php?id=1">Entry Point</a></h3><b>гостевая</b>
+<br>
+Возраст Годриковой Впадины насчитывает не одну сотню лет. Именно здесь родился один из четырёх основателей Хогвартса Годрик Гриффиндор, здесь на кладбище находится и могила Игнотуса Певерелла, младшего из братьев Певереллов, кровь которых течёт в каждом маге.
+<span>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=800">гостевая</a>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=2">правила</a>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=44">сюжет</a>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=485">лор</a>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=22">роли</a>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=21">лица</a>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=435">должности</a>
+</span></div>
+					</div>
+				</td>
+				<td class="tc2">4</td>
+				<td class="tc3">19</td>
+				<td class="tcr"><em class="user-avatar"><a href="https://kulkuri.rusff.me/profile.php?id=2"><span class="avatar-image" style="background-image:url(https://forumavatars.ru/img/avatars/001c/09/2b/2-1704190533.png)"></span><span class="isonline" title="бродяга активен"></span></a></em><a class="lastpost-link" href="https://kulkuri.rusff.me/viewtopic.php?id=3&amp;p=2#p55">Просто бессмысленное и беспощадное длинное название темы на этой ролке</a><br /><span class="lastpost"><span class="datetime">2025-05-10 17:31:15</span> - <span class="byuser">бродяга</span></span></td>
+			</tr>
+			<tr id="forum_f2" class="alt1">
+				<td class="tcl">
+					<div class="intd">
+						<div class="icon"><!-- --></div>
+						<div class="tclcon"><h3><a href="https://kulkuri.rusff.me/viewforum.php?id=2">Lost &amp; Found</a></h3><b>Акционный раздел</b> 
+<br>Детский приют миссис Коул — маггловский приют в Лондоне, куда поздним вечером 31 декабря 1926 года добралась Меропа Мракс. Именно здесь появился на свет Лорд Волдеморт, величайший злой маг второй половины XX века.
+
+<span>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=24">нужные</a>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=145">сюжетные</a>
+<a href="https://thegoodplace.rusff.me/viewtopic.php?id=25">заявить о себе</a>
+</span></div>
+					</div>
+				</td>
+				<td class="tc2">2</td>
+				<td class="tc3">18</td>
+				<td class="tcr"><em class="user-avatar"><a href="https://kulkuri.rusff.me/profile.php?id=3"><span class="avatar-image" style="background-image:url(https://forumavatars.ru/img/avatars/001c/09/2b/3-1704223861.png)"></span></a></em><a class="lastpost-link" href="https://kulkuri.rusff.me/viewtopic.php?id=4#p56">Ещё тема</a><br /><span class="lastpost"><span class="datetime">2026-02-02 19:45:29</span> - <span class="byuser">badboy</span></span></td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+	<div id="pun-category2" class="category category-2">
+		<h2><div class="catleft"><!-- --></div><span>Your Place to Shine</span><div class="catright"><!-- --></div></h2>
+		<div class="container">
+			<table cellspacing="0" summary="Список форумов в категории: Your Place to Shine">
+			<thead>
+				<tr>
+					<th class="tcl" scope="col">Форум</th>
+					<th class="tc2" scope="col">Тем</th>
+					<th class="tc3" scope="col">Сообщений</th>
+					<th class="tcr" scope="col">Последнее сообщение</th>
+				</tr>
+			</thead>
+			<tbody class="hasicon">
+			<tr id="forum_f3" class="alt2">
+				<td class="tcl">
+					<div class="intd">
+						<div class="icon"><!-- --></div>
+						<div class="tclcon"><h3><a href="https://kulkuri.rusff.me/viewforum.php?id=3">Flood zone</a></h3><div class="forum-description">
+Это пространство для безграничного безумного веселья! Проще говоря — флуд, как он есть. Мы любим флуд и приветствуем всех флудерастов в нашем мире, где каждый не договорил. В этом разделе разрешается дружелюбное неформальное общение, шутки и мемы. Помните, что во флуде общаются в первую очередь персонажи, а не игроки! Но если немножечко и под спойлером, то можно :3</div></div>
+					</div>
+				</td>
+				<td class="tc2">0</td>
+				<td class="tc3">0</td>
+				<td class="tcr">&#160;</td>
+			</tr>
+			<tr id="forum_f4" class="alt1">
+				<td class="tcl">
+					<div class="intd">
+						<div class="icon"><!-- --></div>
+						<div class="tclcon"><h3><a href="https://kulkuri.rusff.me/viewforum.php?id=4">ManUNkind</a></h3></div>
+					</div>
+				</td>
+				<td class="tc2">4</td>
+				<td class="tc3">17</td>
+				<td class="tcr"><em class="user-avatar"><a href="https://kulkuri.rusff.me/profile.php?id=2"><span class="avatar-image" style="background-image:url(https://forumavatars.ru/img/avatars/001c/09/2b/2-1704190533.png)"></span><span class="isonline" title="бродяга активен"></span></a></em><a class="lastpost-link" href="https://kulkuri.rusff.me/viewtopic.php?id=11#p54">TGP</a><br /><span class="lastpost"><span class="datetime">2025-05-10 16:27:46</span> - <span class="byuser">бродяга</span></span></td>
+			</tr>
+			<tr id="forum_f5" class="alt2">
+				<td class="tcl">
+					<div class="intd">
+						<div class="icon"><!-- --></div>
+						<div class="tclcon"><h3><a href="https://kulkuri.rusff.me/viewforum.php?id=5">Profiles</a></h3><!-- Скрытие форума от юзеров -->
+<script id="ThisForum">if(GroupID>2){a=$('#ThisForum');a.parents('tr').hide();a.remove()}</script></div>
+					</div>
+				</td>
+				<td class="tc2">1</td>
+				<td class="tc3">2</td>
+				<td class="tcr"><em class="user-avatar"><a href="https://kulkuri.rusff.me/profile.php?id=2"><span class="avatar-image" style="background-image:url(https://forumavatars.ru/img/avatars/001c/09/2b/2-1704190533.png)"></span><span class="isonline" title="бродяга активен"></span></a></em><a class="lastpost-link" href="https://kulkuri.rusff.me/viewtopic.php?id=8#p42">Инвентарь</a><br /><span class="lastpost"><span class="datetime">2024-11-03 16:23:03</span> - <span class="byuser">бродяга</span></span></td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">$(document).trigger("pun_main_ready");</script>
+
+<!--noindex-->
+<div id="pun-stats" class="section">
+	<h2><span>Статистика форума</span></h2>
+	<div class="statscon">
+	<ul class="container">
+		<li class="item1"><span>Всего тем: </span><strong>11</strong></li>
+		<li class="item2"><span>Всего сообщений: </span><strong>56</strong></li>
+		<li class="item3"><span>Зарегистрированных пользователей: </span><strong>7</strong></li>
+		<li class="item4"><span>Последним зарегистрировался: </span><strong><a href="https://kulkuri.rusff.me/profile.php?id=8" rel="nofollow">медок</a></strong></li>
+		<li id="onlinelist" class="item5 onlinelist"><div><a title="Посмотреть, кто чем занимается на форуме." href="/online.php" rel="nofollow">Активны</a> (Гостей: <strong>0</strong>, Пользователей: <strong>1</strong>; Рекорд: <strong>19</strong>, установлен 2024-11-10) <span><a class="group1" href="/profile.php?id=2" rel="nofollow">бродяга</a></span></div></li>	</ul>
+	</div>
+</div>
+<!--/noindex-->
+
+<div class="section" style="border:0 !important;max-width:100%;text-align:center;overflow:hidden;max-height:250px;overflow:hidden;min-width:300px;">
+</div>
+
+<!-- banner_bottom -->
+
+<!-- bbo placeholder-->
+
+<div id="pun-break3" class="divider"><hr /></div>
+
+<div id="pun-crumbs2" class="section">
+	<p class="container crumbs"><strong>Вы здесь</strong> <em>&#187;&#160;</em><span>тест бродяги</span></p>
+</div>
+
+<div id="pun-break4" class="divider"><hr /></div>
+
+<div id="pun-about" class="section">
+	<p class="container">
+		<span class="item1" style="padding-left:0">
+<a href="https://forum-top.ru/" title="Рейтинг форумов" target="_blank">Рейтинг форумов</a> | 
+<a href="https://rusff.me/" title="Сервис бесплатных форумов QuadroBoards" target="_blank">Создать форум бесплатно</a>
+</span>
+	</p>
+</div>
+
+<!-- html_footer -->
+<div id="html-footer" class="section">
+	<div class="container"><!--Кнопки вверх вниз-->
+<div class="go-up" id='ToTop' title="вверх">&#9650;</div>
+<div class="go-down" id='OnBottom' title="вниз">&#9660;</div>
+<script type="text/javascript">
+ $(function () {
+  if ($(window).scrollTop() >= "250") $("#ToTop").fadeIn("slow")
+  $(window).scroll(function () {
+   if ($(window).scrollTop() <= "250") $("#ToTop").fadeOut("slow")
+   else $("#ToTop").fadeIn("slow")
+  });
+  if ($(window).scrollTop() <= $(document).height() - "999") $("#OnBottom").fadeIn("slow")
+  $(window).scroll(function () {
+   if ($(window).scrollTop() >= $(document).height() - "999") $("#OnBottom").fadeOut("slow")
+   else $("#OnBottom").fadeIn("slow")
+  });
+  $("#ToTop").click(function () { $("html,body").animate({ scrollTop: 0 }, "slow") })
+  $("#OnBottom").click(function () { $("html,body").animate({ scrollTop: $(document).height() }, "slow") })
+ });
+</script>
+
+<!-- баннеры -->
+<div class="banners">
+ <div class="container">
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+  <a href=""><img src="https://dummyimage.com/88x31/8fbc8f/fff.png" alt=""></a>
+ </div>
+</div></div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- Переключатель тем -->
+<script src="theme_switcher.js"></script>
+
+
 </body>
 </html>
