@@ -5,8 +5,9 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Тестовый форум | Демо дизайна</title>
+ <link rel="stylesheet" href="extra.css">
  <!-- Базовый CSS (будет изменяться переключателем) -->
- <link rel="stylesheet" href="style.css" id="theme-stylesheet">
+ <link rel="stylesheet" href="clean_new/style.css" id="theme-stylesheet">
  <!-- CSS для демо-переключателя (опционально) -->
  <style>
   /* Стили для панели выбора темы */
@@ -40,18 +41,16 @@
 </head>
 
 <body>
- <!-- Панель выбора темы (можно убрать в финале) -->
+ <!-- Панель выбора темы (можно убрать в финале)
  <div class="theme-demo-panel">
   <label for="theme-select">Выберите тему для демо:</label>
   <select id="theme-select">
    <option value="themes/clean_new/style_new.css">Чистая (новая)</option>
    <option value="themes/clean_old/style.css">Чистая (старая)</option>
    <option value="themes/cyrodiil/cyrodiil.css">Сиродиил</option>
-   <option value="themes/light.css">Светлая</option>
-   <option value="themes/retro.css">Ретро</option>
   </select>
   <small style="margin-left: 15px; color: #666;">Это демо-панель. В финальной версии её можно скрыть.</small>
- </div>
+ </div> -->
 
  <!-- Начало оригинальной структуры форума -->
  <!-- body-header -->
@@ -59,6 +58,7 @@
 <div id="pun" class="ru isuser ismoderator isadmin gid1">
 <div id="pun-index" class="punbb">
 <!-- html_header -->
+<div id="html-header"></div>
 <div id="pun-title" class="section">
 	<table id="title-logo-table" cellspacing="0">
 		<tbody id="title-logo-tbody">
@@ -314,7 +314,7 @@
 </div>
 
 <!-- Переключатель тем -->
-<script src="theme_switcher.js"></script>
+<script src="script.js"></script>
 
 
 </body>
