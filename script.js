@@ -223,14 +223,15 @@ const ThemeManager = {
  },
 
  // Загружает HTML-блоки
+ // Загружает HTML-блоки и оборачивает в .container если нужно
  async loadThemeBlocks(themeName) {
   const blocks = [
-   { id: 'html-header', file: 'header.html' },
-   { id: 'html-footer', file: 'footer.html' },
-   { id: 'pun-announcement', file: 'announcement.html' }
+   { id: 'html-header', file: 'header.html', wrap: false },
+   { id: 'html-footer', file: 'footer.html', wrap: true },
+   { id: 'pun-announcement', file: 'announcement.html', wrap: true }
   ];
 
-  const themeFolder = themeName === 'clean_new' ? '' : `themes/${themeName}/`;
+  const themeFolder = `themes/${themeName}/`;
 
   for (const block of blocks) {
    const container = document.getElementById(block.id);
@@ -248,15 +249,33 @@ const ThemeManager = {
    try {
     const response = await fetch(filePath);
     if (response.ok) {
-     container.innerHTML = await response.text();
-     console.log(`✓ ${block.id} загружен`);
+     const content = await response.text();
+
+     // Ключевое изменение: проверяем и оборачиваем в .container
+     if (content.trim() && block.wrap && !this.hasContainerWrapper(content)) {
+      container.innerHTML = `<div class="container">${content}</div>`;
+      console.log(`✓ ${block.id} загружен и обёрнут в .container`);
+     } else {
+      container.innerHTML = content;
+      console.log(`✓ ${block.id} загружен (без обёртки)`);
+     }
     } else {
      container.innerHTML = '';
+     console.log(`✗ Файл ${filePath} не найден, очищаем ${block.id}`);
     }
    } catch (error) {
     container.innerHTML = '';
+    console.log(`✗ Ошибка загрузки ${filePath}:`, error);
    }
   }
+ },
+
+ // Новый вспомогательный метод: Проверяет, обёрнут ли уже контент в .container
+ hasContainerWrapper(content) {
+  const trimmed = content.trim();
+  // Проверяем, начинается ли содержимое с div class="container"
+  return trimmed.startsWith('<div class="container"') ||
+   trimmed.startsWith("<div class='container");
  }
 };
 
@@ -269,3 +288,4 @@ document.addEventListener('DOMContentLoaded', () => {
  // Запускаем менеджер тем
  setTimeout(() => ThemeManager.init(), 100);
 });
+
