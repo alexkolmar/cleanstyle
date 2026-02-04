@@ -1,0 +1,152 @@
+<!-- Подсчёт возраста персонажа по дате рождения на текущую игровую дату by бродяга -->
+<script>
+ (function () {
+  'use strict';
+
+  function calculateAge(birthDate, forumDate) {
+   let age = forumDate.getFullYear() - birthDate.getFullYear();
+   const hasHadBirthdayThisYear = (
+    forumDate.getMonth() > birthDate.getMonth() ||
+    (forumDate.getMonth() === birthDate.getMonth() &&
+     forumDate.getDate() >= birthDate.getDate())
+   );
+   if (!hasHadBirthdayThisYear) age--;
+   return age;
+  }
+
+  function initAgeCalculator() {
+   // ★ ЛОГИКА ВЫБОРА ДАТЫ МИРА ★
+   let forumDate;
+
+   // 1. Если задана конкретная дата мира
+   if (typeof FORUM_CURRENT_DATE !== 'undefined') {
+    forumDate = new Date(FORUM_CURRENT_DATE);
+    console.log('Используется кастомная дата мира:', FORUM_CURRENT_DATE);
+   }
+   // 2. Если задано смещение по годам
+   else if (typeof FORUM_YEAR_OFFSET !== 'undefined') {
+    const realDate = new Date();
+    forumDate = new Date(realDate);
+    forumDate.setFullYear(realDate.getFullYear() + FORUM_YEAR_OFFSET);
+    console.log('Используется смещение на', FORUM_YEAR_OFFSET, 'лет');
+   }
+   // 3. По умолчанию - реальная дата
+   else {
+    forumDate = new Date();
+    console.log('Используется текущая реальная дата');
+   }
+   // ★ КОНЕЦ ЛОГИКИ ВЫБОРА ДАТЫ ★
+
+   const birthdateElements = document.querySelectorAll('.birthdate[data-age-target]');
+
+   birthdateElements.forEach(function (birthElement) {
+    const birthDateString = birthElement.textContent.trim();
+    const targetSelector = birthElement.getAttribute('data-age-target');
+    const container = birthElement.closest('div, li, tr, .lz, .vie') || document;
+    const targetElement = container.querySelector(targetSelector);
+
+    if (!targetElement) return;
+
+    if (birthDateString.toLowerCase() === 'unk') {
+     if (targetSelector === '.prof') {
+      targetElement.innerHTML = 'unk <sup>y.o.</sup>';
+     }
+     return;
+    }
+
+    const birthDate = new Date(birthDateString);
+    if (isNaN(birthDate.getTime())) {
+     console.warn('Некорректная дата:', birthDateString);
+     return;
+    }
+
+    const age = calculateAge(birthDate, forumDate);
+    const ageHtml = age + ' <sup>y.o.</sup>';
+
+    if (targetSelector === '.name a') {
+     if (!targetElement.innerHTML.includes('<sup>y.o.</sup>')) {
+      targetElement.innerHTML += ', ' + ageHtml;
+     }
+    } else if (targetSelector === '.prof') {
+     targetElement.innerHTML = ageHtml;
+    } else {
+     targetElement.innerHTML = ageHtml;
+    }
+   });
+  }
+
+  if (document.readyState === 'loading') {
+   document.addEventListener('DOMContentLoaded', initAgeCalculator);
+  } else {
+   initAgeCalculator();
+  }
+ })();
+</script>
+
+
+<!--Кнопки вверх вниз-->
+<div class="go-up" id='ToTop' title="вверх">Up</div>
+<div class="go-down" id='OnBottom' title="вниз">Down</div>
+<script type="text/javascript">
+ $(function () {
+  if ($(window).scrollTop() >= "250") $("#ToTop").fadeIn("slow")
+  $(window).scroll(function () {
+   if ($(window).scrollTop() <= "250") $("#ToTop").fadeOut("slow")
+   else $("#ToTop").fadeIn("slow")
+  });
+  if ($(window).scrollTop() <= $(document).height() - "999") $("#OnBottom").fadeIn("slow")
+  $(window).scroll(function () {
+   if ($(window).scrollTop() >= $(document).height() - "999") $("#OnBottom").fadeOut("slow")
+   else $("#OnBottom").fadeIn("slow")
+  });
+  $("#ToTop").click(function () { $("html,body").animate({ scrollTop: 0 }, "slow") })
+  $("#OnBottom").click(function () { $("html,body").animate({ scrollTop: $(document).height() }, "slow") })
+ });
+</script>
+
+
+<!-- Анти-в-строчку для Сообщений и Репутации © deff -->
+<script type="text/javascript">
+ function changeS(sc, ch, st) { $(sc).parent().each(function () { $(this).html($(this).html().replace(ch, st)); }); }
+ changeS('.pa-posts', 'Сообщений:', '<i class="fad fa-envelope" title="Сообщений"></i></br>');
+ changeS('.pa-respect', 'Уважение</a>:', '<i class="fad fa-heart-half-stroke" title="Репутация"></i></a><br>');
+ changeS('.pa-respect', 'Уважение:', '<i class="fad fa-heart-half-stroke" title="Репутация"></i><br>');
+ changeS('.pa-fld3', 'Посты:', '<i class="fad fa-feather" title="Посты"></i>');
+ changeS('.pa-fld4', 'Банк:', '<i class="fad fa-light fa-coin-vertical" title="Банк"></i>');
+</script>
+
+<script type="text/javascript">
+ $('.pa-respect').attr('title', 'Репутация');
+</script>
+
+
+<script type="text/javascript">
+ document.querySelectorAll('.pa-respect .fld-name a').forEach(elem => elem.classList.add('fad', 'fa-heart-half-stroke'));
+ document.querySelectorAll('#form-buttons td').forEach(elem => elem.classList.add('fad'));
+</script>
+
+
+<!-- Меняем Шрифт в Топике -->
+<style id=a_fnt>
+ .post h3 img {
+  margin: 0 7px;
+  cursor: pointer;
+ }
+</style>
+<script type="text/javascript">
+ function setcookieF(a, b, c) { if (c) { var d = new Date(); d.setTime(d.getTime()); d = new Date(d.getTime() + c) } if (a && b) document.cookie = a + '=' + b + (c ? '; expires=' + d.toGMTString() : ''); else return false } function getcookieF(a) { var b = new RegExp(a + '=([^;]){1,}'); var c = b.exec(document.cookie); if (c) { c = c[0].split('=') } else { return false } return c[1] ? c[1] : false }
+
+ a = '<strong class=fnt style="width:auto;margin-right:28%;"><img src="img/minus.png" alt="-" />Шрифт<img src="img/plus.png" alt="+" /></strong>'; $(".post:first h3 strong,.post:last h3 strong").after(a);
+ b_Fnt1 = '<style id=b_fnt>#main-reply,.punbb .post-content{font-size:'; b_Fnt2 = 'px;}</style>'
+ var c_Fnt;
+ N = getcookieF('c_Fnt')
+ if (N) { c_Fnt = parseFloat(N); setcookieF('c_Fnt', c_Fnt, 30 * 24 * 60 * 60 * 1000) } else { var c_Fnt = Math.round(parseFloat($(".punbb .post-content").css("font-size"))); }
+ b_Fnt = b_Fnt1 + c_Fnt + b_Fnt2; $("#a_fnt").after(b_Fnt);
+ function setFnt_Size() {
+  b_Fnt = b_Fnt1 + c_Fnt + b_Fnt2;
+  $("#b_fnt").replaceWith(b_Fnt);//alert(b_Fnt)
+  setcookieF('c_Fnt', c_Fnt, 30 * 24 * 60 * 60 * 1000);
+ }
+ $(".post h3 img[alt='-']").click(function () { if (c_Fnt) { c_Fnt--; setFnt_Size(); } });
+ $(".post h3 img[alt='+']").click(function () { if (c_Fnt < 38) { c_Fnt++; setFnt_Size(); } });
+</script><!--End//Меняем Шрифт в Топике -->
