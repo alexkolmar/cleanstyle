@@ -3,41 +3,50 @@
 
 <head>
  <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
  <title>Тестовый форум | Демо дизайна</title>
  <link rel="stylesheet" href="extra.css">
  <!-- Базовый CSS (будет изменяться переключателем) -->
  <link rel="stylesheet" href="clean_new/style.css" id="theme-stylesheet">
  <!-- CSS для демо-переключателя (опционально) -->
- <style>
-  /* Стили для панели выбора темы */
-  .theme-demo-panel {
-   background: #f5f5f5;
-   padding: 15px;
-   border-bottom: 2px solid #4d9ae1;
-   text-align: center;
-   font-family: sans-serif;
+<style>
+	/* Стили для панели выбора темы */
+	.theme-demo-panel {
+		background: #f5f5f5;
+		padding: 15px;
+		border-bottom: 2px solid #4d9ae1;
+		text-align: center;
+		font-family: sans-serif;
+		width: 100%;
+		box-sizing: border-box;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+	}
+
+	.theme-demo-panel label {
+		margin-right: 10px;
+		font-weight: bold;
+	}
+
+	.theme-demo-panel select {
+		padding: 5px 10px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		background: white;
+	}
+
+ 	.theme-demo-panel select option {
+   font-size: initial;
   }
 
-  .theme-demo-panel label {
-   margin-right: 10px;
-   font-weight: bold;
-  }
-
-  .theme-demo-panel select {
-   padding: 5px 10px;
-   border: 1px solid #ccc;
-   border-radius: 4px;
-   background: white;
-  }
-
-  /* Подсветка для демо-ссылок */
-  a.demo-highlight {
-   outline: 2px dashed rgba(77, 154, 225, 0.5);
-   outline-offset: 2px;
-   background-color: rgba(77, 154, 225, 0.1);
-  }
- </style>
+	/* Подсветка для демо-ссылок */
+	a.demo-highlight {
+		outline: 2px dashed rgba(77, 154, 225, 0.5);
+		outline-offset: 2px;
+		background-color: rgba(77, 154, 225, 0.1);
+	}
+</style>
 </head>
 
 <body>
