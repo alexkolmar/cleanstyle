@@ -631,6 +631,12 @@ tr.iclosed div.icon {
   position: relative;
 }
 
+.for_links {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
 #pun-index td .user-avatar {}
 
 #pun-index td .user-avatar .avatar-image {}
