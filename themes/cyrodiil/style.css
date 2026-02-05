@@ -521,6 +521,7 @@ tr.iclosed div.icon {
 
 li#onlinelist {
   margin-top: 10px;
+  text-align: justify;
 }
 
 /* Шапка
