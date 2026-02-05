@@ -14,6 +14,8 @@ A - SETUP
 /* Oswald regular and bold */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 
+@import url('https://alexkolmar.github.io/fonts/journalism/stylesheet.css');
+
 @font-face {
     font-family: 'Journalism';
     src: url('http://forumstatic.ru/files/0018/1e/e2/62215.eot');
