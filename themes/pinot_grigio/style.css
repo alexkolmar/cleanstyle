@@ -6,7 +6,9 @@ A - SETUP
 -------------------------------------------------------------*/
 
 /* A1.1 */
-  @import url(style_cs.css);
+@import url(style_cs.css);
+
+@import url('http://forumstatic.ru/files/0019/f2/b2/77399.css');
 
 
 /* Oswald regular and bold */
