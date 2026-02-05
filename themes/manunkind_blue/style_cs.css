@@ -1,0 +1,5060 @@
+/* Применяется ко всем элементам */
+
+* {
+margin: 0;
+border: none;
+text-size-adjust: 100%;
+-moz-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+-ms-text-size-adjust: 100%;
+}
+
+
+/* Настройки полей форм ввода
+-------------------------------------------------------------*/
+
+/* Убрать рамку на выделенном элементе */
+
+:focus {outline: none;}
+
+/* Отключение закругления текстовых полей в Safari */
+
+button, input.button, input[type="text"], input[type="password"], select {
+-webkit-border-radius: 0;
+border-radius: 0;
+-webkit-appearance: none;
+appearance: auto;
+}
+
+input[type="text"], input[type="password"], select {
+background: #fff4e5;
+box-shadow: inset 1px 1px 1px rgba(0,0,0,.3);
+border-width: 1px;
+border-style: solid;
+border-color: var(--inset-border);
+}
+
+/* Стилизация checkbox */
+
+.punbb .fs-box .checkfield {
+padding: 10px 0;
+}
+
+input[type=checkbox] {
+appearance: none;
+-webkit-appearance: none;
+width: 14px;
+height: 14px;
+background: var(--hover-link);
+box-shadow: inset 1px 1px 1px rgba(0, 0, 0,.3);
+border-radius: 0;
+margin: 0 5px -2px 0;
+cursor: pointer;
+border: 2px solid var(--main-blue);
+}
+
+.checkfield input[type="checkbox"] {
+appearance: none;
+-webkit-appearance: none;
+width: 16px;
+height: 16px;
+}
+
+.checkfield input[type=checkbox]:checked, input[type=checkbox]:checked {
+background: url(//forumstatic.ru/files/0018/1e/e2/95892.svg) no-repeat center var(--hover-link);
+background-size: 90% auto;
+}
+
+/* Стилизация radio */
+
+input[type=radio] {
+appearance: none;
+-webkit-appearance: none;
+display: inline-block;
+width: 14px;
+height: 14px;
+border-radius: 50%;
+box-sizing: border-box;
+margin-bottom: -2px;
+border: 2px solid var(--main-blue);
+background: var(--hover-link);
+transition: all .5s linear 0s;
+cursor: pointer;
+}
+
+input[type=radio]:hover {
+border: 2px solid var(--main-dark-bg);
+}
+
+input[type=radio]:checked {
+background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23223951'/%3E%3C/svg%3E") no-repeat center var(--hover-link);
+background-size: 6px 6px;
+transition: border .5s linear 0s;
+}
+
+/* Настройки структуры и тела форума 
+-------------------------------------------------------------*/
+
+html {
+background-image: url(http://forumstatic.ru/files/0018/1e/e2/78236.jpg);
+background-blend-mode: normal;
+background-position: top center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+background-color: var(--sec-dark-bg);
+scrollbar-width: thin;
+scrollbar-color: var(--main-light-bg) #545d65; /* 1 - бегунок, 2 - полоса */
+position: relative;
+margin: 0;
+padding: 0;
+height: 100% !important;
+float: none;
+}
+
+/* полоса прокрутки (кроме мозиллы) */
+
+::-webkit-scrollbar {width: 7px; height: 8px;}
+::-webkit-scrollbar-track {background-color: var(--sec-border);}
+::-webkit-scrollbar-thumb {background-color: var(--main-light-bg);}
+::-webkit-scrollbar-thumb:active {background: var(--main-blue);}
+
+/* выделение */
+
+::selection {
+color: var(--hover-link);
+background: var(--main-blue);
+}
+
+/* Отображение и позиционирование основных блоков */
+
+#pun-title,
+#pun-navlinks,
+#pun-ulinks,
+#pun-announcement,
+#pun-status,
+#pun-break1,
+#pun-crumbs1,
+#pun-break2,
+#pun-main,
+#pun-stats,
+#pun-break3,
+#pun-crumbs2,
+#pun-break4,
+#pun-about {
+display: block;
+clear: both;
+}
+
+/* хтмл-верх и хтмл-низ */
+
+#html-header {}
+#html-footer .container {padding: 0; margin: 0;}
+
+/* тело форума */
+
+body {
+margin: 0 auto;
+color: #000;
+width: 1100px;
+}
+
+/* обёртывание форума */
+
+#pun_wrap {margin: 0 auto;}
+
+
+/* Ссылки, кнопки, теги и прочее
+-------------------------------------------------------------*/
+
+/* Ссылки
+------------------------------------------*/
+
+a, a:before {
+  color: #324455;
+  text-decoration: none;
+  transition: all .5s linear 0s;
+}
+
+
+/* Зачёркнутый текст
+------------------------------------------*/
+
+del, s {
+text-decoration: none;
+filter: blur(2px);
+transition: all 0.3s ease-in-out 0.1s;
+}
+
+del:hover, s:hover {
+background: transparent;
+color: currentColor;
+text-decoration: none!important;
+filter: blur(0px);
+}
+
+
+/* ОФОРМЛЕНИЕ КНОПОК
+------------------------------------------*/
+
+input.button, #pun-admain input.button, #sub4, input[type="button"] {
+background: var(--main-dark-bg);
+background: -moz-linear-gradient(top, var(--main-dark-bg) 0%, #375d7f 100%);
+background: -webkit-linear-gradient(top, var(--main-dark-bg) 0%,#375d7f 100%);
+background: linear-gradient(to bottom, var(--main-dark-bg) 0%,#375d7f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#091b38', endColorstr='#375d7f',GradientType=0 );
+box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .6), inset 0 0 2px rgba(0, 0, 0, .8), 0px 2px 2px var(--sec-border);
+width: auto;
+line-height: 2;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+margin: 0 5px;
+padding: 0 15px;
+color: #d1d9e1!important;
+text-shadow: 1px 1px 0 #000;
+font-family: open sans;
+text-transform: uppercase;
+font-size: 11px;
+cursor: pointer;
+border-radius: 0!important;
+border: 1px solid var(--main-blue);
+outline: 1px solid var(--sec-dark-bg);
+}
+
+input.button:hover, #pun-admain input.button:hover, #sub4:hover, input[type="button"]:hover {
+-webkit-transform: translate(0, 1px);
+transform: translate(0, 1px);
+box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .6), inset 0 0 2px rgba(0, 0, 0, .8);
+color: var(--main-light-bg)!important;
+}
+
+#imageupload-left input[type="button"] {
+width: auto!important;
+}
+
+#pun-admain span.adsubmit {
+width: auto!important;
+}
+
+
+/* A5 Основная разметка страницы и границы
+-------------------------------------------------------------*/
+
+/* Отступы */
+
+.container {
+padding: 0 15px;
+}
+
+#pun-crumbs1, #pun-crumbs2 {
+margin: 15px 0;
+font-size: 14px;
+font-family: open sans;
+position: relative;
+z-index: 5;
+}
+
+#subforums {
+clear: both;
+}
+
+.linkst, .linksb {
+clear: both;
+display: block;
+width: 100%;
+padding: 0 15px;
+box-sizing: border-box;
+font-size: 14px;
+line-height: 2;
+}
+
+.linkst .pagelink {float: left;}
+.postlink, .subscribelink {float: right;}
+.linksb .postlink, .subscribelink {clear: both;}
+.topic {clear: both;}
+
+
+/* A5.10 Оформление категорий и заголовков */
+
+.multipage h1, .main h1, #pun-edit h1, .punbb #post-form h2, #pun-index h2, #pun-stats h2 {
+padding: 10px 0;
+}
+
+.multipage h1 span, .main h1 span, #pun-edit h1 span, .punbb #post-form h2 span, #pun-index h2 span, #pun-stats h2 span {
+background: url(https://forumstatic.ru/files/0018/1e/e2/83344.svg) no-repeat right;
+text-transform: uppercase;
+font-size: 12px;
+color: #fcdf87;
+text-shadow: 1px -1px 0 #000;
+display: flex;
+display: -webkit-flex;
+box-shadow: -2px 0 0 inset var(--sec-border);
+line-height: 400%;
+margin-left: 10%;
+text-align: center;
+padding-right: 10%;
+align-items: center;
+justify-content: center;
+}
+
+.punbb .multipage .tclcon a, .punbb .usersname a {font-size: 14px;}
+
+.punbb .usersname a {font-weight: bold;}
+
+/* Содержимое форума */
+
+#pun {
+position: relative;
+}
+
+.punbb {
+font: normal 68.75% verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+margin: 400px 0 110px;
+padding: 0;
+background: var(--main-light-bg);
+box-shadow: 0 0 0 1px var(--main-border), inset 0 0 0 2px var(--sec-border), inset 0 0 5px var(--main-dark-bg);
+border: 5px solid var(--main-dark-bg);
+}
+
+.punbb-admin {
+margin: 60px 0;
+}
+
+/* Главная страница */
+
+#pun-index {
+background-image: url(//forumstatic.ru/files/0018/1e/e2/78236.jpg);
+background-position: top center;
+background-attachment: fixed;
+background-repeat: no-repeat;
+box-sizing: border-box;
+background-size: cover;
+background-color: var(--main-light-bg);
+background-blend-mode: soft-light;
+}
+
+#pun-index a {
+color: var(--main-dark-bg);
+}
+
+#pun-index a:hover {
+color: #375d7f;
+}
+
+
+/* Настройки ссылок в теле форума */
+
+.main a, .statscon a, .crumbs a, .main a:before, .statscon a:before,  {
+color: #324455;
+}
+
+.statscon a, .newtext a {
+font-weight: bold;
+}
+
+.punbb a:hover, .punbb a:hover:before {
+color: var(--main-blue);
+}
+
+#pun-admain a, #pun-adnav a {color: #375d7f !important;}
+#pun-admain a:hover, #pun-adnav a:hover {color: var(--main-dark-bg) !important;}
+
+
+/* Текстовое поле */
+
+textarea {
+background: var(--main-input-bg);
+scrollbar-width: thin;
+scrollbar-color: var(--main-light-bg) transparent; /* 1 - бегунок, 2 - полоса */
+border-radius: 0!important;
+border-width: 2px;
+border-style: solid;
+border-color:  var(--inset-border);
+box-shadow: 2px 2px 3px 0 inset rgba(0,0,0,.3);
+padding: 5px 7px;
+box-sizing: border-box;
+font-family: open-sans, verdana, arial, sans-serif;
+font-size: 12px;
+}
+
+#pun-admain textarea {
+border-width: 1px;
+}
+
+
+/* Название форума в шапке и объявление */
+
+#pun-title {
+background: var(--main-dark-bg);
+height: 0;
+}
+
+.punbb-admin #pun-title {
+border: none;
+height: 100px;
+width: 100%;
+}
+
+.admin-advert-block {
+margin: 0 auto;
+}
+
+#pun-title h1 span, #pun-announcement h2 span {
+  display: none;
+}
+
+
+/*   Таблица в шапке
+-------------------------------------------------------------*/
+
+#header * {
+	box-sizing: border-box;
+}
+
+#header {
+position: absolute;
+width: 1090px;
+height: 350px;
+box-sizing: border-box;
+font-family: open sans, sans-serif;
+color: #aab7c3; /* фикс для IE */
+color: var(--main-light-bg);
+text-shadow: 1px 1px 0 #000;
+/*background-image: url(//forumstatic.ru/files/0018/1e/e2/78236.jpg);
+background-blend-mode: normal;
+background-position: top center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+background-color: var(--sec-dark-bg);*/
+padding: 0;
+top: 50px;
+margin: -405px auto 0;
+}
+
+#header ul, #header p {
+	padding: 0;
+	margin: 0;
+}
+
+#header a {
+	color: #759dbb; /* фикс для IE */
+	color: var(--blue-text);
+	text-decoration: none;
+	transition: all .5s linear 0s;
+}
+
+#header a:hover {
+	color: #d2e3dd;
+	color: var(--hover-link);
+}
+
+/*   Описание ролевой
+------------------------------------*/
+
+#header .about { 
+color: var(--blue-text);
+background: none;
+width: 100%;
+height: auto;
+margin: 0 auto;
+box-sizing: border-box;
+border: none;
+text-align: center;
+line-height: 200%;
+padding: 0;
+font-size: 10px;
+letter-spacing: 1px;
+}
+
+.head_inner {
+	width: 100%;
+	display: flex;
+	display: -webkit-flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	padding: 0;
+	margin: 0;
+}
+
+#header .col {
+  width: 30%;
+  max-width: 384px;
+  min-width: 220px;
+}
+
+.head_center {
+align-items: stretch;
+display: flex;
+display: -webkit-flex;
+flex-direction: column;
+}
+
+
+/*  Название
+------------------------------------*/
+
+#header .logo { 
+text-align: center;
+font-size: 20px;
+letter-spacing: 1px;
+line-height: 27px;
+font-family: jura;
+font-weight: 600;
+background: #9c7435;
+background: -moz-linear-gradient(top, #9c7435 0%, #f0d1a2 50%, #9c7435 100%);
+background: -webkit-linear-gradient(top, #9c7435 0%, #f0d1a2 50%, #9c7435 100%);
+background: linear-gradient(to bottom, #9c7435 0%, #f0d1a2 50%, #9c7435 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c7435', endColorstr='#9c7435',GradientType=0 );
+color: transparent;
+background-clip: text;
+-webkit-background-clip: text;
+text-shadow: none;
+}
+
+/*   Заголовки блоков
+------------------------------------*/
+
+.newstitle, .queststitle, .besttitle, .wantedtitle, .besteptitle {
+background: var(--title-bg);
+line-height: 175%;
+text-align: center;
+text-transform: uppercase;
+font-size: 12px;
+color: var(--main-light-bg);
+}
+
+/*   Список новостей и квестов
+----------------------------------------*/
+
+.news {
+overflow-y: auto;
+overflow-x: hidden;
+scrollbar-width: thin;
+height: 210px;
+margin: 5px 0;
+background: rgba(16, 31, 50,.5);
+}
+
+/*   Блок новостей
+------------------------------------*/
+
+.newsblock {z-index: 2;}
+
+.news ul li {
+display: inline-block;
+}
+
+.news ul li .date {
+background: #375d7f;
+background: var(--main-span-bg);
+color: #fcdf87;
+color: var(--main-h2);
+margin: 4px 7px 0 0;
+float: left;
+display: block;
+font-family: garamond, serif;
+text-align: center;
+line-height: 160%;
+font-size: 14px;
+width: 50px;
+}
+
+.news ul li .date.new {
+animation: color-change 1s infinite;
+}
+
+@keyframes color-change {
+  0% { color:var(--main-h2); }
+  50% { color: var(--hover-link); }
+  100% { color: var(--main-h2); }
+}
+
+#header .news p {
+float: right;
+display: block;
+margin: 0 5px 0 0 !important;
+padding: 0 0 3px 0;
+border-bottom: 1px solid var(--title-bg);
+font-family: open sans;
+text-align: justify;
+line-height: 135%;
+font-size: 11px;
+}
+
+#header .news a, #header .news a:hover {
+font-weight: bold;
+}
+
+/*   Центральная картинка
+------------------------------------*/
+
+.imgwrap {
+display: flex;
+display: -webkit-flex;
+box-sizing: border-box;
+align-content: stretch;
+align-items: stretch;
+padding: 0 10px;
+margin: 0 auto;
+max-width: 512px;
+max-height: 280px;
+width: 100%;
+height: auto;
+position: relative;
+}
+
+.imgwrap #КонтентРотатор {
+height: 260px;
+display: flex;
+display: -webkit-flex;
+}
+
+.imgwrap img {
+height: auto;
+width: 100%;
+outline: 1px solid var(--main-blue);
+object-fit: cover;
+object-position: top center;
+}
+
+.dcloc {
+display: none;
+}
+
+/*   Полезные ссылки
+------------------------------------*/
+
+.navigation {
+display: flex;
+display: -webkit-flex;
+z-index: 2;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+}
+
+#header .navtrigger {
+margin: 0 auto;
+padding: 0;
+font-family: open sans;
+text-transform: uppercase;
+font-size: 14px;
+cursor: pointer;
+transition: all 0.3s ease-in-out 0s;
+text-align: center;
+}
+
+#header .navtrigger:hover, #header .navtrigger.active {
+color: #fcdf87;
+}
+
+/*   Блок ссылок
+------------------------------------*/
+
+.navblock {
+justify-content: center;
+align-items: center;
+position: absolute;
+z-index: 100;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+box-shadow: 0 0 3px 0 rgba(0,0,0,.5);
+}
+
+.hotlinks {
+list-style: none;
+opacity: .95;
+padding: 5px;
+background: var(--sec-dark-bg);
+box-shadow: 0 0 0 1px rgba(0,0,0,.2) inset, 0 2px 2px rgba(0,0,0,.4);
+border-radius: 2px;
+width: 370px;
+margin: 0 auto;
+z-index: 2;
+box-sizing: border-box;
+display: flex;
+display: -webkit-flex;
+flex-direction: column;
+flex-wrap: wrap;
+height: 140px;
+align-items: center;
+justify-content: center;
+}
+
+.hotlinks li {
+white-space: nowrap;
+margin: 2px auto;
+display: block;
+padding: 2px 5px;
+width: 170px;
+box-sizing: border-box;
+background-color: var(--main-dark-bg);
+cursor: pointer;
+font-size: 12px;
+position: relative;
+transition: all 0.3s ease-in-out 0s;
+z-index: 1;
+font-family: open sans;
+font-weight: normal;
+text-transform: uppercase;
+letter-spacing: 1px;
+text-align: center;
+border-top: 1px solid var(--title-bg);
+border-bottom: 1px solid var(--title-bg);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+}
+
+.hotlinks li:hover {
+border-top: 1px solid var(--blue-text);
+border-bottom: 1px solid var(--blue-text);
+}
+
+.hotlinks li:before {
+content: "";
+position: absolute;
+display: block;
+bottom: 0;
+left: 0;
+width: 0%;
+height: 100%;
+box-sizing: border-box;
+background: var(--title-bg);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+z-index: 1;
+}
+
+#header .hotlinks a {
+color: var(--blue-text);
+border-color: var(--main-light-bg);
+z-index: 100;
+position: relative;
+}
+
+#header .hotlinks a:hover {
+color: var(--hover-link);
+border-color: var(--hover-link);
+z-index: 100;
+}
+
+.hotlinks li:hover:before {
+width: 100%;
+}
+
+.head_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 328px;
+}
+
+/*   Блок квестов
+------------------------------------*/
+
+.quests {
+scrollbar-width: thin;
+height: 125px;
+margin: 5px 0;
+}
+
+.quests ul {
+height: 110px;
+padding: 0;
+position: relative;
+}
+
+.quests ul li {
+display: block;
+color: var(--main-light-bg);
+font-size: 11px;
+font-family: open sans;
+border: 1px solid var(--main-span-bg);
+margin-bottom: 2px;
+position: relative;
+text-align: center;
+}
+
+.quests ul li .more {
+width: 100%;
+display: block;
+position: relative;
+}
+
+.quests ul li .more:hover {
+color: #b57803!important;
+}
+
+.quests ul li .tooltip span {
+background: var(--main-span-bg);
+line-height: 160%;
+text-transform: uppercase;
+display: block;
+width: 100%;
+z-index: 1;
+}
+
+.tooltip span a {
+color: var(--main-h2)!important;
+text-decoration: none;
+font-weight: normal!important;
+transition: all 0.3s ease-in-out .1s;
+}
+
+.tooltip span a:hover {
+color: var(--hover-link)!important;
+font-weight: normal!important;
+}
+
+.tooltip .plot {
+z-index: 100;
+opacity: 0;
+display: block;
+visibility: hidden;
+position: absolute;
+height: 75px;
+width: 100%;
+box-sizing: border-box;
+background: #091b38;
+background: var(--main-dark-bg);
+outline: 1px solid #4c7398;
+outline: 1px solid var(--main-blue);
+box-shadow: 2px 2px 5px #223951;
+box-shadow: 2px 2px 5px var(--title-bg);
+color: #d2e3dd;
+color: var(--hover-link);
+text-align: justify;
+padding: 2px 7px;
+overflow: auto;
+scrollbar-width: thin;
+line-height: 120%;
+font-size: 11px;
+font-family: arial;
+-webkit-transform: translateY(50px);
+transform: translateY(50px);
+transition: all .7s ease-in-out 0s;
+}
+
+.tooltip:hover .plot {
+opacity: 1;
+visibility: visible;
+-webkit-transform: translateY(0px);
+transform: translateY(0px);
+}
+
+.queue {
+text-align: center;
+display: block;
+font-weight: bold;
+line-height: 2;
+background: rgba(16, 31, 50,.5);
+}
+
+/*   Лучший эпизод
+------------------------------------*/
+
+.bestep {
+	display: block;
+	height: 80px;
+	margin-bottom: 5px;
+	font-size: 11px;
+	font-family: open sans;
+	text-align: center;
+	line-height: 2;
+}
+
+.bestep_bg {
+	border: none;
+	height: 60px;
+	position: relative;
+	overflow: hidden;
+	background: #9c7435;
+	background: -moz-linear-gradient(top, #9c7435 0%, #f0d1a2 50%, #9c7435 100%);
+	background: -webkit-linear-gradient(top, #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+	background: linear-gradient(to bottom, #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c7435', endColorstr='#9c7435',GradientType=0 );
+}
+
+#header .bestplot {
+	position: absolute;
+	z-index: 3;
+	width: auto;
+	height: 58px;
+	padding: 5px 15px;
+	display: flex;
+        display: -webkit-flex;
+	line-height: 150%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#header .bestplot a {
+	font-size: 12px;
+	text-transform: uppercase;
+	line-height: 180%;
+	color: transparent;
+	background: rgba(252,223,135, 1);
+	background: -moz-linear-gradient(top, rgba(252,223,135,0.75) 0%, rgba(156,116,53,0.75) 100%);
+	background: -webkit-linear-gradient(top, rgba(252,223,135,0.75) 0%,rgba(156,116,53,0.75) 100%);
+	background: linear-gradient(to bottom, rgba(252,223,135,0.75) 0%,rgba(156,116,53,0.75) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bffcdf87', endColorstr='#bf9c7435',GradientType=0 );
+	text-shadow: none;
+	-webkit-background-clip: text;
+	background-clip: text;
+	font-weight: bold;
+	transition: all .5s linear 0s;
+}
+
+#header .bestplot a:hover {
+	text-shadow: none;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: rgba(252,223,135, .5);
+}
+
+.bestplot p {
+	font-variant: small-caps;
+	font-size: 10px;
+	max-width: 160px;
+	line-height: 130%;
+}
+
+#header .bestep .eppic {
+	height: 58px;
+	width: calc(100% - 2px);
+	display: block;
+	margin: 1px;
+	background: var(--main-dark-bg);
+}
+
+#header .bestep .eppic:before {
+	content: "";
+	position: absolute;
+	box-sizing: border-box;
+	padding: 0;
+	width: calc(100% - 2px);
+	height: 58px;
+	display: flex;
+        display: -webkit-flex;
+	align-items: center;
+	z-index: 1;
+	background: rgb(16,31,50);
+	background: -moz-linear-gradient(left, rgba(16,31,50,1) 50%, rgba(117,157,187,.3) 100%);
+	background: -webkit-linear-gradient(left, rgba(16,31,50,1) 50%,rgba(117,157,187,.3) 100%);
+	background: linear-gradient(to right, rgba(16,31,50,1) 50%,rgba(117,157,187,.3) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#101f32', endColorstr='#aab7c3',GradientType=1 );
+	box-shadow: inset 1px 1px 2px rgba(0, 0, 0, .7);
+}
+
+.bestep img {
+	position: absolute;
+	object-fit: cover;
+	object-position: top right;
+	height: calc(100% - 2px);
+	width: 50%;
+	right: 1px;
+	display: block;
+	filter: contrast(120%);
+}
+
+
+/*   Скрыть активистов
+------------------------------------*/
+
+#header .best .besttitle, #header .best .activists {display: none;}
+
+
+/*   Блок нужных
+------------------------------------*/
+
+.wantedblock {
+padding-top: 5px;
+position: relative;
+}
+
+/*   Блок активистов
+------------------------------------*/
+
+#header .best { 
+padding-top: 5px;
+}
+
+/*   Лучшие и нужные
+------------------------------------*/
+
+.best .activists, .wantedblock .allwanted {
+display: inline-flex;
+justify-content: space-evenly;
+width: 100%;
+padding-top: 10px;
+}
+
+.best .activist, #totals .activist, .wantedblock .wanted {
+display: inline-flex;
+width: 70px;
+height: 50px;
+clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0% 80%);
+}
+
+.wantedblock .wanted {
+background: var(--title-bg);
+background: -moz-linear-gradient(top, var(--title-bg) 0%, var(--main-light-bg) 47%, var(--title-bg) 100%);
+background: -webkit-linear-gradient(top, var(--title-bg) 0%,var(--main-light-bg) 47%, var(--title-bg) 100%);
+background: linear-gradient(to bottom, var(--title-bg) 0%,var(--main-light-bg) 47%, var(--title-bg) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab7c3', endColorstr='#223951',GradientType=0 );
+box-shadow: inset 1px 1px 1px rgba(170, 183, 195, .8), inset -1px -1px 1px rgba(9, 27, 56, .7);
+}
+
+.best .activist, #totals .activist {
+background: #9c7435;
+background: -moz-linear-gradient(top, #9c7435 0%, #f0d1a2 50%, #9c7435 100%);
+background: -webkit-linear-gradient(top, #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+background: linear-gradient(to bottom, #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c7435', endColorstr='#9c7435',GradientType=0 );
+box-shadow: inset 1px 1px 1px rgba(240, 209, 162, .8), inset -1px -1px 1px rgba(27, 22, 15,.7);
+}
+
+.best .activist a, #totals .activist a, .wantedblock .wanted a {
+display: block;
+width: 66px;
+height: 46px;
+margin: 2px;
+clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0% 80%);
+}
+
+.best .activist a, #totals .activist a, .wantedblock .wanted a {background: var(--main-blue);}
+
+.best .activist img, #totals .activist img, .wantedblock .wanted img {
+display: block;
+clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0% 80%);
+width: auto;
+height: 100%;
+margin: 0 auto;
+max-width: 66px;
+max-height: 46px;
+object-fit: cover;
+object-position: top center;
+border: 1px solid var(--sec-border);
+box-sizing: border-box;
+opacity: .9;
+mix-blend-mode: hard-light;
+filter: grayscale(100%) contrast(120%);
+-webkit-filter: grayscale(100%) contrast(120%);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+}
+
+.best .activist img:hover, #totals .activist img:hover, .wantedblock .wanted img:hover {
+opacity: 1;
+mix-blend-mode: normal;
+filter: none;
+}
+
+/*   Ротатор нужных
+------------------------------------*/
+
+#КонтентРотатор2 {
+position: absolute;
+width: 100%;
+}
+
+#КонтентРотатор2 .allwanted {display: none}
+.allwanted[style*='display: block'] {display: flex !important;}
+
+
+/* Анимация плавного появления
+-------------------------------------------------------------*/
+
+@-webkit-keyframes fadeIn {
+from {opacity: 0;}
+to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+from {opacity: 0;}
+to {opacity: 1;}
+}
+
+
+/* D3 Forum navigation
+-------------------------------------------------------------*/
+
+/* D3.1 Блок навигации */
+
+#pun-navlinks {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: 204;
+    margin: 0 auto;
+    padding: 0 0 2px 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px rgb(104, 120, 135) solid;
+    background-image: -moz-linear-gradient(90deg, rgb(76,115,152) 0%, rgb(43,71,104) 5%, rgb(9,27,56) 100%);
+    background-image: -webkit-linear-gradient(90deg, rgb(76,115,152) 0%, rgb(43,71,104) 5%, rgb(9,27,56) 100%);
+    background-image: -ms-linear-gradient(90deg, rgb(76,115,152) 0%, rgb(43,71,104) 5%, rgb(9,27,56) 100%);
+    box-shadow: 0 2px 3px rgba(9, 27, 56, .8);
+}
+
+/* D3.2 Контейнер навигации */
+
+#pun-navlinks .container {
+margin: 0 auto;
+padding: 0 50px;
+text-align: center;
+font-family: jura, sans-serif;
+font-weight: 600;
+line-height: 2;
+text-transform: uppercase;
+top: 0;
+position: relative;
+}
+
+/* D.3 Список пунктов навигации */
+
+#pun-navlinks li {
+display: inline-block;
+}
+
+/* D.3 Ссылки навигации */
+
+#pun-navlinks li a, #pun-navlinks li a:after {
+display: inline-block;
+margin: 0;
+padding: 0 12px;
+height: 100%;
+position: relative;
+color: var(--main-light-bg);
+text-decoration: none;
+text-shadow: 1px 1px 0 #000;
+transition: all .5s linear 0s;
+font-size: 18px;
+}
+
+#pun-navlinks li a:hover, #pun-navlinks li a:hover:after {
+color: var(--hover-link);
+background: var(--sec-dark-bg);
+background: -moz-linear-gradient(bottom, var(--sec-dark-bg) 0%, #4e7599 95%, var(--main-light-bg) 100%);
+background: -webkit-linear-gradient(bottom, var(--sec-dark-bg) 0%,#4e7599 95%, var(--main-light-bg) 100%);
+background: linear-gradient(to top, var(--sec-dark-bg) 0%,#4e7599 95%, var(--main-light-bg) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab7c3', endColorstr='#101f32',GradientType=0 );
+}
+
+/* Анимация подчёркивания */
+
+#pun-navlinks li a:before {
+content: "";
+position: absolute;
+display: block;
+bottom: 0;
+left: 0;
+width: 0%;
+height: 2px;
+margin-bottom: -4px;
+background: rgba(193, 193, 191, .5);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+}
+
+#pun-navlinks li a:hover:before {
+width: 100%;
+}
+
+
+/* D4 User links
+-------------------------------------------------------------*/
+
+/* D4.1 Блок пользовательских ссылок */
+
+#pun-ulinks  {
+width: 100%;
+display: inline;
+}
+
+/* D4.2 Контейнер пользовательских ссылок */
+
+#pun-ulinks .container {
+background: var(--main-dark-bg);
+box-sizing: border-box;
+border-top: 2px solid var(--main-blue);
+border-bottom: 2px solid var(--main-blue);
+box-shadow: inset 0 0 1px var(--main-dark-bg), 0 2px 2px rgba(9, 27, 56, .8), 0 1px 0 var(--main-dark-bg);
+position: relative;
+display: inline-flex;
+top: 0;
+font-size: 12px;
+font-family: open sans, sans-serif;
+text-transform: lowercase;
+flex-wrap: wrap;
+-webkit-flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+min-height: 52px;
+height: auto;
+width: calc(100% - 40%);
+}
+
+/* D4.3 Список пользовательских ссылок */
+
+#pun-ulinks li, #pun-ulinks .container li.item8.nav-item-notifications {
+display: inline-block;
+border: none;
+padding: 0 7px 2px;
+position: relative;
+line-height: 22px;
+}
+
+/* D4.3 Настройки пользовательских ссылок */
+
+#pun-ulinks li a {
+color: var(--main-light-bg);
+text-shadow: 1px 1px 0 #000;
+transition: all .5s linear 0s;
+box-sizing: border-box;
+z-index: 60;
+position: relative;
+}
+
+#pun-ulinks li a:hover {
+color: var(--hover-link);
+}
+
+/* Выделение пользовательских ссылок */
+
+#pun-ulinks li:before {
+content: "";
+position: absolute;
+display: block;
+bottom: 0;
+left: 0;
+width: 0%;
+height: 100%;
+background: var(--main-blue);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+z-index: 50;
+}
+
+#pun-ulinks li:hover:before {
+width: 100%;
+}
+
+/* Статистика
+-------------------------------------------------------------*/
+
+#pun-stats .statscon {
+padding: 20px 15px 0;
+box-sizing: border-box;
+width: 100%;
+font-size: 12px;
+}
+
+#pun-stats a {
+font-size: 12px;
+}
+
+#pun-stats li.item1, #pun-stats li.item2 {
+float: left;
+clear: both;
+line-height: 150%;
+}
+
+#pun-stats li.item3, #pun-stats li.item4 {
+text-align: right;
+line-height: 150%;
+}
+
+li#onlinelist {
+margin-top: 10px;
+border: none;
+float: left;
+width: 100%;
+line-height: 130%;
+text-align: justify;
+}
+
+/* Сервисные ссылки */
+
+#pun-about {
+margin: 10px 0;
+text-align: center;
+}
+
+#pun-about, #pun-about a {
+font-size: 10px;
+}
+
+/* Баннеры и топы */
+
+.banners {
+position: absolute;
+margin: 30px auto 0;
+width: 1090px;
+background: rgba(9, 27, 56, .5);
+box-sizing: border-box;
+padding: 5px;
+text-align: center;
+overflow: auto;
+height: 75px;
+display: block;
+scrollbar-width: thin;
+scrollbar-color: var(--main-blue) var(--sec-border); /* 1 - бегунок, 2 - полоса */
+}
+
+.tops {
+display: block;
+width: 100%;
+text-align: center;
+padding: 5px 0;
+}
+
+.tops a {
+padding: 0 5px;
+}
+
+.banners img {
+width: 88px;
+height: 31px;
+}
+
+.banners img, .tops img {
+filter: grayscale(70%) brightness(50%);
+-webkit-filter: grayscale(70%) brightness(50%);
+transition: all 0.3s ease-in-out 0s;
+mix-blend-mode: luminosity;
+background: var(--main-dark-bg);
+}
+
+.banners:hover img, .tops:hover img  {
+filter: grayscale(70%) brightness(30%);
+-webkit-filter: grayscale(70%) brightness(30%);
+}
+
+.banners img:hover, .tops img:hover  {
+filter: grayscale(0%) brightness(100%);
+-webkit-filter: grayscale(0%) brightness(100%);
+mix-blend-mode: normal;
+opacity: .8;
+}
+
+
+/* D5 Блок приветствия и местонахождения
+-------------------------------------------------------------*/
+
+/* D5.1 Блок статуса */
+
+#pun-status {
+position: relative;
+display: inline;
+}
+
+/* D5.2 Содержимое блока статуса */
+
+#pun-status .container {
+position: relative;
+top: 0;
+right: 0;
+margin: 0;
+padding: 2px 4px;
+width: 40%;
+min-height: 52px;
+height: auto;
+box-sizing: border-box;
+display: block;
+float: right;
+border-top: 2px solid var(--main-blue);
+border-bottom: 2px solid var(--main-blue);
+border-left: 2px solid var(--main-blue);
+background-color: var(--main-dark-bg);
+z-index: 99;
+box-shadow: inset 0 0 1px var(--main-dark-bg), 0 2px 2px rgba(9, 27, 56, .8), 0 1px 0 var(--main-dark-bg);
+color: var(--main-blue);
+font-size: 10px;
+font-family: open sans, sans-serif;
+line-height: 14px;
+text-align: left;
+}
+
+/* D5.3 Элементы содержимого блока статуса */
+
+#pun-status .status_userava {
+display: block;
+float: left;
+background: url(//forumstatic.ru/files/0018/1e/e2/42571.png) no-repeat center;
+background-size: 44px;
+height: 44px;
+width: 44px;
+margin-right: 5px;
+}
+
+#pun-status .status_userava img {
+height: 36px;
+width: 36px;
+margin: 4px;
+display: block;
+position: relative;
+filter: saturate(0.5) brightness(70%) hue-rotate(209deg);
+-webkit-filter: saturate(0.5) brightness(70%) hue-rotate(209deg);
+mix-blend-mode: luminosity;
+cursor: pointer;
+transition: all 0.3s ease-in-out 0s;
+}
+
+#pun-status .status_userava img:hover {
+filter: none;
+-webkit-filter: none;
+mix-blend-mode: normal;
+}
+
+#pun-status .item1, #pun-status .item2, #pun-status .item3 {
+display: inline-block!important;
+float: none!important;
+}
+
+#pun-status .item4 {
+line-height: 1.5;
+right: 10px;
+}
+
+#pun-status a {
+color: var(--main-border);
+transition: all 0.3s ease-in-out 0s;
+}
+
+#pun-status a:hover {
+color: var(--main-light-bg);
+}
+
+
+/* C2 Table layout
+-------------------------------------------------------------*/
+
+/* Общие настройки таблиц */
+
+.punbb .main th {
+font-family: open sans, sans-serif;
+text-transform: lowercase;
+font-size: 12px;
+line-height: 2;
+color: var(--main-blue);
+}
+
+.punbb .main td, .punbb .main th {
+padding: 5px;
+}
+
+.punbb .tclcon {
+padding-right: 50px;
+}
+
+/* Иконки тем
+---------------------------------------------------*/
+
+/* Основная иконка */
+
+div.icon {
+width: 40px;
+height: 18px;
+display: block;
+position: absolute;
+margin: 5px;
+top: 5px;
+right: 0;
+border-radius: 1px;
+background: var(--main-light-bg);
+background: -moz-linear-gradient(-45deg, var(--main-light-bg) 0%, var(--main-dark-bg) 100%);
+background: -webkit-linear-gradient(-45deg, var(--main-light-bg) 0%, var(--main-dark-bg) 100%);
+background: linear-gradient(135deg, var(--main-light-bg) 0%, var(--main-dark-bg) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab7c3', endColorstr='#091b38',GradientType=1 );
+box-shadow: 0 0 0 1px var(--title-bg) inset, 0 0 2px 1px var(--main-dark-bg) inset, 0 -6px 0 -5px var(--main-dark-bg), 0 6px 0 -5px var(--main-dark-bg);
+z-index: 1;
+opacity: .5;
+}
+
+/* текст основной иконки */
+
+div.icon:before {
+content: "Old";
+text-align: center;
+letter-spacing: 1px;
+font-family: open sans;
+font-size: 12px;
+line-height: 18px;
+font-variant: small-caps;
+color: var(--main-light-bg);
+text-shadow: 1px 1px rgba(0,0,0,.3);
+width: 40px;
+height: 18px;
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+
+/* Есть новые сообщения */
+
+div.icon.icon-new, div.icon.inew {opacity: 1;}
+
+div.icon.icon-new:before, div.icon.inew:before {
+content: "New";
+text-shadow: 1px 1px rgba(0,0,0,.5);
+color: var(--hover-link);
+font-weight: bold;
+}
+
+
+/* Закрытая тема */
+
+.iclosed:not(.isticky) .icon {
+opacity: 1;
+background: var(--main-border);
+background: -moz-linear-gradient(-45deg, var(--main-border) 0%, var(--sec-border) 100%);
+background: -webkit-linear-gradient(-45deg, var(--main-border) 0%, var(--sec-border) 100%);
+background: linear-gradient(135deg, var(--main-border) 0%, var(--sec-border) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#687887', endColorstr='#545d65',GradientType=1 );
+}
+
+.iclosed .icon:before {
+content: "\f410";
+font-family: open sans, 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+text-shadow: 1px 1px rgba(0,0,0,.7);
+color: var(--main-light-bg);
+}
+
+
+/* Важная тема */
+
+.isticky .icon {opacity: 1;}
+
+.isticky .icon:before {
+content: "\f3b1";
+font-family: open sans, 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+text-shadow: 1px 1px rgba(0,0,0,.7);
+color: #fcdf87;
+}
+
+
+/* Форумная таблица на главной 
+-----------------------------------------------*/
+
+#pun-index table thead {
+display: none;
+}
+
+#pun-index table .tcl {
+width: 70%;
+}
+
+#pun-index table .tcr {
+width: 30%;
+vertical-align: middle;
+}
+
+#pun-index table .tcl, #pun-index table .tcr {
+padding: 10px 15px;
+position: relative;
+}
+
+#pun-index table .tcr a {
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+font-weight: bold;
+}
+
+#pun-index table .tcr br {
+display: none;
+}
+
+#pun-index .intd, #pun-viewforum .isub .intd {
+background-image: url(//forumstatic.ru/files/0018/1e/e2/78236.jpg);
+background-position: top center;
+background-attachment: fixed;
+background-repeat: no-repeat;
+box-sizing: border-box;
+background-size: cover;
+position: relative;
+}
+
+#pun-index .intd .icon, #pun-viewforum .isub .intd .icon {
+margin: 4px 16px;
+background: linear-gradient(135deg, var(--main-blue) 0%, var(--main-dark-bg) 100%);
+box-shadow: 0 0 0 1px var(--main-dark-bg) inset, 0 -6px 0 -5px var(--main-dark-bg), 0 6px 0 -5px var(--main-dark-bg);
+opacity: 1;
+}
+
+#pun-index .intd .icon:before, #pun-viewforum .isub .intd .icon:before {
+text-shadow: 1px 1px rgba(0,0,0,.5);
+}
+
+#pun-index .intd .icon.inew, #pun-viewforum .isub .intd .icon.inew {
+box-shadow: 0 0 0 1px var(--main-light-bg) inset, 0 0 2px 1px var(--main-dark-bg) inset, 0 -6px 0 -5px var(--main-blue), 0 6px 0 -5px var(--main-blue);
+}
+
+#pun-index td .tclcon, #pun-viewforum .isub td .tclcon {
+background: rgba(16, 31, 50,.7);
+border: 1px solid var(--main-light-bg);
+box-shadow: 0 0 0 1px var(--main-dark-bg), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+box-sizing: border-box;
+padding: 5px 15px 12px;
+color: var(--main-light-bg);
+text-shadow: 1px 1px 0 #000;
+text-align: justify;
+line-height: 1.4;
+position: relative;
+}
+
+#pun-index td .tclcon {
+display: flex;
+display: -webkit-flex;
+flex-direction: column;
+}
+
+#pun-index .tclcon h3 {order: 1;}
+#pun-index .tclcon .descr {order: 2;}
+#pun-index .tclcon .subforums {order: 3;}
+#pun-index .tclcon #fnavig, #pun-index .tclcon .fnavig {order: 4;}
+
+#pun-index td .tclcon h3, #pun-viewforum .isub td .tclcon h3 {
+margin: 0 0 7px;
+padding: 0 0 5px;
+display: block;
+text-align: center;
+border-bottom: 1px solid var(--main-blue);
+}
+
+#pun-index td .tclcon h3 a, #pun-viewforum .isub td .tclcon h3 a {
+color: var(--hover-link);
+font-family: open sans, sans-serif;
+font-size: 16px;
+font-variant: small-caps;
+letter-spacing: 1px;
+font-weight: normal;
+text-shadow: 1px 1px 0 #000;
+transition: all .5s linear 0s;
+}
+
+#pun-index td .tclcon h3 a:hover, #pun-viewforum .isub td .tclcon h3 a:hover {
+color: #fcdf87;
+}
+
+#pun-index .isub {
+display: none;
+}
+
+.modlist, .tclcon br {
+display: none;
+}
+
+/* Подфорумы
+--------------------------------------------------*/
+
+#pun-main .subforums {
+font-weight: bold;
+color: var(--main-blue);
+}
+
+#pun-index .subforums a {
+color: var(--blue-text);
+font-weight: bold;
+}
+
+#pun-index .subforums a:hover {
+color: var(--hover-link);
+}
+
+#pun-viewforum .category thead {
+display: none;
+}
+
+#pun-viewforum .category tr {
+position: relative;
+width: 100%;
+display: block;
+float: left;
+}
+
+#pun-viewforum .category td.tc2:before {
+content: 'Тем:'; /* Текст для ячейки "ТЕМ" */
+color: var(--hover-link); /* Цвет вставленного текста */
+padding-right: 5px;
+}
+
+#pun-viewforum .category td.tc3:before {
+content: 'Сообщений:'; /* Текст для ячейки "СООБЩЕНИЙ" */
+color: var(--hover-link);
+padding-right: 5px;
+}
+
+#pun-viewforum .category td.tcl {
+display: block;
+width: 60%;
+float: left;
+}
+
+#pun-viewforum .category td.tcr {
+display: block;
+position: absolute;
+right: 0;
+width: 30%;
+}
+
+#pun-viewforum .category td.tc2, #pun-viewforum .category td.tc3 {
+position: absolute;
+bottom: 5px;
+display: block;
+width: auto;
+box-sizing: border-box;
+padding: 2px 10px;
+background: #375d7f;
+margin: 2px 5px;
+box-shadow: 2px 2px 0 var(--main-dark-bg);
+font-family: open sans, sans-serif;
+font-size: 12px;
+color: var(--hover-link);
+text-shadow: 1px 1px 0 #000;
+font-variant: small-caps;
+letter-spacing: 1px;
+}
+
+#pun-viewforum .category td.tc2 {right: 170px;}
+
+#pun-viewforum .category td.tc3 {right: 40px;}
+
+
+/* Список тем
+--------------------------------------------------*/
+
+/* Скрыть выделение тем (важная, закрытая, опрос и т.п.) */
+
+#pun-main .tclcon .stickytext, #pun-main .tclcon .closedatafield, #pun-main .tclcon .polltext {
+font-size: 0;
+}
+
+/* Иконки выделения тем (важная, закрытая, опрос и т.п.) */
+
+#pun-main .tclcon .stickytext:before, #pun-main .tclcon .closedatafield:before, #pun-main .tclcon .polltext:before {
+color: #324455;
+padding-right: 3px;
+font-size: 14px;
+}
+
+#pun-main .tclcon .stickytext:before {
+content: "[!]";
+font-weight: bold;
+}
+
+#pun-main .tclcon .closedatafield:before {
+content: "[x]";
+font-weight: bold;
+}
+
+#pun-main .tclcon .polltext:before {
+content: "\f681";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 700;
+}
+
+/* Автор темы и сообщения */
+
+/* .punbb .multipage .byuser {display: block;} */
+.punbb .multipage .byuser:before {content: "by";padding:0;}
+#pun-index .byuser:before, .isub .byuser:before {padding-right: 5px;}
+
+
+/* Таблица списка тем
+--------------------------------------------------*/
+
+#pun-searchtopics th {
+padding: 5px;
+}
+
+#pun-searchtopics th.tcl, #pun-searchtopics th.tc2,
+#pun-viewforum th.tcl, #pun-viewforum th.tcr {
+text-align: left;
+}
+
+.hasicon td.tcl {position: relative;}
+
+#pun-searchtopics .tcl {
+vertical-align: top;
+width: 40%;
+}
+
+#pun-searchtopics .tc2 {
+vertical-align: top;
+width: 20%;
+}
+
+#pun-searchtopics .tc3 {
+width: 10%;
+text-align: center;
+}
+
+#pun-searchtopics .tcr {
+width: 30%;
+text-align: left;
+}
+
+#pun-viewforum .tcl {width: 50%}
+
+#pun-viewforum .tc2, #pun-viewforum .tc3 {
+width: 10%;
+text-align: center;
+}
+
+#pun-viewforum .tcr {width: 30%}
+
+
+/* Участники 
+--------------------------------------------------*/
+
+#pun-userlist #userlist fieldset {
+display: block;
+width: 100%;
+box-sizing: border-box;
+padding: 10px 0;
+}
+
+#pun-userlist #userlist fieldset .fs-box.inline {
+display: flex;
+display: -webkit-flex;
+flex-wrap: wrap;
+-webkit-flex-wrap: wrap;
+}
+
+#pun-userlist #userlist fieldset input[type="text"], #pun-userlist #userlist fieldset select {
+font-size: 16px;
+}
+
+.usertable {
+display: flex;
+display: -webkit-flex;
+padding: 10px;
+}
+
+.usertable .tcl.username {
+width: 30%;
+}
+
+.usertable .tc2.title{
+width: 20%;
+}
+
+.usertable .tc3.relation, .usertable .tc3.posts {
+width: 10%;
+}
+
+.usertable .tc3.registered, .usertable .tc3.last_visit {
+width: 15%;
+}
+
+.usertable .tcl, .usertable .tc2 {
+text-align: left;
+}
+
+.usertable .tc3 {
+text-align: center;
+}
+
+.punbb input[type="text"], .punbb input[type="password"], #userlist .fs-box input, #userlist .fs-box select, #pun-admain input[type="text"], #pun-admain select {
+background: #fff4e5;
+box-shadow: inset 1px 1px 1px rgba(0,0,0,.3);
+border-width: 1px;
+border-style: solid;
+border-color:  var(--inset-border);
+max-width: 100%;
+box-sizing: border-box;
+}
+
+
+/* Поиск и результаты поиска, ошибки
+-------------------------------------------------------------*/
+
+#pun-message .info, #post-errors.info-box, #pun-login .info, #pun-viewtopic .multipage > h2 span {
+font-size: 14px;
+padding: 10px 15px;
+line-height: 150%;
+text-align: center;
+}
+
+#pun-post .topic h2 {
+text-align: center;
+padding: 10px;
+}
+
+#pun-online th {
+text-align: left;
+}
+
+#pun-online.punbb .tcl.username a, #pun-online.punbb .tcl.username {
+font-size: 14px;
+}
+
+#pun-online.punbb .tcl.username, #pun-online.punbb .tc3 {
+width: 20%;
+}
+
+#pun-online.punbb .tcl.action {
+width: 40%;
+}
+
+/* C1 Расположение полей форм
+-------------------------------------------------------------*/
+
+.punbb .formal fieldset {
+max-width: 100%;
+}
+
+/* C1.5 */
+.punbb fieldset legend {
+  padding: 0;
+  margin: 10px 0 0 0;
+  font-size: 14px;
+  }
+
+/* C1.6 */
+.punbb fieldset legend span {
+  padding: 0;
+  margin: 0;
+  }
+
+/* C1.9 */
+.punbb .fs-box p, .punbb .fs-box fieldset {
+  padding: 0 0 10px;
+  }
+
+/* C1.10 */
+.punbb .inline .inputfield, .punbb .inline .selectfield, .punbb .inline .passfield {
+float: left;
+margin: 5px 10px 0 0;
+}
+
+/* C1.11 */
+.punbb .inline .infofield {
+clear: both;
+padding: 10px 0;
+text-align: justify;
+}
+
+/* Навигация в описании
+-------------------------------------------------------------*/
+
+/* скрыть стрелочку */
+details summary::-webkit-details-marker {
+  display: none;
+  }
+
+#fnavig summary {
+display: block;
+width: 80px
+}
+
+.fnavig {
+background: var(--main-dark-bg);
+background: -moz-linear-gradient(top, var(--main-dark-bg) 0%, #375d7f 100%);
+background: -webkit-linear-gradient(top, var(--main-dark-bg) 0%,#375d7f 100%);
+background: linear-gradient(to bottom, var(--main-dark-bg) 0%,#375d7f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#091b38', endColorstr='#375d7f',GradientType=0 );
+box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .6), inset 0 0 2px rgba(0, 0, 0, .8), 0px 2px 2px var(--sec-border);
+width: auto;
+line-height: 2;
+margin: 5px auto 0;
+padding: 0 15px;
+color: #d1d9e1!important;
+text-shadow: 1px 1px 0 #000;
+font-family: open sans;
+text-transform: uppercase;
+font-size: 11px !important;
+cursor: pointer;
+border: 1px solid var(--main-blue);
+outline: 1px solid var(--sec-dark-bg);
+text-align: center;
+transition: 0s;
+}
+
+.fnavig:hover {
+background: #375d7f;
+background: -moz-linear-gradient(bottom, var(--main-dark-bg) 0%, #375d7f 100%);
+background: -webkit-linear-gradient(bottom, var(--main-dark-bg) 0%,#375d7f 100%);
+background: linear-gradient(to top, var(--main-dark-bg) 0%,#375d7f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#375d7f', endColorstr='#091b38',GradientType=0 );
+-webkit-transform: translate(0, 1px);
+transform: translate(0, 1px);
+box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .6), inset 0 0 2px rgba(0, 0, 0, .8);
+color: var(--main-light-bg) !important;
+}
+
+details[open] ul {
+  animation: spoiler 1s;
+}
+@keyframes spoiler {
+  0%   {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+#fnavig ul {
+text-align: center;
+padding-top: 7px;
+}
+
+#fnavig ul li {
+border: 1px solid var(--main-blue);
+display: inline-block;
+margin: 3px;
+padding: 0 12px;
+line-height: 2;
+text-transform: uppercase;
+font-size: 10px;
+position: relative;
+}
+
+#fnavig ul li:before {
+content: "";
+position: absolute;
+display: block;
+bottom: 0;
+left: 0;
+width: 0%;
+height: 100%;
+box-sizing: border-box;
+background: var(--title-bg);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+z-index: 1;
+}
+
+#fnavig ul li:hover:before {
+width: 100%;
+}
+
+#pun-index #fnavig li a {
+color: var(--hover-link);
+font-weight: normal;
+font-size: 11px;
+z-index: 2;
+position: relative;
+transition: all .5s linear 0s;
+}
+
+#pun-index #fnavig li a:hover {
+color: #fcdf87;
+}
+
+/* Перенос колонок тем и сообщений под описание форума  V.2 
+--------------------------------------------------------------------------------*/
+
+#pun-index .category .tc2,#pun-index .category .tc3,
+#f-subforums .tc2,#f-subforums .tc3{
+  display:none!important;
+}
+
+.main table .Add {
+display: inline-block;
+position: relative;
+padding: 0;
+background: transparent;
+right: 0;
+bottom: 0;
+margin: 5px auto 0;
+width: 100%;
+text-align: center;
+}
+
+.themes, .messages {
+  display: inline-block;
+  background: #375d7f;
+  padding: 2px 10px;
+  box-shadow: 2px 2px 0 var(--main-dark-bg);
+  font-family: open sans, sans-serif;
+  font-size: 12px;
+  color: var(--hover-link);
+  text-shadow: 1px 1px 0 #000;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  margin: 2px 5px;
+}
+
+.left, .right {display: inline-block;}
+.right {padding-left: 5px;}
+
+/* Аватарки в списках
+--------------------------------------------*/
+
+.punbb em.user-avatar {
+background: #9c7435;
+background: -moz-linear-gradient(top,  #9c7435 0%, #f0d1a2 50%, #9c7435 100%);
+background: -webkit-linear-gradient(top,  #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+background: linear-gradient(to bottom,  #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c7435', endColorstr='#9c7435',GradientType=0 );
+box-shadow: 0 0 0 1px var(--sec-border), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+box-sizing: border-box;
+padding: 1px;
+width: 40px;
+height: 40px;
+}
+
+.punbb em.user-avatar a {
+background: #000 !important;
+width: 38px;
+height: 38px;
+box-sizing: border-box;
+}
+
+.punbb .user-avatar .avatar-image {
+border-radius: 0!important;
+-webkit-border-radius: 0!important;
+border: 1px solid var(--sec-border);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+background-position: top center !important;
+}
+
+/* Стиль топиков
+--------------------------------------------*/
+
+/* чтобы якорь не прятался под навигационным меню */
+
+.punbb .post {
+position: relative;
+padding-top: 42px;
+margin-top: -42px;
+}
+
+.postlink.long {
+width: auto!important;
+}
+
+.modmenu {
+clear: both;
+padding: 2px 0;
+line-height: 200%;
+}
+
+.punbb .modmenu .container strong {
+float: left;
+}
+
+.punbb .modmenu .container {
+text-align: right;
+}
+
+.modmenu select {
+background: var(--hover-link);
+box-shadow: inset 1px 1px 1px #000;
+}
+
+.punbb .post h3, #topic-modmenu, #topic-feed {
+position: relative;
+display: block;
+width: 100%;
+background: var(--main-dark-bg);
+border-top: 1px solid var(--main-light-bg);
+border-bottom: 1px solid var(--main-light-bg);
+box-shadow: 0 0 0 1px var(--main-dark-bg), 0 1px 2px #000;
+box-sizing: border-box;
+line-height: 2;
+text-transform: lowercase;
+color: var(--main-light-bg);
+font-weight: normal;
+clear: both;
+}
+
+.punbb .post h3 span {
+margin-left: 240px;
+padding: 0 15px;
+}
+
+#pun-searchposts .post h3 span {
+margin-left: 0;
+}
+
+.punbb .post h3 a, #topic-modmenu a, #topic-feed a {
+color: var(--hover-link);
+font-weight: normal;
+text-shadow: 1px 1px 0 #000;
+transition: all .5s linear 0s;
+}
+
+.punbb .post h3 a:hover, #topic-modmenu a:hover, #topic-feed a:hover {
+color: var(--main-light-bg);
+}
+
+.punbb .post h3 span strong {
+padding-right: 15px;
+float: right;
+}
+
+.topic a.sharelink {
+padding-right: 15px;
+margin: 0!important;
+}
+
+.punbb .post-links {
+position: relative;
+z-index: 10;
+}
+
+.punbb #topic-users-in {
+margin: 10px 0;
+font-size: 12px;
+float: left;
+}
+
+/* разделение запятой ников пользователей, просматривающих тему */
+
+#topic-users-in a:not(:last-of-type):after {
+content: ",";
+color: #000;
+}
+
+div#pun-live-rusff {
+display: none;
+}
+
+.post .container {padding: 5px;}
+
+/* .post.altstyle .container {background: #dbdbdb;} */
+
+
+/* Стиль опросов */
+
+#pun-viewtopic #poll-special .question td.tac {
+text-align: center !important;
+font-size: 14px;
+}
+
+.topic #poll-special td:first-of-type {
+text-align: right !important;
+}
+
+.topic #poll-special td:last-of-type {
+text-align: left !important;
+}
+
+#poll-special .poll2 td h1 {
+background: var(--main-blue) repeat-x scroll 0 0  / cover !important;
+padding: 5px 0;
+}
+
+#poll-special .vote-result td.tac {
+text-align: right !important;
+}
+
+
+/* Профиль в топике и на странице профиля
+--------------------------------------------------------*/
+
+/* Общее выравнивание */
+
+#pun-profile #viewprofile .container ul table tr {
+display: flex;
+display: -webkit-flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: center;
+justify-content: space-around;
+align-items: flex-start;
+}
+
+/* Страница профиля */
+
+#pun-profile #viewprofile-next #profilenav {
+display: none;
+}
+
+#pun-profile fieldset {
+display: block;
+}
+
+#profile .container {
+padding-left: 20%;
+}
+
+#profilenav {
+float: left;
+width: 20%;
+margin-left: -20%;
+display: inline;
+padding-top: 10px;
+}
+
+#profilenav h2 span, #messages legend span {
+font-weight: normal;
+font-size: 16px;
+font-family: open sans;
+}
+
+#profilenav ul li.isactive {
+font-weight: bold;
+}
+
+#profilenav ul li {
+line-height: 200%;
+}
+
+#messages th {
+text-align: left;
+}
+
+#profile-right {
+font-size: 12px;
+}
+
+#viewprofile #profile-right li {
+
+}
+
+#viewprofile #profile-right span {
+float: left;
+width: 25%;
+text-align: right;
+font-weight: bold;
+line-height: 150%;
+}
+
+#viewprofile #profile-right li strong {
+padding-left: 10px;
+line-height: 150%;
+font-weight: normal;
+}
+
+#viewprofile li strong, #viewprofile li div, #setmods dd {
+display: inline-block;
+}
+
+/* Рамка профиля */
+
+.post-author, #pun-profile #profile-left {
+width: 232px;
+text-align: center;
+background: var(--sec-dark-bg);
+border: 1px solid var(--main-light-bg);
+box-shadow: 0 0 0 1px var(--main-dark-bg), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+box-sizing: border-box;
+color: var(--main-light-bg);
+text-shadow: 1px 1px 0 #000;
+float: left;
+padding: 2px 4px 8px;
+margin: 7px;
+}
+
+.post-author a, #viewprofile #profile-left a {
+color: var(--blue-text);
+font-weight: normal;
+}
+
+.post-author a:hover, #viewprofile #profile-left a:hover {
+color: var(--hover-link);
+}
+
+li.pa-author, #viewprofile li#profile-name {
+margin: 0 10px;
+padding: 4px 0 !important;
+border-bottom: 1px solid var(--title-bg);
+}
+
+li.pa-author, li.pa-author a, #viewprofile li#profile-name, #pun-post .pa-author {
+color: #fcdf87;
+line-height: 1.2;
+font-size: 18px;
+font-family: jura;
+font-weight: bold;
+}
+
+li.pa-author a:hover {
+color: var(--hover-link);
+}
+
+li.pa-title, #viewprofile li#profile-title {
+font-size: 11px;
+color: var(--main-blue);
+padding: 5px 7px !important;
+line-height: 1.2;
+}
+
+#viewprofile li#pa-avatar {
+padding-bottom: 5px;
+}
+
+li.pa-avatar.item2, #viewprofile li#pa-avatar div {
+display: grid;
+position: relative;
+border: 1px solid #337AB7;
+margin: 0 auto 5px;
+padding: 5px;
+max-width: 180px;
+align-content: center;
+justify-content: center;
+max-height: 180px;
+}
+
+li.pa-avatar.item2:before, #viewprofile li#pa-avatar div:before,
+li.pa-avatar.item2:after, #viewprofile li#pa-avatar div:after {
+    content: "";
+    z-index: 1;
+    display: block;
+    position: absolute;
+    background: var(--sec-dark-bg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+li.pa-avatar.item2:before, #viewprofile li#pa-avatar div:before {
+width: calc(100% + 4px);
+height: 50%;
+transition: height 0.6s;
+}
+
+li.pa-avatar.item2:after,
+#viewprofile li#pa-avatar div:after {
+height: calc(100% + 4px);
+width: 50%;
+transition: width 0.6s;
+}
+
+li.pa-avatar.item2:hover:before, li.pa-avatar.item2:focus:before,
+#viewprofile li#pa-avatar div:hover:before, #viewprofile li#pa-avatar div:focus:before {
+    height: 20%;
+}
+li.pa-avatar.item2:hover:after, li.pa-avatar.item2:focus:after,
+#viewprofile li#pa-avatar div:hover:after, #viewprofile li#pa-avatar div:focus:after {
+    width: 20%;
+}
+
+li.pa-avatar img, #viewprofile li#pa-avatar img {
+border: 1px solid var(--main-blue);
+z-index: 2;
+position: relative;
+text-align: center;
+cursor: pointer;
+transition: filter .5s linear 0s;
+max-width: 180px;
+max-height: 180px;
+}
+
+li.pa-avatar img:hover, #viewprofile li#pa-avatar img:hover {
+filter: saturate(0.78) brightness(97%) hue-rotate(44deg);
+-webkit-filter: saturate(0.78) brightness(97%) hue-rotate(44deg);
+}
+
+#viewprofile li#pa-online {
+line-height: 150%;
+text-transform: lowercase;
+font-size: 12px;
+}
+
+#viewprofile li#pa-edit {
+line-height: 150%;
+font-size: 12px;
+}
+
+li.pa-fld1 {
+display: block;
+height: 40px;
+width: 100%;
+max-width: 222px;
+position: relative;
+margin: 5px auto;
+}
+
+/* Плашка */
+
+#plank {
+display: block;
+height: 40px;
+width: 100%;
+max-width: 222px;
+position: relative;
+background: var(--main-dark-bg);
+background: -moz-linear-gradient(top,  var(--main-dark-bg) 0%, #375d7f 100%);
+background: -webkit-linear-gradient(top,  var(--main-dark-bg) 0%,#375d7f 100%);
+background: linear-gradient(to bottom,  var(--main-dark-bg) 0%,#375d7f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#091b38', endColorstr='#375d7f',GradientType=0 );
+color: #fcdf87 !important;
+font-family: open sans, sans-serif;
+z-index: 10;
+}
+
+#viewprofile #plank {
+width: 222px;
+margin: 10px 0 0;
+}
+
+.plankbg {
+display: block;
+height: 40px;
+width: 100%;
+position: absolute;
+padding: 0!important;
+margin: 0!important;
+border: none;
+}
+
+.pic {
+display: flex;
+position: absolute;
+bottom: 0;
+left: 5px;
+height: 45px;
+width: 50px;
+padding: 0;
+align-content: center;
+justify-content: center;
+align-items: center;
+}
+
+.pic img {
+max-height: 45px;
+max-width: 50px;
+width: auto;
+padding: 0;
+border: none;
+position: relative;
+float: left;
+left: 0;
+bottom: 0;
+display: block;
+}
+
+.uptext, .lwtext {
+display: block;
+width: calc(100% - 65px);
+position: relative;
+float: right;
+right: 0;
+font-size: 12px;
+text-align: center;
+padding: 0 5px;
+text-shadow: 1px 1px #000;
+}
+
+.uptext {
+line-height: 200%;
+top: 0;
+}
+
+.lwtext {
+line-height: 100%;
+bottom: 0;
+}
+
+#lz, #viewprofile #lz, .lz, #viewprofile .lz {
+font-family: open sans, sans-serif;
+border: 1px solid var(--main-blue);
+width: 210px;
+margin: 0 auto 4px;
+box-sizing: border-box;
+padding: 5px 9px;
+}
+
+#viewprofile #lz {
+width: 222px;
+}
+
+#viewprofile #lz .name, #viewprofile #lz .cn, #viewprofile #lz .species {
+display: block;
+margin: 0 auto;
+width: 100%;
+text-align: center;
+box-sizing: border-box;
+} 
+
+#lz .name a, .lz .name a {
+text-transform: uppercase;
+line-height: 1.5;
+font-weight: bold;
+font-size: 12px;
+}
+
+#lz .cn, .lz .cn {
+line-height: 1.5;
+font-weight: bold;
+letter-spacing: 1px;
+font-size: 12px;
+color: var(--main-blue);
+}
+
+.human, #viewprofile .human, .species summary, #viewprofile .species summary {
+text-align: center;
+display: block;
+background: var(--title-bg);
+color: var(--main-light-bg);
+line-height: 150%;
+margin: 2px 0;
+font-size: 10px;
+}
+
+.species summary, #viewprofile .species summary {
+cursor: pointer;
+transition: all 0.3s linear 0s;
+}
+
+.species details {
+padding: 0;
+text-align: justify;
+font-size: 10px;
+line-height: 1.2;
+}
+
+.species summary:hover, #viewprofile .species summary:hover, .species details[open] summary , #viewprofile .species details[open] summary {
+color: var(--hover-link);
+}
+
+.species details[open], #viewprofile .species details[open] {
+padding-bottom: 5px;
+}
+
+#lz .status, .lz .status {
+text-align: justify;
+font-size: 10px;
+line-height: 1.2;
+display: block;
+}
+
+li.pa-fld3 {
+display: grid;
+height: 55px;
+width: 55px;
+justify-items: center;
+align-content: center;
+background: var(--main-dark-bg);
+border: 1px solid var(--title-bg);
+color: var(--blue-text) !important;
+margin: 1px 0;
+left: 6px;
+position: relative;
+float: left;
+line-height: 1.2;
+font-size: 12px;
+text-transform: lowercase;
+font-variant: small-caps;
+font-family: open sans;
+box-sizing: border-box;
+}
+
+#pun-viewtopic span.GamePst, #pun-viewtopic strong.GamePst2 {
+padding-right: 0 !important;
+display: inline-block !important;
+width: auto !important;
+cursor: pointer;
+color: var(--blue-text) !important;
+font-size: 20px;
+}
+
+li.pa-posts, li.pa-respect, li.pa-fld4 {
+float: right;
+display: block;
+position: relative;
+margin: 1px auto;
+width: 150px;
+right: 6px;
+line-height: 150%;
+text-transform: lowercase;
+font-variant: small-caps;
+letter-spacing: 1px;
+border: 1px solid var(--title-bg);
+background: var(--main-dark-bg);
+box-sizing: border-box;
+font-size: 10px;
+}
+
+li.pa-respect a {
+color: var(--blue-text);
+}
+
+li.pa-fld4 .penalty {
+
+}
+
+.post-author li.pa-ip, .post-author li.pa-online, .post-author li.pa-last-visit {
+clear: both;
+padding-top: 3px;
+line-height: 150%;
+}
+
+li.pa-online, li.pa-last-visit {
+text-transform: lowercase;
+font-variant: small-caps;
+font-family: tahoma, sans-serif;
+font-weight: bold;
+font-size: 10px;
+letter-spacing: 1px;
+}
+
+.post-author li.pa-ua {
+margin-top: 5px;
+}
+
+.post-author li.pa-replies {
+padding-top: 5px;
+}
+
+.punbb .post-sig dt {
+display: block;
+border-top: 1px solid var(--blue-text);
+width: 300px;
+margin: 5px auto;
+}
+
+.punbb .post-sig .sigimage {
+max-width: 100%;
+}
+
+/* ибо достало */
+li.pa-gifts, #profile-gifts {
+display: none!important;
+}
+
+#profile8 input#fld1[type="text"], #profile8 input#fld2[type="text"] {
+width: 100%;
+}
+
+#profile8 #setmods dl {
+  padding: 0 0 0 8em;
+  margin-bottom: 0.2em;
+  }
+
+#profile8 #setmods dt {
+  float: left;
+  width: 14em;
+  margin-left: -16em;
+  padding: 0.8em 1em;
+  font-weight: bold;
+  display: inline;
+  }
+
+#profile8 #setmods dd {
+    display: block;
+    padding: 0.5em 1em;
+    font-weight: normal;
+}
+
+#profile8 #setmods dd input[type="text"] {
+width: unset;
+}
+
+/* подпись в профиле */
+.punbb #profile-signature {padding: 10px;}
+
+.punbb #profile-signature ul {
+padding: 10px;
+border-top: 1px solid var(--blue-text);
+}
+
+.punbb #profile-signature .sigimage {max-width: 100%;}
+
+
+/* Оформление постов в темах
+--------------------------------------------*/
+
+.punbb .post-body {
+margin-left: 245px;
+position: relative;
+}
+
+.punbb .post-box {
+padding: 10px;
+position: relative;
+}
+
+/* Содержимое поста */
+
+.punbb .post-content {
+padding: 0;
+margin: 0;
+width: 100%;
+overflow: hidden;
+text-align: justify;
+word-break: break-word;
+}
+
+/* Текст поста */
+
+.punbb .post-content p {
+line-height: 150%;
+font-size: 12px;
+padding: 0 0 10px 0;
+}
+
+.punbb .post-content span {line-height: 100%;}
+
+.punbb .post-content span label {line-height: 150%;}
+
+/* Ссылки в постах */
+
+.punbb .post-content a {
+font-weight: bold;
+}
+
+/* Картинки в постах */
+
+.punbb .post-content img.postimg {
+vertical-align: middle;
+}
+
+/* Списки в посте */
+
+.punbb .post-content ul li {
+margin-bottom: 0;
+}
+
+/* Разделительная линия в посте */
+
+.punbb .post-content hr {
+box-shadow: 0 1px var(--hover-link);
+border-top: 1px solid var(--main-blue);
+opacity: .7;
+}
+
+.punbb .post-content .scrollbox {
+scrollbar-width: thin;
+scrollbar-color: var(--main-blue) transparent;
+}
+
+.punbb .post-content > br:first-child {
+display: none;
+}
+
+/* html в сообщениях, код, цитата
+---------------------------------------------------*/
+
+/* html в сообщениях */
+
+html.punbb {
+height: auto !important;
+border: none;
+box-shadow: none;
+}
+
+html.punbb .post-content {
+overflow: unset !important;
+margin: 0 auto !important;
+}
+
+html.punbb body.post-content > div {
+max-width: calc(100% - 10px);
+margin: 5px auto 10px;
+}
+
+html.punbb body.post-content iframe[allowfullscreen] {
+  width: revert-layer !important;
+  height: revert-layer !important;
+}
+
+/* Настройки блоков спойлера, кода и цитаты */
+
+.post-content .spoiler-box > div {
+line-height: 150%;
+font-size: 12px;
+}
+
+.punbb .spoiler-box p {
+padding: 0;
+}
+
+.punbb .post-content .spoiler-box > blockquote {
+padding: 5px 0 0;
+}
+
+.punbb .post-content .spoiler-box > blockquote p {
+padding: 0 0 5px;
+}
+
+.punbb .post-content .spoiler-box > blockquote td p {
+padding: 0;
+}
+
+.punbb .quote-box, .punbb .code-box {
+background-color: rgba(117, 157, 187,.5);
+box-shadow: 0 0 0 1px var(--main-blue) inset, 0 -6px 0 -5px var(--main-blue), 0 6px 0 -5px var(--main-blue);
+margin: 5px 5px 10px;
+padding: 10px 15px;
+}
+
+.punbb .quote-box cite, .punbb .code-box strong.legend {
+display: block;
+padding-bottom: 10px;
+font-size: 14px;
+font-weight: 600;
+font-style: normal;
+margin: 0 0 5px;
+border-bottom: 1px solid var(--main-blue);
+font-family: open sans, sans-serif;
+}
+
+.punbb .post-content .blockcode, .punbb .post-content blockquote {
+width: 100%;
+overflow: hidden;
+}
+
+.punbb .post-content .scrollbox {
+width: 100%;
+overflow: auto;
+}
+
+.punbb pre {
+font: 1.1em/140% monaco, "bitstream vera sans mono", "courier new", courier, monospace;
+}
+
+.punbb .quote-box a, .punbb .code-box a {
+color: var(--main-span-bg);
+}
+
+.punbb .quote-box a:hover, .punbb .code-box a:hover {
+color: var(--main-blue);
+}
+
+/* Таблица в посте */
+
+.post-content tr {
+vertical-align: top;
+}
+
+/* Сокрытие границ таблиц */
+
+.post-content td {
+border: none transparent !important;
+}
+
+/* Скрыть отредактировано */
+
+.lastedit {display: none;}
+
+/* Рейтинг поста */
+
+.post-rating {
+position: relative;
+bottom: 0;
+right: 7px;
+}
+
+/* Блок ссылок "редактировать, цитировать и т.п. */
+
+.punbb .post-links ul {
+background: transparent;
+text-align: right;
+padding-right: 10px;
+line-height: 2;
+}
+
+.punbb .post-links li {
+display: inline;
+padding-left: 10px;
+}
+
+.punbb .post-links li a {
+font-size: 12px;
+}
+
+.pl-email, .pl-website {
+float: left;
+}
+
+/* Окна жалобы, репутации, переноса
+--------------------------------------------------*/
+
+.punbb #pun-report .bg, .punbb #pun-reputation .bg, .punbb #pun-admin-award-form .bg {z-index: 101;}
+.punbb #pun-report .inner, .punbb #pun-reputation .inner, .punbb #pun-admin-award-form .inner {z-index: 102;}
+
+.inner.post_report h1, .inner.post_reputation h1 {
+padding: 0;
+}
+
+.inner.post_report span, .inner.post_reputation span {
+box-shadow: none;
+}
+
+.inner.post_report, .inner.post_reputation {
+background: var(--main-light-bg);
+}
+
+.pun-modal .modal-inner {
+    width: 80%;
+    background: var(--main-light-bg);
+    padding: 10px 15px;
+}
+
+#PMove_2 .Select_Topics table.container {
+border: 1px solid #375d7f;
+}
+
+#PMove_2 .Select_Topics table.container thead tr th {
+padding: 0;
+background: #375d7f;
+color: #fcdf87;
+font-size: 14px;
+line-height: 150%;
+font-weight: normal;
+text-shadow: 1px 1px #000;
+text-transform: uppercase;
+}
+
+#PMove_2 .Select_Topics .container .tc2 {
+text-align: center;
+width: 20%;
+}
+
+#PMove_2 .Select_Topics table.container tbody {
+scrollbar-width: thin;
+scrollbar-color: #375d7f transparent;
+}
+
+#PMove_2 .Select_Topics table.container tbody tr {
+border-bottom: 1px solid rgba(76, 115, 152,.5);
+}
+
+/* Перенос тем из списка тем */
+
+#pun-modviewforum .forum .container {
+width: 100%;
+box-sizing: border-box;
+}
+
+#pun-modviewforum .forum .container th, #pun-modviewforum .forum .container td {box-sizing: border-box;}
+
+#pun-modviewforum .forum .container th {
+line-height: 1;
+text-align: left;
+}
+
+#pun-modviewforum .forum .container tr .tcl {width: 50%;}
+#pun-modviewforum .forum .container tr .tc2, #pun-modviewforum .forum .container tr .tc3 {width: 8%;}
+#pun-modviewforum .forum .container tr .tcr {width: 25%;}
+#pun-modviewforum .forum .container tr .tcmod {width: 9%;}
+
+/* Форма ответа
+--------------------------------------------------*/
+
+#pun-viewtopic #post.container .fs-box.hashelp {
+position: relative;
+}
+
+.punbb .formal fieldset {
+padding: 10px 5px;
+}
+
+#tags {
+position: relative;
+}
+
+#tags div.container{
+top: 0;
+}
+
+#tags .container{
+display: block;
+background: #cbd7e1;
+color: var(--sec-dark-bg);
+padding: 10px 10px 5px;
+box-shadow: 0 0 5px var(--sec-dark-bg);
+}
+
+#tags  #keyboard-span input {
+background: var(--main-dark-bg);
+background: -moz-linear-gradient(top, var(--main-dark-bg) 0%, #375d7f 100%);
+background: -webkit-linear-gradient(top, var(--main-dark-bg) 0%,#375d7f 100%);
+background: linear-gradient(to bottom, var(--main-dark-bg) 0%,#375d7f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#091b38', endColorstr='#375d7f',GradientType=0 );
+box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .6), inset 0 0 2px rgba(0, 0, 0, .8), 0px 2px 2px var(--sec-border);
+border: 1px solid var(--main-blue)!important;
+font-family: open sans, verdana, arial, sans-serif !important;
+font-size: 14px!important;
+margin: 1px auto;
+cursor: pointer;
+width: auto;
+line-height: 1.2;
+padding: 0 10px;
+
+}
+
+#form-buttons table {
+margin: 0 auto;
+}
+
+.punbb #form-buttons tr {
+display: flex;
+display: -webkit-flex;
+flex-wrap: wrap;
+-webkit-flex-wrap: wrap;
+justify-content: space-between;
+padding: 0 0 5px;
+}
+
+.punbb #form-buttons td, #form-buttons td#button-files_rusff, #form-buttons td#button-graffiti_rusff {
+position: relative;
+display: block;
+justify-content: center;
+align-items: center;
+width: 30px;
+height: 30px;
+box-sizing: border-box;
+background: none;
+cursor: pointer !important;
+background: none !important;
+justify-items: center;
+}
+
+.punbb #form-buttons td img {
+background: transparent;
+position: relative;
+width: 30px;
+height: 30px;
+}
+
+td#button-graffiti_rusff, td#button-graffiti_rusff:before, td#button-files_rusff, td#button-files_rusff:before {
+display: none !important;
+width: 0;
+}
+
+
+#form-buttons td:before {
+content: " ";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+font-size: 20px;
+color: #375d7f;
+position: absolute;
+transition: all .5s linear 0s;
+width: 30px;
+height: 30px;
+display: flex;
+display: -webkit-flex;
+align-items: center;
+justify-content: center;
+z-index: 100;
+pointer-events: none;
+}
+
+#form-buttons td:hover:before {color: var(--main-dark-bg);}
+
+td#button-font:before {
+content: "\f031";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-size:before {
+content: "\f894";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-bold:before {
+content: "\f032";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-italic:before {
+content: "\f033";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-underline:before {
+content: "\f0cd";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-strike:before {
+content: "\f0cc";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-indent:before {
+content: "\f03c";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-left:before {
+content: "\f036";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-center:before {
+content: "\f037";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-right:before {
+content: "\f038";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-link:before {
+content: "\f0c1";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-spoiler:before {
+content: "\f02d";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-spoiler:hover:before {
+content: "\f518";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-image:before {
+content: "\f1c5";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-video:before {
+content: "\f144";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-hide:before {
+content: "\f070";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-hide:hover:before {
+content: "\f06e";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-quote:before {
+content: "\f27a";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-code:before {
+content: "\f1c9";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-color:before {
+content: "\f53f";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-table:before {
+content: "\f0ce";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-smile:before {
+content: "\f59a";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-keyboard:before {
+content: "\f11c";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-styles:before {
+content: "\f1de";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-addition:before {
+content: "\f0fe";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-files_rusff:before {
+content: "\f07b";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-files_rusff:hover:before {
+content: "\f07c";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-graffiti_rusff:before {
+content: "\f5bd";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-mask:before {
+content: "\f630";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+td#button-sticker:before {
+content: "\f1b0";
+font-family: 'Font Awesome 5 Pro', 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+font-weight: 400;
+}
+
+/* стрелки вверх-вниз
+-------------------------------------------------------------*/
+
+.go-up,.go-down {
+display: none;
+position: fixed; /*позиционируем*/
+right: 10px; /*указываем положение, если слева - left*/
+z-index: 9999; /*показываем поверх все элементов на странице*/
+cursor: pointer;
+opacity: .7; /*прозрачность*/
+margin-bottom: 5px; /*отступ снизу (можно не указывать)*/
+width: 60px; /*ширина кнопки*/
+height: 30px; /*высота кнопки*/
+}
+.go-up {
+bottom: 350px; /*положение от низа окна браузера верхняя кнопка*/
+}
+.go-down {
+bottom: 300px; /*положение от низа окна браузера нижняя кнопка кнопка*/
+}
+.go-down:hover,.go-up:hover {
+opacity: 1;
+}
+
+/* бегунок регулировки шрифта
+-------------------------------------------------------------*/
+
+.FNTslider {
+  border-radius: 4px;
+  -webkit-border-radius: 4px!important;
+  position:relative;
+  background: var(--main-light-bg);
+  width: 110px;
+  height: 5px;
+  margin: 3px 7% 5px 3px;
+  border: 1px solid var(--sec-border);
+  float: right;
+  z-index: 10;
+  top: 7px;
+}
+.FNTslider .before {
+  height: 5px;
+  border: solid 1px transparent;
+  border-right: none 0;
+  border-radius: 4px 0 0 4px;
+  position: absolute;
+  background: var(--main-blue);
+  margin: -1px 0 0 -1px;
+}
+.FNTslider .thumb {
+  width: 8px;
+  height: 13px;
+  border-radius: 3px;
+  position: relative;
+  top: -4px;
+  background: var(--sec-border);
+  cursor: pointer;
+}
+
+/* Счётчик символов
+-------------------------------------------------------------*/
+
+#plng {
+box-shadow: 0 0 0 1px #848c92 inset, 0 -6px 0 -5px #848c92, 0 6px 0 -5px #848c92;
+padding: 2px 10px;
+margin-right: 10px;
+}
+
+/* админка
+-------------------------------------------------------------*/
+
+.adformal h2, #pun-adnav h2 {
+background: var(--main-dark-bg) !important;
+color: var(--hover-link)!important;
+border-top: 1px solid var(--main-light-bg)!important;
+border-bottom: 1px solid var(--main-light-bg)!important;
+box-shadow: 0 0 0 1px var(--main-dark-bg), 0 1px 2px #000;
+box-sizing: border-box;
+font-variant: small-caps;
+letter-spacing: 1px;
+}
+
+#pun-admain .adcontainer td {
+border: none !important;
+}
+
+#pun-admain textarea {
+width: 100% !important;
+}
+
+/* Профилактика
+----------------------------------------------------*/
+
+#resplash {
+display: none;
+}
+
+.profilactica {
+height: auto;
+width: 250px;
+margin: 100px auto;
+font-family: open sans, sans-serif;
+font-size: 12px;
+background: var(--main-light-bg);
+box-shadow: 0 0 0 1px var(--main-border), inset 0 0 0 2px var(--sec-border), inset 0 0 5px var(--main-dark-bg);
+border: 5px solid var(--main-dark-bg);
+display: flex;
+display: -webkit-flex;
+align-content: center;
+justify-content: center;
+}
+
+.profilactica .container {
+padding: 10px 10px 15px;
+}
+
+.profilactica input#fld1, .profilactica input#fld2 {
+background: #fff4e5;
+box-shadow: inset 1px 1px 1px rgba(0,0,0,.3);
+border-width: 1px;
+border-style: solid;
+border-color: var(--inset-border);
+}
+
+.profilactica #login.container fieldset span {
+text-align: justify;
+display: block;
+padding: 0 0 10px;
+}
+
+.profilactica #login.container fieldset p label, .profilactica #login.container fieldset span.input {
+text-align: center;
+}
+
+.profilactica #login.container fieldset p label {
+width: 100%;
+display: block;
+}
+
+/* Аватар по умолчанию
+----------------------------------------------------*/
+
+/* В списках (последнее сообщение и т.п.) */
+.punbb .user-avatar.no-avatar .avatar-image[style*="default_avatar.jpg"] {
+background-image: url(//forumstatic.ru/files/001a/e1/7e/95958.gif)!important;
+}
+
+/* Смайлы под формой ответа
+----------------------------------------------------*/
+
+#stikery {
+text-align: left;
+}
+
+input#name1 {
+margin: 0;
+}
+
+#stikery table {
+    padding: 0;
+    text-align: left;
+    margin: 0!important;
+    width: 100%;
+}
+
+#stikery table td {
+padding: 10px 0;
+display: flex;
+display: -webkit-flex;
+flex-wrap: nowrap;
+align-items: flex-start;
+}
+
+#stikery img {cursor: pointer;}
+
+#list-name1, #all-gifs {display: none;}
+
+#gifs-nav {
+padding: 0;
+width: 300px;
+display: flex;
+display: -webkit-flex;
+flex-wrap: wrap;
+box-sizing: border-box;
+flex-direction: row;
+}
+
+#gifs-nav a {
+cursor: pointer;
+text-decoration: none;
+line-height: 150%;
+color: #375d7f;
+transition: all 0.3s linear 0s;
+padding: 1px 5px;
+font-family: open sans;
+font-size: 13px;
+width: 145px;
+box-sizing: border-box;
+}
+
+#gifs-nav a:hover, #gifs-nav a.current {
+background-color: rgba(117, 157, 187, .5);
+color: var(--main-dark-bg);
+box-shadow: 0 0 0 1px var(--main-blue) inset, 0 -6px 0 -5px var(--main-blue), 0 6px 0 -5px var(--main-blue);
+}
+
+#gifs-nav button.hide {
+color: maroon;
+font-weight: bold;
+}
+
+#gifs-nav a.show {
+font-weight: bold;
+}
+
+#all-gifs {
+position: relative;
+top: 0;
+left: 0;
+max-height: 500px;
+overflow: auto;
+scrollbar-width: thin;
+scrollbar-color: var(--main-blue) transparent; /* 1 - бегунок, 2 - полоса */
+float: right;
+width: calc(1050px - 300px);
+}
+
+#pun-messages #stikery {
+padding: 0 5px 10px;
+}
+
+#pun-messages #all-gifs {
+width: 390px;
+}
+
+/* Стикеры над формой ответа
+----------------------------------------------------*/
+
+.hvStickerPackModalContainer .hvStickerPackModal {
+background: #cbd7e1;
+padding: 10px 10px 5px;
+}
+
+.hvStickerPackModal .hvStickerPackModalContent {
+border: 1px solid var(--main-light-bg);
+display: flex;
+display: -webkit-flex;
+flex-wrap: wrap;
+align-items: baseline;
+padding: 5px;
+}
+
+.hvStickerPackModalContent .hvStickerPackItem {
+padding: 3px 5px;
+}
+
+.hvStickerPackModal .hvStickerPackModalContent img {
+max-height: 60px;
+}
+
+.hvStickerPackModal .hvStickerPackModalTab {
+border: 1px solid var(--main-dark-bg);
+display: inline-block;
+margin: 5px 5px 2px 0;
+padding: 0 12px;
+text-transform: uppercase;
+font-size: 10px;
+border-radius: 0;
+line-height: 20px;
+height: 20px;
+background: var(--main-blue);
+color: var(--hover-link);
+font-weight: bold;
+letter-spacing: 1px;
+}
+
+.hvStickerPackModal .hvStickerPackModalTab.active {
+border: 1px solid var(--main-blue);
+background: var(--main-dark-bg);
+color: #fcdf87;
+}
+
+.hvStickerPackModalAdd .hvStickerPackModalAddButton:hover {
+background: #375d7f;
+background: -moz-linear-gradient(bottom, var(--main-dark-bg) 0%, #375d7f 100%);
+background: -webkit-linear-gradient(bottom, var(--main-dark-bg) 0%,#375d7f 100%);
+background: linear-gradient(to top, var(--main-dark-bg) 0%,#375d7f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#375d7f', endColorstr='#091b38',GradientType=0 );
+box-shadow: none;
+}
+
+/* Маска профиля
+----------------------------------------------------*/
+
+.punbb #mask_dialog .inner {
+background: var(--main-light-bg);
+}
+
+/* всплывающая подсказка при наведении 
+-------------------------------------------------------------*/
+
+#tooltip {
+  position: absolute;
+  background: rgba(34, 57, 81, .9);
+  z-index: 999;
+  display: none;
+  padding: 5px 10px;
+  max-width: 210px;
+  border: 1px solid var(--main-blue);
+  border-radius: 2px;
+  font-weight: bold;
+  font-family: open sans; /* шрифт */
+  font-size: 11px; /* размер текста */
+  font-variant: small-caps;
+  color: var(--hover-link); /* цвет текста */
+  text-shadow: 1px 1px 0 #000;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 140%;
+  box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+}
+
+#navextra1:hover #tooltip {
+display: none;
+}
+
+div.tipsy {
+  z-index: 999;
+  display: none;
+  padding: 4px 10px 5px;
+  border: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-family: open sans;
+  font-size: 10px;
+  color: #b59457;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+div.tipsy-inner {
+  background: rgba(46, 41, 30, .8);
+  box-shadow: 0 2px 3px rgba(0,0,0,.2)
+}
+
+.tipsy-arrow {
+border-top-color: rgba(46, 41, 30, .8) !important;
+}
+
+
+/* уведомления
+----------------------------------------------------------------------*/
+
+.punbb .bubble, .punbb .notify-bubble {
+background: var(--hover-link)!important;
+border-radius: 2px;
+color: #000;
+text-shadow: none;
+font: bold 10px/1.5 open sans;
+min-width: 16px;
+right: -10px;
+top: -12px;
+}
+
+.punbb .bubble:after, .punbb .notify-bubble:after {
+content: "";
+border-color: var(--hover-link) transparent;
+left: 6px;
+}
+
+
+.punbb .p-mention {
+background: var(--main-blue)!important;
+}
+
+.punbb .p-reputation {
+background: var(--main-h2)!important;
+}
+
+/* кнопки над текстовым полем в скрипте анкет
+----------------------------------------------------------------------*/
+
+.questionary-post .post-content #form-buttons tr {
+justify-content: left;
+}
+
+/* Пользовательские теги
+----------------------------------------------------------------------*/
+
+/* Левое обтекание */
+
+.punbb .leftfloat {
+float: left;
+padding-right: 10px;
+}
+
+/* Правое обтекание */
+
+.punbb .rightfloat {
+float: right;
+padding-left: 10px;
+}
+
+/* Заголовки (общее) */
+
+.punbb .s_heading p, .punbb .xl_heading p {
+text-align: center;
+font-weight: normal;
+text-shadow: 1px 1px #000;
+}
+
+/* Основной заголовок */
+
+.punbb .xl_heading {
+background-color: var(--main-span-bg);
+margin: 0 0 7px;
+}
+
+.punbb .xl_heading p {
+color: var(--main-h2);
+font-family: Jura;
+font-size: 20px;
+line-height: 120%;
+padding: 2px 10px 4px !important;
+}
+
+/* Стандартный заголовок */
+
+.punbb .s_heading {
+background-color: var(--title-bg);
+margin: 0 0 5px;
+}
+
+.punbb .s_heading p {
+text-transform: uppercase;
+padding: 2px 10px !important;
+line-height: 175%;
+color: var(--hover-link);
+}
+
+/* Мини-заголовок */
+
+.punbb .xs_heading p {
+margin: 0 0 5px;
+text-align: center;
+color: var(--title-bg);
+font-family: open sans;
+font-weight: normal;
+font-size: 14px;
+padding: 0;
+}
+
+/* Приветствие */
+
+.punbb .welcome .xl_heading p {
+text-transform: unset;
+text-align: center;
+}
+
+.punbb .welcome .xl_heading p span {
+font-size: unset;
+}
+
+.punbb .welcome {
+background: var(--main-dark-bg);
+color: var(--main-light-bg);
+text-shadow: 1px 1px #000;
+padding: 0;
+margin: 0 auto;
+display: flex;
+display: -webkit-flex;
+flex-direction: column;
+max-width: 640px;
+}
+
+.punbb .welcome .inner {
+padding: 10px 40px;
+}
+
+.punbb .welcome p {
+text-align: justify;
+}
+
+.punbb .welcome .span {
+padding: 0;
+margin: 0 auto;
+}
+
+.punbb .welcome .span p {
+font-size: 14px;
+text-align: center;
+}
+
+.punbb .welcome ul {
+padding: 0 0 10px 20px;
+}
+
+.punbb .welcome li p {
+padding: 0;
+}
+
+.punbb .welcome a {
+color: #f0d1a2;
+font-weight: normal;
+border: none;
+text-decoration: none !important;
+}
+
+.punbb .welcome a:hover {
+color: var(--hover-link);
+font-weight: normal;
+}
+
+.punbb .welcome li abbr {
+text-decoration: none !important;
+}
+
+/* Шаблон анкеты */
+
+.punbb .quenta {
+background-color: rgba(117, 157, 187,.5);
+box-shadow: 0 0 0 1px var(--main-blue) inset, 0 -6px 0 -5px var(--main-blue), 0 6px 0 -5px var(--main-blue);
+margin: 5px 5px 10px;
+padding: 10px 15px;
+}
+
+.punbb .quenta .appearance, .punbb .quenta .maininfo {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: space-around;
+justify-content: space-around;
+text-align: center;
+}
+
+.hair, .eyes, .height, .quenta .species, .age, .identity {
+display: block;
+width: calc(100% / 3);
+}
+
+.punbb .quenta .marks, .punbb .quenta .occupation, .punbb .quenta .powers, .punbb .quenta .gamepost {
+display: block;
+width: 100%;
+text-align: justify;
+}
+
+.punbb .quenta .powers_and_abilities, .punbb .quenta .player {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: space-around;
+justify-content: space-around;
+}
+
+.punbb .quenta .abilities, .punbb .quenta .weaknesses, .punbb .quenta .favs, .punbb .quenta .contacts {
+display: block;
+width: 50%;
+box-sizing: border-box;
+}
+
+/***********************************
+*************HTML-ТЕМЫ*************
+***********************************/
+
+/* Новости
+-----------------------------------------------*/
+
+.punbb #totals {
+position: relative;
+width: 100%;
+margin: 5px auto;
+padding: 5px 50px 20px;
+box-sizing: border-box;
+background-color: var(--sec-dark-bg);
+background-image: url(//forumstatic.ru/files/0018/1e/e2/57902.jpg);
+/*background-position: top center;
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: cover;*/
+border: 1px solid var(--main-light-bg);
+box-shadow: 0 0 0 1px var(--main-dark-bg), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+color: var(--main-light-bg);
+text-shadow: 1px 1px #000;
+}
+
+.punbb .totals_date {
+text-align: center;
+padding: 5px 10px 10px;
+font-size: 24px;
+line-height: 120%;
+font-family: jura;
+font-weight: bold;
+background: #f0d1a2;
+background: -moz-linear-gradient(top, #9c7435 30%, #f0d1a2 50%, #9c7435 70%);
+background: -webkit-linear-gradient(top, #9c7435 30%,#f0d1a2 50%,#9c7435 70%);
+background: linear-gradient(to bottom, #9c7435 30%,#f0d1a2 50%,#9c7435 70%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c7435', endColorstr='#9c7435',GradientType=0 );
+color: transparent;
+background-clip: text;
+-webkit-background-clip: text;
+text-shadow: none;
+}
+
+.punbb #totals .brief {
+padding: 10px 15px;
+background: var(--sec-dark-bg);
+border: 1px solid var(--main-blue);
+margin-bottom: 10px;
+box-shadow: 0 0 3px 0 rgba(0,0,0,.5);
+}
+
+.punbb #totals a {color: var(--blue-text);}
+.punbb #totals a:hover {color: var(--hover-link);}
+
+.punbb #totals .brief img:not(.smile) {
+border: 1px solid var(--main-blue);
+box-sizing: border-box;
+max-width: 100%;
+margin: 5px auto;
+display: block;
+}
+
+.punbb #totals .t_active span {
+display: block;
+background: var(--title-bg);
+color: var(--main-light-bg);
+line-height: 175%;
+text-align: center;
+text-transform: uppercase;
+font-size: 14px;
+margin: 10px auto 0;
+}
+
+.punbb #totals .t_active .inner {
+display: flex;
+display: -webkit-flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+max-width: 500px;
+margin: 10px auto 0;
+}
+
+/* Гостевая книга
+-----------------------------------------------*/
+
+#guestbook {
+position: relative;
+width: 950px;
+height: auto;
+margin: 5px auto;
+padding: 5px 20px 20px;
+box-sizing: border-box;
+background: url(//forumstatic.ru/files/0018/1e/e2/88629.jpg) no-repeat top center var(--sec-dark-bg);
+background-size: cover;
+border: 1px solid var(--main-light-bg);
+box-shadow: 0 0 0 1px var(--main-dark-bg), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+color: var(--main-light-bg);
+text-shadow: 1px 1px #000;
+font-size: 12px;
+}
+
+#guestbook p, #guestbook .faq li {
+	line-height: 150%;
+	font-size: 12px;
+	text-align: justify;
+	padding: 0;
+}
+
+#guestbook a {
+	color: var(--blue-text);;
+	text-decoration: none;
+	transition: all .5s linear 0s;
+}
+
+#guestbook a:hover {
+	color: var(--hover-link);
+}
+
+#guestbook .epig {
+margin: 0 auto;
+position: relative;
+display: flex;
+display: -webkit-flex;
+width: 100%;
+justify-content: space-between;	
+align-items: baseline;
+}
+
+#guestbook .logo {
+line-height: 150%;
+display: block;
+font-size: 20px;
+font-family: jura;
+font-weight: 600;
+background: #9c7435;
+background: -moz-linear-gradient(top, #9c7435 0%, #f0d1a2 50%, #9c7435 100%);
+background: -webkit-linear-gradient(top, #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+background: linear-gradient(to bottom, #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c7435', endColorstr='#9c7435',GradientType=0 );
+color: transparent;
+background-clip: text;
+-webkit-background-clip: text;
+text-shadow: none;
+}
+
+#guestbook .about {
+color: var(--blue-text);
+line-height: 150%;
+font-size: 12px;
+display: block;
+}
+
+#guestbook .inner {
+position: relative;
+box-sizing: border-box;
+margin: 0 auto;
+width: 100%;
+height: calc(100% - 28px);
+display: flex;
+display: -webkit-flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+#guestbook .faq {
+display: block;
+position: relative;
+top: 0;
+left: 0;
+width: 350px;
+border: 1px solid #375d7f;
+box-sizing: border-box;
+background: rgba(16, 31, 50,.8);
+box-shadow: 0 0 3px 0 rgba(0,0,0,.5);
+}
+
+#guestbook .faqtitle {
+background: var(--title-bg);
+line-height: 160%;
+text-transform: uppercase;
+display: block;
+width: 100%;
+text-align: center;
+color: #fcdf87;
+font-size: 14px;
+font-weight: normal;
+}
+
+#guestbook .faqblock {
+margin: 5px 0;
+padding: 0 5px;
+overflow: auto;
+scrollbar-width: thin;
+scrollbar-color: #375d7f transparent;
+height: 460px;
+}
+
+#guestbook .question {
+display: inline;
+cursor: pointer;
+}
+
+#guestbook details {
+border-bottom: 1px solid var(--title-bg);
+}
+
+#guestbook details:last-of-type {
+border-bottom: none;
+}
+
+#guestbook details summary .question, #guestbook details[open] summary .question {
+transition: all .5s linear 0s;
+}
+
+#guestbook details summary .question:hover, #guestbook details[open] summary .question,
+#guestbook details[open] summary::marker, #guestbook details[open] summary::-webkit-details-marker {
+color: var(--blue-text);
+}
+
+#guestbook details[open] summary .question {
+font-weight: bold;
+}
+
+#guestbook details[open] summary .question:hover {
+color: var(--main-light-bg);
+}
+
+#guestbook details p, #guestbook details li {
+padding: 0 0 5px;
+}
+
+#guestbook summary {
+padding: 2px 0;
+}
+
+#guestbook .rightside {
+position: relative;
+display: flex;
+display: -webkit-flex;
+width: calc(100% - 350px);
+right: 0;
+top: 0;
+box-sizing: border-box;
+padding-left: 15px;
+flex-direction: column;
+align-content: center;
+align-items: center;
+justify-content: space-between;
+}
+
+#guestbook .hello, #guestbook .forpr {
+position: relative;
+display: block;
+width: 100%;
+box-sizing: border-box;
+border: 1px solid #375d7f;
+padding: 10px 15px;
+line-height: 150%;
+margin-bottom: 10px;
+background: rgba(16, 31, 50,.8);
+box-shadow: 0 0 3px 0 rgba(0,0,0,.5);
+}
+
+#guestbook .ams span {
+display: block;
+width: 100%;
+text-align: center;
+line-height: 200%;
+font-variant: small-caps;
+margin-bottom: 10px;
+color: var(--blue-text);
+font-size: 11px;
+}
+
+#guestbook .amsblock {
+position: relative;
+display: flex;
+display: -webkit-flex;
+width: 260px;
+justify-content: space-between;
+margin-bottom: 15px;
+}
+
+#guestbook .ams .admin {
+display: inline-flex;
+width: 70px;
+height: 50px;
+clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0% 80%);
+background: #9c7435;
+background: -moz-linear-gradient(top,  #9c7435 0%, #f0d1a2 50%, #9c7435 100%);
+background: -webkit-linear-gradient(top,  #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+background: linear-gradient(to bottom,  #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c7435', endColorstr='#9c7435',GradientType=0 );
+box-shadow: inset 1px 1px 1px rgba(240, 209, 162, .8), inset -1px -1px 1px rgba(27, 22, 15,.7);
+}
+
+#guestbook .ams .admin a {
+display: block;
+width: 66px;
+height: 46px;
+margin: 2px;
+clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0% 80%);
+background: var(--main-blue);
+}
+
+#guestbook .ams a img {
+display: block;
+clip-path: polygon(0 0, 80% 0%, 100% 20%, 100% 100%, 20% 100%, 0% 80%);
+width: 100%;
+height: 100%;
+margin: 0 auto;
+object-fit: cover;
+object-position: top center;
+border: 1px solid var(--sec-border);
+box-sizing: border-box;
+opacity: .9;
+mix-blend-mode: hard-light;
+filter: grayscale(100%) contrast(120%);
+-webkit-filter: grayscale(100%) contrast(120%);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+}
+
+#guestbook .ams .inactive a img {
+filter: grayscale(100%) contrast(100%) brightness(50%) blur(2px);
+}
+
+#guestbook .ams a img:hover {
+filter: none;
+-webkit-filter: none;
+box-shadow: none;
+mix-blend-mode: normal;
+opacity: 1;
+}
+
+.tooltip .duty {
+z-index: 100;
+opacity: 0;
+display: block;
+visibility: hidden;
+position: absolute;
+height: auto;
+width: 220px;
+box-sizing: border-box;
+border: 1px solid #9c7435;
+background: var(--main-dark-bg);
+box-shadow: 2px 2px 5px #000;
+text-shadow: 1px 1px #000;
+color: var(--main-light-bg);
+text-align: justify;
+line-height: 120%;
+font-family: open sans, sans-serif;
+font-size: 12px;
+padding: 5px 10px 0;
+margin-left: -76px;
+-webkit-transform: scale(0);
+transform: scale(0);
+transform-origin: top center;
+transition: all .7s ease-in-out 0s;
+}
+
+.tooltip:hover .duty {
+opacity: 1;
+visibility: visible;
+-webkit-transform: scale(1);
+transform: scale(1);
+}
+
+#guestbook .ams .duty span {
+font-size: 14px;
+line-height: 150%;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+.tooltip .duty ul {
+padding: 0 0 10px 15px;
+text-align: left;
+}
+
+.tooltip .duty ul li {
+list-style: square outside;
+}
+
+.reserve {
+	display: flex;
+        display: -webkit-flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: space-between;
+	font-family: open sans, sans-serif;
+	font-size: 12px;
+}
+
+.reserve b {
+	color: #f0d1a2;
+}
+
+#guestbook .reserve hr {
+	border-top: 1px solid var(--title-bg);
+	box-shadow: none;
+	margin: 5px 0;
+}
+
+.chars, .faces {
+	display: block;
+	position: relative;
+	width: calc(50% - 5px);
+	height: 150px;
+	border: 1px solid #375d7f;
+	box-sizing: border-box;
+	line-height: 150%;
+	background: rgba(16, 31, 50,.8);
+	box-shadow: 0 0 3px 0 rgba(0,0,0,.5);
+}
+
+.punbb .reserve span {
+	position: relative;
+	text-align: center;
+	display: block;
+	background: var(--title-bg);
+	color: var(--main-light-bg);
+	line-height: 20px;
+	text-transform: uppercase;
+}
+
+.charsblock, .facesblock {
+	height: 130px;
+	box-sizing: border-box;
+	padding: 5px 15px;
+	overflow: auto;
+	scrollbar-width: thin;
+}
+
+/* Занятые внешности
+-----------------------------------------------*/
+
+#faces {
+	position: relative;
+	background: url(//forumstatic.ru/files/0018/1e/e2/92610.jpg) no-repeat top center var(--sec-dark-bg);
+	background-size: cover;
+	border: 1px solid var(--main-light-bg);
+	box-shadow: 0 0 0 1px var(--main-dark-bg), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+	width: 640px;
+	height: auto;
+	margin: 5px auto;
+	display: flex;
+        display: -webkit-flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	box-sizing: border-box;
+	padding: 7px 20px 20px;
+	color: var(--main-light-bg);
+	font-size: 12px;
+	text-shadow: 1px 1px #000;
+}
+
+#faces .facetitle {
+width: 100%;
+text-align: center;
+box-sizing: border-box;
+padding: 0 0 5px;
+font-size: 20px;
+line-height: 120%;
+font-family: jura;
+font-weight: 600;
+color: #f0d1a2;
+}
+
+#faces a {
+	color: var(--blue-text);
+	text-decoration: none;
+	transition: all .5s linear 0s;
+}
+
+#faces a:hover {
+	color: var(--hover-link);
+}
+
+#faces .addface {
+	position: relative;
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #375d7f;
+	padding: 10px 15px;
+	line-height: 150%;
+	text-align: justify;
+	font-size: 11px;
+	margin-bottom: 10px;
+	background: rgba(16, 31, 50,.8);
+	box-shadow: 0 0 3px 0 rgba(0,0,0,.5);
+}
+
+#faces .addface p {
+	line-height: 150%;
+	font-size: 12px;
+	text-align: justify;
+	padding: 0;
+}
+
+#faces .reserve > div {
+	display: block;
+	position: relative;
+	width: calc(50% - 5px);
+	border: 1px solid #375d7f;
+	box-sizing: border-box;
+	line-height: 150%;
+	background: rgba(16, 31, 50,.8);
+	box-shadow: 0 0 3px 0 rgba(0,0,0,.5);
+}
+
+#faces .reserve > div > div {
+	box-sizing: border-box;
+	padding: 5px 15px;
+	overflow: auto;
+	scrollbar-width: thin;
+}
+
+
+/* Список персонажей
+-----------------------------------------------*/
+
+#activity {
+position: relative;
+display: flex;
+display: -webkit-flex;
+flex-direction: column;
+width: calc(100% - 10px);
+max-width: 900px;
+height: auto;
+margin: 5px auto;
+padding: 5px 20px 20px;
+box-sizing: border-box;
+background-color: var(--sec-dark-bg);
+background-image: url(//forumstatic.ru/files/0018/1e/e2/23729.jpg);
+background-position: top center;
+background-repeat: no-repeat;
+background-size: cover;
+border: 1px solid #aab7c3;
+border: 1px solid var(--main-light-bg);
+box-shadow: 0 0 0 1px #091b38, inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+box-shadow: 0 0 0 1px var(--main-dark-bg), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+color: var(--main-light-bg);
+text-shadow: 1px 1px #000;
+}
+
+#activity .actitle {
+width: 100%;
+text-align: center;
+box-sizing: border-box;
+padding: 0 0 5px;
+font-size: 20px;
+line-height: 120%;
+font-family: jura;
+font-weight: 600;
+color: #f0d1a2;
+}
+
+#activity .inner {
+	padding: 0;
+	font-size: 12px;
+	line-height: 150%;
+	display: flex;
+        display: -webkit-flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#activity p {padding: 0;}
+
+#activity .chars-nav, #activity ul {
+	box-sizing: border-box;
+	padding: 10px 15px;
+	background: rgba(16, 31, 50,.8);
+	border: 1px solid var(--main-blue);
+	box-shadow: 0 0 3px 0 rgba(0,0,0,.5);
+	display: flex;
+        display: -webkit-flex;
+	flex-direction: column;
+	height: 400px;
+	overflow: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--main-blue) transparent;
+}
+
+#activity .chars-nav {width: 250px;}
+
+#activity .chars-nav a {
+	font-weight: normal;
+	color: var(--main-light-bg);
+	cursor: pointer;
+	transition: all .5s linear 0s;
+}
+
+#activity .chars-nav a:hover, #activity .chars-nav a.current {
+	font-weight: bold;
+}
+
+#activity span {
+	position: relative;
+	text-align: center;
+	display: block;
+	background: var(--title-bg);
+	color: var(--main-light-bg);
+	line-height: 200%;
+	text-transform: uppercase;
+}
+
+#activity .chars-nav span {margin: -10px -15px 5px;}
+
+#activity .orgdescr {
+	box-sizing: border-box;
+	padding: 10px 15px;
+	font-family: open sans;
+	line-height: 140%;
+}
+
+#activity .all-chars {
+	width: calc(100% - 260px);
+	list-style: none;
+	align-items: center;
+        text-align: center;
+}
+
+#activity .all-chars a {
+	color: var(--blue-text);
+	text-decoration: none;
+	font-weight: bold;
+	transition: all .5s linear 0s;
+}
+
+#activity .all-chars a:hover {color: var(--hover-link);}
+
+#activity .org {
+	display: none;
+	text-align: justify;
+	margin: -10px -15px 0;
+	width: calc(100% + 30px);
+}
+
+#activity .act, #activity .none {display: none;}
+
+#activity .none {margin-bottom: 10px;}
+
+
+/************************************
+                    Мини-профиль
+************************************/
+
+.reveal-modal-bg { 
+	position: fixed; 
+	height: 100%;
+	width: 100%;
+	background: #000;
+	background: rgba(0,0,0,.8);
+	z-index: 100;
+	display: none;
+	top: 0;
+	left: 0; 
+	}
+.reveal-modal {
+	visibility: hidden;
+	top: -300px;
+	left: 50%;
+        transform: translate(-50%, 0);
+	position: absolute;
+	z-index: 101;
+	}
+
+.reveal-modal.small     { width: 200px; margin-left: -140px;}
+.reveal-modal.medium     { width: 400px; margin-left: -240px;}
+.reveal-modal.large     { width: 600px; margin-left: -340px;}
+.reveal-modal.xlarge     {margin: 0;}
+	
+.reveal-modal .close-reveal-modal {
+	font-size: 22px;
+	line-height: 50%;
+	position: absolute;
+	top: 4px;
+	right: 6px;
+	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+	font-weight: bold;
+	cursor: pointer;
+        text-decoration: none;
+}
+
+.modal_wrap {outline: 20px solid rgba(16, 31, 50,.3);}
+
+#character, #pun-pages .character {
+display: block;
+width: 700px;
+height: 650px;
+padding: 20px !important;
+box-sizing: border-box;
+background-image: url(//forumstatic.ru/files/0018/1e/e2/41019.jpg);
+background-position: top center;
+background-repeat: no-repeat;
+background-size: cover;
+border: 1px solid #aab7c3;
+border: 1px solid var(--main-light-bg);
+box-shadow: 0 0 0 1px #091b38, inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+box-shadow: 0 0 0 1px var(--main-dark-bg), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+font-family: 'open sans', sans-serif;
+font-weight: normal;
+font-size: 14px;
+color: var(--main-light-bg);
+text-shadow: 1px 1px #000;
+}
+
+#pun-pages .character {
+margin: 5px auto;
+}
+
+#character a, .character a, .punbb .achdescr a {
+color: var(--blue-text);
+text-decoration: none;
+font-weight: bold;
+transition: all .5s linear 0s;
+}
+
+#character a:hover, .character a:hover, .punbb .achdescr a:hover {
+color: var(--hover-link);
+}
+
+#character .tabs, .character .tabs {
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	position: relative;
+	width: 100%;
+	height: 608px;
+	box-sizing: border-box;
+	padding: 20px;
+	border: 1px solid var(--main-blue);
+	box-shadow: 0 0 3px 1px rgba(0,0,0,.7);
+	background-color: rgba(16, 31, 50,.8);
+	background-image: url();
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 700px auto;
+	color: var(--main-light-bg);
+}
+
+.tab, .tab-title {
+    display: inline-block;
+}
+
+.tab input[type="radio"] { display: none; }
+   
+.tab-title {
+white-space: nowrap;
+margin: 0 auto;
+display: block;
+padding: 2px 20px;
+width: auto;
+box-sizing: border-box;
+background-color: #091b38;
+background-color: var(--main-dark-bg);
+cursor: pointer;
+position: relative;
+transition: all 0.3s ease-in-out 0s;
+z-index: 2;
+font-size: 12px;
+font-family: open sans;
+font-weight: normal;
+text-transform: uppercase;
+line-height: 150%;
+letter-spacing: 1px;
+text-align: center;
+border-top: 1px solid var(--main-blue);
+border-bottom: 1px solid var(--main-blue);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+}
+
+.tab-title span {
+color: var(--blue-text);
+border-color: var(--main-light-bg);
+z-index: 100;
+position: relative;
+}
+
+.tab :checked + .tab-title, .tab-title:hover {
+    border-top: 1px solid var(--blue-text);
+    border-bottom: 1px solid var(--blue-text);
+}
+
+.tab :checked + .tab-title {
+background: var(--title-bg);
+}
+
+.tab :checked + .tab-title span {
+color: var(--hover-link);
+border-color: var(--hover-link);
+z-index: 100;
+}
+
+.tab-title:before {
+content: "";
+position: absolute;
+display: block;
+bottom: 0;
+left: 0;
+width: 0%;
+height: 100%;
+box-sizing: border-box;
+background: var(--title-bg);
+transition: all .5s cubic-bezier(.77,0,.18,1) 0s;
+z-index: 1;
+}
+
+.tab-title:hover:before {
+width: 100%;
+}
+
+.tab :checked ~ .tab-content {
+    display: block; 
+}
+
+.tab-content {
+    position: absolute;
+    padding: 20px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 44px);
+    display: none;
+    box-sizing: border-box;
+}
+
+.tab-content {
+	-webkit-animation: 1s both fadeIn;
+	animation: 1s both fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+        
+@keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+.charname {
+line-height: 150%;
+display: block;
+text-align: center;
+font-size: 24px;
+font-family: jura;
+font-weight: 600;
+background: #9c7435;
+background: -moz-linear-gradient(top, #9c7435 0%, #f0d1a2 50%, #9c7435 100%);
+background: -webkit-linear-gradient(top, #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+background: linear-gradient(to bottom, #9c7435 0%,#f0d1a2 50%,#9c7435 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c7435', endColorstr='#9c7435',GradientType=0 );
+color: transparent;
+background-clip: text;
+-webkit-background-clip: text;
+text-shadow: none;
+}
+
+.resume {
+display: flex;
+display: -webkit-flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-around;
+position: relative;
+width: 100%;
+height: 100%;
+margin-top: 20px;
+/* padding: 0 10px;
+box-sizing: border-box; */
+}
+
+.charpic {
+outline: 1px solid var(--main-blue);
+max-height: 250px;
+max-width: 180px;
+display: block;
+}
+
+.charpic img {
+width: 100%;
+height: 100%;
+display: block;
+border: none;
+margin: auto;
+object-fit: cover;
+object-position: top center;
+}
+
+.charinfo {
+display: block;
+width: 380px;
+list-style: none;
+max-height: 465px;
+overflow-x: hidden;
+overflow-y: auto;
+scrollbar-width: thin;
+margin-right: -10px;
+}
+
+.charinfo li {
+	line-height: 150%;
+	font-size: 16px;
+}
+
+.charinfo li.expand {
+font-size: 13px;
+text-align: justify;
+margin: 0 -5px 5px 0;
+padding-right: 10px;
+}
+
+.charinfo li span {
+	color: var(--blue-text);
+}
+
+.charinfo li b {
+	font-weight: normal;
+	padding-left: 5px;
+}
+
+.achievements, .gifts {
+display: flex;
+display: -webkit-flex;
+align-content: baseline;
+justify-content: space-between;
+flex-direction: row;
+flex-wrap: wrap;
+padding-right: 10px;
+/* box-sizing: border-box; */
+height: 100%;
+width: 100%;
+overflow: auto;
+scrollbar-width: thin;
+}
+
+.punbb .post-content .achievements, .punbb .post-content .gifts {
+justify-content: space-around;
+}
+
+.ach, .gift {
+position: relative;
+display: flex;
+display: -webkit-flex;
+width: 290px;
+padding: 10px 0 10px 10px;
+}
+
+.locked {
+opacity: .5;
+filter: grayscale(100%);
+}
+
+.achico, .giftico {
+display: flex;
+display: -webkit-flex;
+width: 80px;
+height: 80px;
+position: relative;
+z-index: 2;
+background: #0b1f3d;
+border-radius: 50%;
+justify-content: center;
+align-items: center;
+border: 2px solid var(--blue-text);
+box-shadow: inset 1px 1px 1px 1px #0b1f3d, inset -1px -1px 1px 0 var(--hover-link), inset 0 0 12px 2px rgba(170, 183, 195, .7), 0 0 10px 0 rgba(170, 183, 195, .6);
+}
+
+.light {
+background: var(--main-light-bg);
+}
+
+.achico img, .giftico img {
+max-width: 60px;
+max-height: 60px;
+box-sizing: border-box;
+height: auto;
+}
+
+.achtext, .giftinfo {
+display: flex;
+display: -webkit-flex;
+flex-direction: column;
+position: absolute;
+z-index: 1;
+top: 10px;
+width: auto;
+padding: 0 10px 7px 50px;
+box-sizing: border-box;
+width: 260px;
+margin-left: 35px;
+background: #0b1f3d;
+border: 2px solid var(--main-blue);
+text-align: center;
+min-height: 45px;
+box-shadow: inset 1px 1px 1px 1px #0b1f3d, inset -1px -1px 2px 0 rgba(210, 227, 221, .3), inset 0 0 5px 2px rgba(170, 183, 195, .3), 0 0 10px 0 rgba(170, 183, 195, .6);
+border-radius: 0 5px 40px 0;
+}
+
+.achtext .achname, .giftinfo .giftfrom {
+font-size: 16px;
+line-height: 150%;
+border-bottom: 1px solid var(--title-bg);
+/* color: #fcdf87; */
+background: #f0d1a2;
+background: -moz-linear-gradient(top,  #f0d1a2 0%, #fcdf87 35%, #9c7435 100%);
+background: -webkit-linear-gradient(top,  #f0d1a2 0%,#fcdf87 35%,#9c7435 100%);
+background: linear-gradient(to bottom,  #f0d1a2 0%,#fcdf87 35%,#9c7435 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d1a2', endColorstr='#9c7435',GradientType=0 );
+color: transparent;
+background-clip: text;
+-webkit-background-clip: text;
+text-shadow: none;
+}
+
+.achtext .achname {
+font-family: jura;
+font-weight: 600;
+text-transform: uppercase;
+}
+
+.giftinfo .giftfrom {
+font-family: open sans;
+font-weight: 400;
+}
+
+.achtext .achdescr, .giftinfo .gifttext {
+font-size: 10px;
+line-height: 120%;
+padding: 0 5px;
+color: var(--main-light-bg);
+font-family: 'open sans', sans-serif;
+text-shadow: 1px 1px #000;
+}
+
+#rules {
+position: relative;
+width: calc(100% - 10%);
+height: auto;
+margin: 5px auto;
+padding: 5px 20px 20px;
+box-sizing: border-box;
+background: var(--sec-dark-bg);
+background-size: cover;
+border: 1px solid var(--main-light-bg);
+box-shadow: 0 0 0 1px #091b38, inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+box-shadow: 0 0 0 1px var(--main-dark-bg), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+color: var(--main-light-bg);
+text-shadow: 1px 1px #000;
+font-size: 12px;
+text-align: justify;
+}
+
+#rules span {
+display: block;
+background: var(--title-bg);
+color: var(--main-light-bg);
+line-height: 175%;
+text-align: center;
+text-transform: uppercase;
+font-size: 14px;
+margin: 10px auto;
+}
+
+#rules p {
+line-height: 150%;
+padding-bottom: 5px;
+}
+
+/* Ролевые заявки 
+-----------------------------------*/
+
+#logo-RL {
+max-width:100%;
+background-size: 100%!important;
+}
+
+.pages .superlink {
+margin-bottom: 0!important;
+}
+
+
+/* Таблица статистики постов
+------------------------------------------*/
+
+/*Иконка Таблицы числа игровых*/
+.punbb #post-form #pre_placement > a {
+z-index: 1;
+top: 3px!important;
+right: 15px;
+background: url(//forumstatic.ru/files/001a/e1/7e/64237.png) no-repeat transparent !important;
+height: 24px;
+width: 24px;
+border: none;
+box-shadow: none;
+}
+
+.isuser.ismoderator.isadmin.gid1 .punbb #pre_placement > a:hover:before {
+content: "видишь себя в верхнем списке — можешь спать спокойно!";
+position: absolute;
+width: 320px;
+left: -325px;
+line-height: 22px;
+font-family: open sans;
+font-size: 11px;
+}
+
+.isguest.gid3 .punbb #pre_placement > a:hover:before {
+content: "наши бравые постописцы" !important;
+position: absolute;
+width: 160px;
+left: -150px;
+line-height: 22px;
+font-family: open sans;
+font-size: 11px;
+}
+
+.punbb .table_GamePosts {
+
+}
+
+.punbb #post-form .table_GamePosts, .punbb #post-form .table_GamePosts tr {
+background: transparent !important;
+}
+
+.punbb #post-form .table_GamePosts tr {
+border-top: 1px solid #d2d5e3;
+border-bottom: 1px solid var(--main-blue);
+}
+
+.punbb #post-form .table_GamePosts tbody th.aa {
+background: var(--main-dark-bg) !important;
+box-sizing: border-box;
+padding: 0 15px;
+border-top: 2px solid var(--main-blue);
+border-bottom: 2px solid var(--main-blue);
+box-shadow: inset 0 0 1px var(--main-dark-bg), 0 2px 2px rgba(9, 27, 56, .8), 0 1px 0 var(--main-dark-bg);
+position: relative;
+top: 0;
+font-size: 12px !important;
+font-family: open sans, sans-serif;
+text-transform: lowercase;
+color: var(--hover-link);
+cursor: initial;
+}
+
+.punbb #post-form .table_GamePosts td {
+border: none;
+}
+
+.punbb #poll-special {
+position: relative;
+z-index: 10;
+}
+
+
+/* Реакции на пост */
+
+.punbb .post-body .reactions-root {
+  position: absolute;
+  z-index: 110;
+  height: 0;
+}
+
+.punbb .post-body .reactions-container {
+  bottom: 30px;
+  position: relative;
+}
+
+.punbb .reactions-container .reaction-picker-button {
+  background: transparent;
+  border: none;
+}
+
+.punbb .reactions-container .reaction-picker-button svg path {
+  fill: var(--blue-text);
+  transition: all .5s linear 0s;
+}
+.punbb .reactions-container .reaction-chip:not(.reaction-chip--disabled) {transition: all .5s linear 0s;}
+
+.punbb .reactions-container .reaction-chip:not(.reaction-chip--disabled):hover {background-color: var(--hover-link);}
+
+.punbb .reactions-container .reaction-chip:not(.reaction-chip--disabled):hover svg path {fill: var(--main-span-bg);}
+
+.punbb .reactions-container button.emoji-mart-emoji span {cursor: pointer;}
+
+/* .punbb .reactions-container .reaction-counters-container {
+  visibility: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 30px;
+  width: auto;
+  max-width: 300px;
+  max-height: 100px;
+  overflow: auto;
+  padding: 5px 10px;
+  background: var(--sec-dark-bg);
+  border: 1px solid var(--main-light-bg);
+  box-shadow: 0 0 0 1px var(--main-dark-bg), inset 0 0 3px 2px rgba(170, 183, 195, .6), 0 2px 2px 0 rgba(0,0,0,.6);
+  box-sizing: border-box;
+} */
+

@@ -87,7 +87,7 @@ const ThemeManager = {
 
  // Резервное обнаружение тем
  async fallbackDiscovery() {
-  const knownThemes = ['clean_new', 'clean_old', 'cyrodiil', 'pinot_grigio'];
+  const knownThemes = ['clean_new', 'clean_old', 'cyrodiil', 'pinot_grigio', 'manunkind_blue'];
 
   for (const themeName of knownThemes) {
    const mainCss = `themes/${themeName}/style.css`;
@@ -164,7 +164,8 @@ const ThemeManager = {
    'clean_new': 'Чистая (новая)',
    'clean_old': 'Чистая (старая)',
    'cyrodiil': 'Сиродиил',
-   'pinot_grigio': 'Pinot Grigio'
+   'pinot_grigio': 'Pinot Grigio',
+   'manunkind_blue': 'ManUNkind (blue)'
   };
 
   // Если есть специальное название - используем его
