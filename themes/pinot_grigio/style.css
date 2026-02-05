@@ -8,7 +8,7 @@ A - SETUP
 /* A1.1 */
 @import url(style_cs.css);
 
-@import url('http://forumstatic.ru/files/0019/f2/b2/77399.css');
+@import url('https://forumstatic.ru/files/0019/f2/b2/77399.css');
 
 
 /* Oswald regular and bold */
@@ -700,7 +700,7 @@ C - MAIN CONTENT - SPECIFIC
   width: 246px;
   margin-top: -20px;
   overflow: hidden;
-  background: url(http://forumstatic.ru/files/0018/1e/e2/44257.png) top no-repeat, url(http://forumstatic.ru/files/0018/1e/e2/17810.png) bottom no-repeat, url(http://forumstatic.ru/files/0018/1e/e2/73281.png) repeat-y;
+  background: url(https://forumstatic.ru/files/0018/1e/e2/44257.png) top no-repeat, url(https://forumstatic.ru/files/0018/1e/e2/17810.png) bottom no-repeat, url(https://forumstatic.ru/files/0018/1e/e2/73281.png) repeat-y;
   position: relative;
   font-family: arial;
   font-size: 12px;
@@ -777,7 +777,7 @@ width: 220px;
 height: 38px;
 margin: 0 0 0 -9px;
 padding: 0 5px;
-background: url(http://forumstatic.ru/files/0018/1e/e2/47698.png) no-repeat;
+background: url(https://forumstatic.ru/files/0018/1e/e2/47698.png) no-repeat;
 box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
 }
 
@@ -846,7 +846,7 @@ color: #200e04!important;
 }
 
 li.pa-fld4 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/23288.png) center no-repeat;
+background: url(https://forumstatic.ru/files/0018/1e/e2/23288.png) center no-repeat;
 color: #b6a48c;
 font-size: 12px;
 font-family: 'Oswald';
@@ -1525,7 +1525,7 @@ position: relative;
 display: inline-block;
 height: 56px;
 width: 216px;
-background: url(http://forumstatic.ru/files/0018/1e/e2/72043.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/72043.png) no-repeat center;
 border: none;
 margin: 10px 15px;
 transition: all .5s linear 0s;
@@ -1837,7 +1837,7 @@ opacity: 1;
 -------------------------------------------------------------*/
 
 .review {
-	background:url(http://forumstatic.ru/files/0018/1e/e2/21738.png) no-repeat;
+	background:url(https://forumstatic.ru/files/0018/1e/e2/21738.png) no-repeat;
 	width: 610px;
 	height: 410px;
 	position: relative;
@@ -1922,7 +1922,7 @@ opacity: 1;
 -------------------------------------------------------------*/
 
 .gost {
-	background: url(http://forumstatic.ru/files/0018/1e/e2/40140.png) no-repeat;
+	background: url(https://forumstatic.ru/files/0018/1e/e2/40140.png) no-repeat;
     width: 610px;
     height: 470px;
     position: relative;
@@ -2003,7 +2003,7 @@ box-shadow: 0px 1px 2px 0px rgba(32, 14, 4, 0.5), inset 1px 2px 2px 1px #5b4e40,
 /* занятые внешности
 -------------------------------------------*/
 .faces {
-	background: url(http://forumstatic.ru/files/0018/1e/e2/86881.png) no-repeat;
+	background: url(https://forumstatic.ru/files/0018/1e/e2/86881.png) no-repeat;
 	width:590px;
 	height:650px;
 	position: relative;
@@ -2048,7 +2048,7 @@ color: #5b432c;
 -------------------------------------------------------------*/
 
 .guidebook {
-	background: url(http://forumstatic.ru/files/0018/1e/e2/85384.png) no-repeat;
+	background: url(https://forumstatic.ru/files/0018/1e/e2/85384.png) no-repeat;
 	width:590px;
 	height:650px;
 	position: relative;
@@ -2141,7 +2141,7 @@ color: #5b432c;
 -------------------------------------------------------------*/
 
 .anketa_1 {
-	background:url(http://forumstatic.ru/files/0018/1e/e2/49697.png); 
+	background:url(https://forumstatic.ru/files/0018/1e/e2/49697.png); 
 	width: 590px; 
 	height: 650px;
 	position: relative;
@@ -2280,7 +2280,7 @@ font-family: journalism;
 	position: relative;
 	margin: 0 auto;
 	width: 610px;
-    background: url(http://forumstatic.ru/files/0018/1e/e2/64419.png) top no-repeat, url(http://forumstatic.ru/files/0018/1e/e2/43983.png) bottom no-repeat, url(http://forumstatic.ru/files/0018/1e/e2/32578.png) repeat-y;
+    background: url(https://forumstatic.ru/files/0018/1e/e2/64419.png) top no-repeat, url(https://forumstatic.ru/files/0018/1e/e2/43983.png) bottom no-repeat, url(https://forumstatic.ru/files/0018/1e/e2/32578.png) repeat-y;
     min-height: 180px;
     padding: 0 0 35px;
 }
@@ -2325,7 +2325,7 @@ font-family: journalism;
 	position: relative;
 	margin: 0 auto;
 	width: 610px;
-    background: url(http://forumstatic.ru/files/0018/1e/e2/83195.png) top no-repeat, url(http://forumstatic.ru/files/0018/1e/e2/43983.png) bottom no-repeat, url(http://forumstatic.ru/files/0018/1e/e2/32578.png) repeat-y;
+    background: url(https://forumstatic.ru/files/0018/1e/e2/83195.png) top no-repeat, url(https://forumstatic.ru/files/0018/1e/e2/43983.png) bottom no-repeat, url(https://forumstatic.ru/files/0018/1e/e2/32578.png) repeat-y;
     min-height: 180px;
     padding: 0 0 35px;
 }
@@ -2358,7 +2358,7 @@ font-family: journalism;
 -------------------------------------------------------------*/
 
 .bank {
-	background: url(http://forumstatic.ru/files/0018/1e/e2/68223.png) no-repeat;
+	background: url(https://forumstatic.ru/files/0018/1e/e2/68223.png) no-repeat;
 	width:590px;
 	height:650px;
 	position: relative;
@@ -2397,7 +2397,7 @@ font-family: journalism;
 	position: relative;
 	margin: 0 auto;
 	width: 610px;
-    background: url(http://forumstatic.ru/files/0018/1e/e2/59256.png) top no-repeat, url(http://forumstatic.ru/files/0018/1e/e2/43983.png) bottom no-repeat, url(http://forumstatic.ru/files/0018/1e/e2/32578.png) repeat-y;
+    background: url(https://forumstatic.ru/files/0018/1e/e2/59256.png) top no-repeat, url(https://forumstatic.ru/files/0018/1e/e2/43983.png) bottom no-repeat, url(https://forumstatic.ru/files/0018/1e/e2/32578.png) repeat-y;
     min-height: 180px;
     padding: 0 0 35px;
 }
@@ -2460,39 +2460,39 @@ display: none;
 }
 
 #pun-stats.section h2 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/76290.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/76290.png) no-repeat center;
 }
 
 #pun-viewtopic #post-form h2 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/95355.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/95355.png) no-repeat center;
 }
 
 #pun-category1 h2 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/71872.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/71872.png) no-repeat center;
 }
 
 #pun-category2 h2 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/20564.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/20564.png) no-repeat center;
 }
 
 #pun-category3 h2 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/10946.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/10946.png) no-repeat center;
 }
 
 #pun-category4 h2 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/63835.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/63835.png) no-repeat center;
 }
 
 #pun-category5 h2 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/59915.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/59915.png) no-repeat center;
 }
 
 #pun-category6 h2 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/39808.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/39808.png) no-repeat center;
 }
 
 #pun-category7 h2 {
-background: url(http://forumstatic.ru/files/0018/1e/e2/64356.png) no-repeat center;
+background: url(https://forumstatic.ru/files/0018/1e/e2/64356.png) no-repeat center;
 }
 
 
@@ -2511,9 +2511,9 @@ width: 618px;
 }
 
 #pun-index td .tclcon {
-background: url(http://forumstatic.ru/files/0018/1e/e2/71278.png) top no-repeat,
-url(http://forumstatic.ru/files/0018/1e/e2/93556.png) bottom no-repeat,
-url(http://forumstatic.ru/files/0018/1e/e2/72899.png) repeat-y;
+background: url(https://forumstatic.ru/files/0018/1e/e2/71278.png) top no-repeat,
+url(https://forumstatic.ru/files/0018/1e/e2/93556.png) bottom no-repeat,
+url(https://forumstatic.ru/files/0018/1e/e2/72899.png) repeat-y;
 margin-left: 0;
 padding: 12px 14px;
 width: 590px;
@@ -2527,13 +2527,13 @@ position: absolute;
 z-index: 100;
 top: 13px;
 right: 24px;
-background: url(http://forumstatic.ru/files/0018/1e/e2/84306.png) no-repeat;
+background: url(https://forumstatic.ru/files/0018/1e/e2/84306.png) no-repeat;
 width: 59px;
 height: 37px;
 }
 
 #pun-index .inew div.icon {
-background: url(http://forumstatic.ru/files/0018/1e/e2/69665.png) no-repeat;
+background: url(https://forumstatic.ru/files/0018/1e/e2/69665.png) no-repeat;
 }
 
 #pun-index td.tcr {
@@ -2606,7 +2606,7 @@ font-family: palatino linotype;
   position: absolute;
   background-color: transparent;
   padding: 0;
-  background: url(http://forumstatic.ru/files/0018/1e/e2/52800.png) no-repeat;
+  background: url(https://forumstatic.ru/files/0018/1e/e2/52800.png) no-repeat;
   top: 60px;
   width: 86px;
   height: 66px;
