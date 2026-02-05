@@ -18,12 +18,12 @@ A - SETUP
 
 @font-face {
     font-family: 'Journalism';
-    src: url('http://forumstatic.ru/files/0018/1e/e2/62215.eot');
-    src: url('http://forumstatic.ru/files/0018/1e/e2/62215.eot?#iefix') format('embedded-opentype'),
-    url('http://forumstatic.ru/files/0018/1e/e2/52413.woff2') format('woff2'),
-    url('http://forumstatic.ru/files/0018/1e/e2/92340.woff') format('woff'),
-    url('http://forumstatic.ru/files/0018/1e/e2/50015.ttf') format('truetype'),
-    url('http://forumstatic.ru/files/0018/1e/e2/13070.svg#JOURNALISM') format('svg');
+    src: url('https://forumstatic.ru/files/0018/1e/e2/62215.eot');
+    src: url('https://forumstatic.ru/files/0018/1e/e2/62215.eot?#iefix') format('embedded-opentype'),
+    url('https://forumstatic.ru/files/0018/1e/e2/52413.woff2') format('woff2'),
+    url('https://forumstatic.ru/files/0018/1e/e2/92340.woff') format('woff'),
+    url('https://forumstatic.ru/files/0018/1e/e2/50015.ttf') format('truetype'),
+    url('https://forumstatic.ru/files/0018/1e/e2/13070.svg#JOURNALISM') format('svg');
     font-weight: normal;
     font-style: normal;
 }
