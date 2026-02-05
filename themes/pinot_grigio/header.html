@@ -6,33 +6,37 @@
 
 <!-- Cчётчик Игровых постов -->
 <script type="text/javascript">
-if(!$getCookie("acs-771")){
-  $setCookie("acs-771",1);
-  $deleteCookie ("acs-01");
+ if (!$getCookie("acs-771")) {
+  $setCookie("acs-771", 1);
+  $deleteCookie("acs-01");
   localStorage.dat_ = '';
-}
-/***************************
-        Настройки!
-***************************/
-FORUM._NUMpa_fld = 4;       // Номер.Доп.поля,
-FORUM._color_fld = "#b6a48c";   // Цвет шрифта,
-FORUM.minlengthPost= 1;     // Минимальное Число символов //Учитывать Пост при длине не менее заданной,
-FORUM.includeFirstPost = 0; // 0 - не учитывать,1 - учитывать Первопост автора в игровых темах,
-FORUM.AddOrSlash = 0;       // 0 - Поле отдельно, 1 - через слеш c общ. числом сообщений,
-FORUM.Number_winners = [2,2];   // Число отображаемых победителей(в Шапке) //от 1 до 5 за неделю и от 1 до 5 за месяц;
-FORUM.Nick_from_avatar = 'n';   // 'n' - Ник всплывает под Аватаром таблицы, 's' - Всплывает над Аватаром;
-FORUM.Subscription_Code = "65455c936f02021d58c2fb154c8aa1e43ca22921";   //Код подписки;/выдаётся после оплаты/
+ }
+ /***************************
+         Настройки!
+ ***************************/
+ FORUM._NUMpa_fld = 4;       // Номер.Доп.поля,
+ FORUM._color_fld = "#b6a48c";   // Цвет шрифта,
+ FORUM.minlengthPost = 1;     // Минимальное Число символов //Учитывать Пост при длине не менее заданной,
+ FORUM.includeFirstPost = 0; // 0 - не учитывать,1 - учитывать Первопост автора в игровых темах,
+ FORUM.AddOrSlash = 0;       // 0 - Поле отдельно, 1 - через слеш c общ. числом сообщений,
+ FORUM.Number_winners = [2, 2];   // Число отображаемых победителей(в Шапке) //от 1 до 5 за неделю и от 1 до 5 за месяц;
+ FORUM.Nick_from_avatar = 'n';   // 'n' - Ник всплывает под Аватаром таблицы, 's' - Всплывает над Аватаром;
+ FORUM.Subscription_Code = "65455c936f02021d58c2fb154c8aa1e43ca22921";   //Код подписки;/выдаётся после оплаты/
 
-function ad_ (){/*!~!FORUM.ForArrAy = {
+ function ad_() {/*!~!FORUM.ForArrAy = {
 //Форум  //Темы (включаемые, или исключаемые)
 
 f6  :-[0], //Игровой раздел
 f5  :-[0], //Альтернативный раздел
 f11 :-[0]  // Архив эпизодов//Последний Элемент без запятой;
 }
-!~!*/}ad_ = ad_.toString().split('!~!')[1]; </script>
+!~!*/} ad_ = ad_.toString().split('!~!')[1]; </script>
 <script type="text/javascript" src="http://forumstatic.ru/files/0012/d8/04/90999.js"></script>
-<style>.punbb strong.GamePst2 {color: #000!important;}</style>
+<style>
+ .punbb strong.GamePst2 {
+  color: #000 !important;
+ }
+</style>
 <!-- END//Cчётчик Игровых постов -->
 
 <!--КНОПКИ ВВЕРХ ВНИЗ-->
@@ -40,119 +44,116 @@ f11 :-[0]  // Архив эпизодов//Последний Элемент б�
 <div class="go-down" id='OnBottom'><img src="http://forumstatic.ru/files/0018/1e/e2/29342.png" border="0" /></div>
 <!--ВВЕРХ ВНИЗ-->
 <script type="text/javascript">
-$().pun_mainReady(function(){
-if ($(window).scrollTop()>="250") $("#ToTop").fadeIn("slow")
-$(window).scroll(function(){
-  if ($(window).scrollTop()<="250") $("#ToTop").fadeOut("slow")
-  else $("#ToTop").fadeIn("slow")
-});
-if ($(window).scrollTop()<=$(document).height()-"999") $("#OnBottom").fadeIn("slow")
-$(window).scroll(function(){
-  if ($(window).scrollTop()>=$(document).height()-"999") $("#OnBottom").fadeOut("slow")
-  else $("#OnBottom").fadeIn("slow")
-});
-$("#ToTop").click(function(){$("html,body").animate({scrollTop:0},"slow")})
-$("#OnBottom").click(function(){$("html,body").animate({scrollTop:$(document).height()},"slow")})
-});
+ $().pun_mainReady(function () {
+  if ($(window).scrollTop() >= "250") $("#ToTop").fadeIn("slow")
+  $(window).scroll(function () {
+   if ($(window).scrollTop() <= "250") $("#ToTop").fadeOut("slow")
+   else $("#ToTop").fadeIn("slow")
+  });
+  if ($(window).scrollTop() <= $(document).height() - "999") $("#OnBottom").fadeIn("slow")
+  $(window).scroll(function () {
+   if ($(window).scrollTop() >= $(document).height() - "999") $("#OnBottom").fadeOut("slow")
+   else $("#OnBottom").fadeIn("slow")
+  });
+  $("#ToTop").click(function () { $("html,body").animate({ scrollTop: 0 }, "slow") })
+  $("#OnBottom").click(function () { $("html,body").animate({ scrollTop: $(document).height() }, "slow") })
+ });
 </script>
 
-<div id="pircs2"><!-- std.v.1/0/profilaktika --><link rel="stylesheet" type="text/css" href="http://hostjs-mybb2011.narod.ru/css/profilaktika.css" /><noscript><div id="msg-n2">У Вас отключён javascript.<br>В данном режиме, отображение ресурса<br/>браузером не поддерживается <br/></div></noscript><div id="LogIn_Window" style="display:none"><center>Уважаемые пользователи<br/> и гости форума!<br/><br/>По техническим причинам<br/> временного характера форум  закрывается на профилактику. Мы ставим новый дизайн, это ненадолго)<br/> Ждём вас в ближайшее время.</center><br/> С уважением<center>Администрация форума.</center><br/><hr><br/><br/></div></div><!-- --><script type="text/javascript">
-
-    var ON_button=0 //Cвитч включения: 1 - включено!; 0 - выключено
-    var  moderDostyp_ON=0; //?Модер-доступ включён?: 1 - включен!; 0 - выключен
-
-    if(ON_button!=1||GroupID ==1||moderDostyp_ON*GroupID==2){
-    $("style.#style_st,div.#pircs2").replaceWith("");}
-      else {$("#msg-n2").replaceWith("");
-    if(GroupID ==3) {$("#LogIn_Window").show();if(document.URL.indexOf("/login.php")==-1){
-    document.location.href = "../login.php"}else {
-    $(document).ready(function(){$("form#login").appendTo("#LogIn_Window");
-    $("#LogIn_Window").find("p.formsubmit a[href*='register.php']").text("");
-    var v=$("#LogIn_Window").find("p.formsubmit a[href*='action=forget']");
-    v.replaceWith("<span>Вход только для Администраторов</span>");});};}
-    else {document.location.href = "../login.php?action=out&id="+UserID};}
-    </script><!--end/profilaktika-->
-
-
 <!--шапка и активисты-->
-<!--Deff: Oтложенная загрузка таблица(Начало)--><noscript>
-<div id="header">
-    <div id="line1">
-        <div id="imageone"><img src="http://forumstatic.ru/files/0018/1e/e2/74599.png"></div>
-        <div id="imagelogo"><img src="http://forumstatic.ru/files/0018/1e/e2/32234.png"></div>
-        <! -- скрипт навигации выпадающим окном [основа скрипт вкладок http://imagiart.ru/, переработка вещего духа] --> 
-        <script type="text/javascript" src="http://forumstatic.ru/files/001a/18/bd/96460.js"></script>
-        <div class="spirit-navigation" id="navig-batton" title="полезные ссылки">навигация</div>
-        <div id="navigblock" style="display:none">
-            <div class="sslka">
-                <!-- важные ссылки -->
-                <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=14">Гостевая</a>
-                <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=41">Всё о Хэмптонс</a>
-                <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=3">Занятость</a> 
-                <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=13">Внешности</a>
-                <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=17">Нужные персонажи</a>
-                <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=15">Шаблон анкеты</a>
-            </div>
-        </div>
-        <div id="imagetwo"><img src="http://forumstatic.ru/files/0018/1e/e2/24810.png"></div>
+<!--Deff: Oтложенная загрузка таблица(Начало)-->
+ <div id="header">
+  <div id="line1">
+   <div id="imageone"><img src="http://forumstatic.ru/files/0018/1e/e2/74599.png"></div>
+   <div id="imagelogo"><img src="http://forumstatic.ru/files/0018/1e/e2/32234.png"></div>
+   <! -- скрипт навигации выпадающим окном [основа скрипт вкладок http://imagiart.ru/, переработка вещего духа] -->
+    <script type="text/javascript" src="http://forumstatic.ru/files/001a/18/bd/96460.js"></script>
+    <div class="spirit-navigation" id="navig-batton" title="полезные ссылки">навигация</div>
+    <div id="navigblock" style="display:none">
+     <div class="sslka">
+      <!-- важные ссылки -->
+      <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=14">Гостевая</a>
+      <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=41">Всё о Хэмптонс</a>
+      <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=3">Занятость</a>
+      <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=13">Внешности</a>
+      <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=17">Нужные персонажи</a>
+      <a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=15">Шаблон анкеты</a>
+     </div>
     </div>
-    <div id="line2">
-        <div id="flooders"><div class="flh">flooders</div>
-            <a href="http://pinotgrigio.rusff.ru/profile.php?id=3" target="_blank" title="Клайд"><img src="https://i.imgur.com/oX0wIG2.png"></a>
-            <a href="http://pinotgrigio.rusff.ru/profile.php?id=46" target="_blank" title="Рэйчел"><img src="https://i.imgur.com/zKCDKuA.png"></a>
-            <a href="http://pinotgrigio.rusff.ru/profile.php?id=136" target="_blank" title="Дэниел"><img src="https://i.imgur.com/s2cOAfa.png"></a>
-        </div>
-        <div id="writers"><div class="wrh">writers</div>
-            <a href="http://pinotgrigio.rusff.ru/profile.php?id=143" target="_blank" title="Кейт"><img src="https://i.imgur.com/neL1IYS.png"></a>
-                <a href="http://pinotgrigio.rusff.ru/profile.php?id=136" target="_blank" title="Дэниел"><img src="https://i.imgur.com/s2cOAfa.png"></a>
-                <a href="http://pinotgrigio.rusff.ru/profile.php?id=18" target="_blank" title="Марисоль"><img src="https://i.imgur.com/vdFpo2J.png"></a>
-        </div>
-        <div id="hello">Добро пожаловать в Hamptons! На календаре сейчас июль 2020, средняя температура днем +35, ночью +25, и мы прячемся в тени! 
-        </div>
-        <div id="attention"><div class="ath">news</div>
-            <img src="http://forumstatic.ru/files/0018/1e/e2/52702.png">
-        </div>
-        <div id="bestpost"><div class="bph">best post</div>
-<p>У Кейт сжалось сердце. Пирс говорил это спокойно, но звучало это холодно и грубо. Последняя брошенная им фраза "С Рождеством" звучала неискренне и отстраненно. Словно сбегал от дальнейшего диалога и от всего, к чему этот разговор может привести. Чертов Ливики.<br><a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=629#p58045" target="_blank">читать далее</a></p><img src="https://i.imgur.com/jKJRmOI.png">
-        </div>
-    </div>
-</div>
+    <div id="imagetwo"><img src="http://forumstatic.ru/files/0018/1e/e2/24810.png"></div>
+  </div>
+  <div id="line2">
+   <div id="flooders">
+    <div class="flh">flooders</div>
+    <a href="http://pinotgrigio.rusff.ru/profile.php?id=3" target="_blank" title="Клайд"><img
+      src="img/Clyde.png"></a>
+    <a href="http://pinotgrigio.rusff.ru/profile.php?id=46" target="_blank" title="Рэйчел"><img
+      src="img/Rachel.png"></a>
+    <a href="http://pinotgrigio.rusff.ru/profile.php?id=136" target="_blank" title="Дэниел"><img
+      src="img/Daniel.png"></a>
+   </div>
+   <div id="writers">
+    <div class="wrh">writers</div>
+    <a href="http://pinotgrigio.rusff.ru/profile.php?id=143" target="_blank" title="Кейт"><img
+      src="https://i.imgur.com/neL1IYS.png"></a>
+    <a href="http://pinotgrigio.rusff.ru/profile.php?id=136" target="_blank" title="Дэниел"><img
+      src="https://i.imgur.com/s2cOAfa.png"></a>
+    <a href="http://pinotgrigio.rusff.ru/profile.php?id=18" target="_blank" title="Марисоль"><img
+      src="https://i.imgur.com/vdFpo2J.png"></a>
+   </div>
+   <div id="hello">Добро пожаловать в Hamptons! На календаре сейчас июль 2020, средняя температура днем +35, ночью +25,
+    и мы прячемся в тени!
+   </div>
+   <div id="attention">
+    <div class="ath">news</div>
+    <img src="http://forumstatic.ru/files/0018/1e/e2/52702.png">
+   </div>
+   <div id="bestpost">
+    <div class="bph">best post</div>
+    <p>У Кейт сжалось сердце. Пирс говорил это спокойно, но звучало это холодно и грубо. Последняя брошенная им фраза "С
+     Рождеством" звучала неискренне и отстраненно. Словно сбегал от дальнейшего диалога и от всего, к чему этот разговор
+     может привести. Чертов Ливики.<br><a href="http://pinotgrigio.rusff.ru/viewtopic.php?id=629#p58045"
+      target="_blank">читать далее</a></p><img src="https://i.imgur.com/jKJRmOI.png">
+   </div>
+  </div>
+ </div>
 
-<!-- Deff:Перезалитые Шрифты из Администрирование-Стиль -->
-<link rel="stylesheet" type="text/css" href="http://forumstatic.ru/files/0019/f2/b2/77399.css" />
+ <!-- Deff:Перезалитые Шрифты из Администрирование-Стиль -->
+ <link rel="stylesheet" type="text/css" href="http://forumstatic.ru/files/0019/f2/b2/77399.css" />
 
-<!--Oтложенная загрузка Шапки(Концовка)--></noscript><script type="text/javascript">
-var _a$1 = $('script:last'); $().pun_mainReady(function(){
-$(_a$1.prev('noscript').text()).insertBefore(_a$1)
-});</script>
+ <!--Oтложенная загрузка Шапки(Концовка)-->
+<script type="text/javascript">
+ var _a$1 = $('script:last'); $().pun_mainReady(function () {
+  $(_a$1.prev('noscript').text()).insertBefore(_a$1)
+ });</script>
 <!-- Конец таблы в шапке -->
 
 
-<!--выделить код--> 
+<!--выделить код-->
 <script type="text/javascript" src="http://forumstatic.ru/files/0015/c4/3f/26102.js"></script>
-<script>eval(select_text.toString().replace(/\}$/,'try{document.execCommand("copy")}catch(e){}}'))</script>
+<script>eval(select_text.toString().replace(/\}$/, 'try{document.execCommand("copy")}catch(e){}}'))</script>
 <script type="text/javascript">select_text.linkText = 'выделить [копируется сразу]' //текст ссылки</script>
 <!-- конец -->
 
 <!-- Пиар-вход v.2 -->
 <script src="http://forumstatic.ru/files/0015/c4/3f/26781.js"></script>
 <script type="text/javascript">
-PR.nick = 'PR'; //Ник PR-аккаунта
-PR.pass = '1111'; //Пароль PR-аккаунта
-PR.btn_text = 'PR'; //Надпись на кнопке PR-входа(или ссылка на картинку);
-PR.set();</script>
+ PR.nick = 'PR'; //Ник PR-аккаунта
+ PR.pass = '1111'; //Пароль PR-аккаунта
+ PR.btn_text = 'PR'; //Надпись на кнопке PR-входа(или ссылка на картинку);
+ PR.set();</script>
 
 <!-- Читатель -->
 <script type="text/javascript">
-PR.nick = 'Читатель'; //Ник читателя
-PR.pass = '1111'; //Пароль читателя
-PR.btn_text = 'Reader'; //Надпись на кнопке PR-входа(или ссылка на картинку);
-PR.set();</script>
+ PR.nick = 'Читатель'; //Ник читателя
+ PR.pass = '1111'; //Пароль читателя
+ PR.btn_text = 'Reader'; //Надпись на кнопке PR-входа(или ссылка на картинку);
+ PR.set();</script>
 
 
 <!---------------------------- скрыть жалобы ---------------------------->
 <script type="text/javascript">
-RusffCore.sets.show_reportBtn = 0;
+ RusffCore.sets.show_reportBtn = 0;
 </script>
 
 <!--Всплывающие Подсказки при наведении-->
@@ -162,14 +163,14 @@ RusffCore.sets.show_reportBtn = 0;
 
 <!-- Кнопки BB-кодов при редактировании подписи © Alex_63 -->
 <script type="text/javascript">
-if(document.URL.indexOf('section=signature')!=-1)document.write('<scr'+'ipt type="text/javascript" src="http://forumstatic.ru/files/0016/0b/c8/99528.js"></scr'+'ipt>');
+ if (document.URL.indexOf('section=signature') != -1) document.write('<scr' + 'ipt type="text/javascript" src="http://forumstatic.ru/files/0016/0b/c8/99528.js"></scr' + 'ipt>');
 </script>
 
 
 <!-- HTML в постах с допуском по группам © Alex_63 -->
 <script type="text/javascript" src="http://forumstatic.ru/files/0015/c4/3f/52361.js"></script>
 <script type="text/javascript">
-HTMLinPost.groups = [1,2,4,6]; // Группы, допущенные к вставке HTML в посты
-HTMLinPost.noAccess = ['user','newTst2']; // Пользователи с запретом вставки HTML в посты
-HTMLinPost.parseHTMLinPosts()
+ HTMLinPost.groups = [1, 2, 4, 6]; // Группы, допущенные к вставке HTML в посты
+ HTMLinPost.noAccess = ['user', 'newTst2']; // Пользователи с запретом вставки HTML в посты
+ HTMLinPost.parseHTMLinPosts()
 </script>
