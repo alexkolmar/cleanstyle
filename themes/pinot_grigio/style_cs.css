@@ -6,16 +6,16 @@ html, body {
 }
 
 #pun-title TABLE {
-  background: url(http://forumstatic.ru/files/0018/1e/e2/90979.png) no-repeat top center;
+  background: url(https://forumstatic.ru/files/0018/1e/e2/90979.png) no-repeat top center;
 }
 
 #pun {
-  background: url(http://forumstatic.ru/files/0018/1e/e2/42467.png) repeat-y top center transparent;
+  background: url(https://forumstatic.ru/files/0018/1e/e2/42467.png) repeat-y top center transparent;
   color: #5b432c;
 }
 
 #pun-about {
-  background: url(http://forumstatic.ru/files/0018/1e/e2/53957.png) no-repeat bottom center;
+  background: url(https://forumstatic.ru/files/0018/1e/e2/53957.png) no-repeat bottom center;
   width: 1020px;
   height: 130px;
   margin-left: -30px;
@@ -362,15 +362,15 @@ color: #5b432c;
  -------------------------------------------------------------*/
 
 div.icon {
-        background: url(http://forumstatic.ru/files/0018/1e/e2/81632.png) no-repeat;
+        background: url(https://forumstatic.ru/files/0018/1e/e2/81632.png) no-repeat;
 }
 
 tr.inew div.icon {
-        background: url(http://forumstatic.ru/files/0018/1e/e2/62702.png) no-repeat;
+        background: url(https://forumstatic.ru/files/0018/1e/e2/62702.png) no-repeat;
 }
 
 tr.iclosed div.icon {
-        background: url(http://forumstatic.ru/files/0018/1e/e2/90028.png) no-repeat;
+        background: url(https://forumstatic.ru/files/0018/1e/e2/90028.png) no-repeat;
 }
 
 tr.iredirect div.icon {
@@ -378,7 +378,7 @@ tr.iredirect div.icon {
 }
 
 tr.isticky div.icon {
-        background: url(http://forumstatic.ru/files/0018/1e/e2/67467.png) no-repeat;
+        background: url(https://forumstatic.ru/files/0018/1e/e2/67467.png) no-repeat;
 }
 .punbb .main h2 span, #pun-stats h2 span {
     background: none;
