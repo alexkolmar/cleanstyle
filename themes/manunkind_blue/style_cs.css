@@ -792,7 +792,7 @@ background-color: var(--sec-dark-bg);*/
   white-space: nowrap;
   margin: 2px auto;
   display: block;
-  padding: 2px 5px;
+  padding: 0 5px;
   width: 170px;
   box-sizing: border-box;
   background-color: var(--main-dark-bg);

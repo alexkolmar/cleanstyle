@@ -87,7 +87,7 @@ const ThemeManager = {
 
  // Резервное обнаружение тем
  async fallbackDiscovery() {
-  const knownThemes = ['clean_new', 'clean_old', 'cyrodiil', 'pinot_grigio', 'manunkind_blue'];
+  const knownThemes = ['clean_new', 'clean_old', 'cyrodiil', 'pinot_grigio'];
 
   for (const themeName of knownThemes) {
    const mainCss = `themes/${themeName}/style.css`;
@@ -164,18 +164,15 @@ const ThemeManager = {
    'clean_new': 'Чистая (новая)',
    'clean_old': 'Чистая (старая)',
    'cyrodiil': 'Сиродиил',
-   'pinot_grigio': 'Pinot Grigio',
-   'manunkind_blue': 'ManUNkind (blue)'
+   'pinot_grigio': 'Pinot Grigio'
   };
 
-  // Если есть специальное название - используем его
   if (names[themeName]) return names[themeName];
 
-  // Автоматическое форматирование для остальных
   return themeName
-   .replace(/_/g, ' ')                     // Заменяем подчёркивания
-   .replace(/(^|\s)\w/g, char => char.toUpperCase()) // Первые буквы заглавные
-   .replace(/\b(?:And|Or|The|Of)\b/g, word => word.toLowerCase()); // Артикли строчные
+   .replace(/_/g, ' ')
+   .replace(/(^|\s)\w/g, char => char.toUpperCase())
+   .replace(/\b(?:And|Or|The|Of)\b/g, word => word.toLowerCase());
  },
 
  // ОСНОВНОЙ МЕТОД: Применяет тему с двумя CSS-файлами
@@ -201,7 +198,6 @@ const ThemeManager = {
   if (secondaryExists) {
    await this.loadCssFile(themeData.secondary, this.cssLinks[1]);
   } else {
-   // Если файла нет - отключаем ссылку
    this.cssLinks[1].href = '';
    console.log(`ℹ️ style_cs.css для темы "${themeName}" не найден, пропускаем`);
   }
@@ -238,7 +234,7 @@ const ThemeManager = {
   });
  },
 
- // Загружает HTML-блоки и оборачивает в .container если нужно
+ // Загружает HTML-блоки с выполнением скриптов
  async loadThemeBlocks(themeName) {
   const blocks = [
    { id: 'html-header', file: 'header.html', wrap: false },
@@ -266,14 +262,21 @@ const ThemeManager = {
     if (response.ok) {
      const content = await response.text();
 
-     // Ключевое изменение: проверяем и оборачиваем в .container
-     if (content.trim() && block.wrap && !this.hasContainerWrapper(content)) {
-      container.innerHTML = `<div class="container">${content}</div>`;
-      console.log(`✓ ${block.id} загружен и обёрнут в .container`);
-     } else {
-      container.innerHTML = content;
-      console.log(`✓ ${block.id} загружен (без обёртки)`);
+     // Подготавливаем HTML
+     let finalHtml = content.trim();
+     if (finalHtml && block.wrap && !this.hasContainerWrapper(finalHtml)) {
+      finalHtml = `<div class="container">${finalHtml}</div>`;
      }
+
+     // 🔥 Ключевое изменение: очищаем и вставляем HTML
+     container.innerHTML = '';
+     container.insertAdjacentHTML('beforeend', finalHtml);
+     
+     // 🔥 ВЫПОЛНЯЕМ СКРИПТЫ из загруженного HTML
+     this.executeScriptsInContainer(container);
+
+     console.log(`✓ ${block.id} загружен (со скриптами)`);
+     
     } else {
      container.innerHTML = '';
      console.log(`✗ Файл ${filePath} не найден, очищаем ${block.id}`);
@@ -285,17 +288,37 @@ const ThemeManager = {
   }
  },
 
- // Новый вспомогательный метод: Проверяет, обёрнут ли уже контент в .container
+ // 🔥 ВЫПОЛНЯЕТ СКРИПТЫ внутри контейнера
+ executeScriptsInContainer(container) {
+  const scripts = container.querySelectorAll('script');
+  
+  scripts.forEach(oldScript => {
+    const newScript = document.createElement('script');
+    
+    // Копируем все атрибуты
+    for (const attr of oldScript.attributes) {
+      newScript.setAttribute(attr.name, attr.value);
+    }
+    
+    // Копируем содержимое для inline-скриптов
+    if (!oldScript.src && oldScript.textContent) {
+      newScript.textContent = oldScript.textContent;
+    }
+    
+    // Заменяем старый скрипт на новый (который выполнится)
+    oldScript.parentNode.replaceChild(newScript, oldScript);
+  });
+ },
+
+ // Проверяет, обёрнут ли уже контент в .container
  hasContainerWrapper(content) {
   const trimmed = content.trim();
-  // Проверяем, начинается ли содержимое с div class="container"
   return trimmed.startsWith('<div class="container"') ||
    trimmed.startsWith("<div class='container");
  },
 
  // Загружает описания форумов из JSON файла
  async loadThemeDescriptions(themeName, descriptionPath) {
-  // Используем кэшированное описание, если оно уже загружено
   if (this.themeDescriptions[themeName]) {
    this.insertForumDescriptions(this.themeDescriptions[themeName]);
    return;
@@ -322,14 +345,13 @@ const ThemeManager = {
   }
  },
 
- // Вставляет описания форумов в DOM
+ // Вставляет описания форумов в DOM БЕЗ ОБЕРТКИ
  insertForumDescriptions(descriptionsData) {
   if (!descriptionsData || typeof descriptionsData !== 'object') {
    console.warn('⚠️ Данные описаний не найдены или имеют неверный формат');
    return;
   }
 
-  // Для каждого ID форума в JSON
   for (const forumId in descriptionsData) {
    if (!descriptionsData.hasOwnProperty(forumId)) continue;
    
@@ -339,43 +361,64 @@ const ThemeManager = {
     continue;
    }
 
-   // Ищем h3 внутри элемента форума
    const h3 = forumElement.querySelector('h3');
    if (!h3) {
     console.log(`⚠️ Заголовок h3 не найден в форуме "${forumId}"`);
     continue;
    }
 
-   // Создаём контейнер для описания
-   const descriptionContainer = document.createElement('div');
-   descriptionContainer.className = 'forum-description';
-   descriptionContainer.setAttribute('data-forum', forumId);
-   descriptionContainer.innerHTML = descriptionsData[forumId];
+   // Очищаем контент после h3
+   this.clearContentAfterH3(h3, forumElement);
 
-   // Вставляем после h3
-   h3.insertAdjacentElement('afterend', descriptionContainer);
-   console.log(`✓ Описание добавлено для форума "${forumId}"`);
+   // Вставляем HTML напрямую БЕЗ ОБЕРТКИ
+   h3.insertAdjacentHTML('afterend', descriptionsData[forumId]);
+   console.log(`✓ Описание добавлено для форума "${forumId}" (без обёртки)`);
   }
+ },
+
+ // Очищает контент между h3 и концом родительского элемента
+ clearContentAfterH3(h3, parentElement) {
+  let currentNode = h3.nextSibling;
+  const elementsToRemove = [];
+  
+  while (currentNode && currentNode !== parentElement) {
+   const nextNode = currentNode.nextSibling;
+   
+   if (currentNode.nodeType === Node.ELEMENT_NODE) {
+    elementsToRemove.push(currentNode);
+   } else if (currentNode.nodeType === Node.TEXT_NODE) {
+    if (currentNode.textContent.trim() === '') {
+     elementsToRemove.push(currentNode);
+    }
+   }
+   
+   currentNode = nextNode;
+  }
+  
+  elementsToRemove.forEach(element => {
+   if (element.parentNode) {
+    element.remove();
+   }
+  });
  },
 
  // Удаляет описания предыдущей темы
  clearPreviousDescriptions() {
-  // Находим все контейнеры с описаниями форумов
-  const oldDescriptions = document.querySelectorAll('.forum-description[data-forum]');
-  
-  oldDescriptions.forEach(description => {
-   description.remove();
-   console.log(`🗑️ Удалено старое описание для форума "${description.getAttribute('data-forum')}"`);
+  const tclconBlocks = document.querySelectorAll('.tclcon');
+   
+  tclconBlocks.forEach(block => {
+   const h3 = block.querySelector('h3');
+   if (!h3) return;
+
+   this.clearContentAfterH3(h3, block);
   });
  }
 };
 
 // Автозапуск
 document.addEventListener('DOMContentLoaded', () => {
- // Сначала удаляем старые скрипты с ошибками
  const badScripts = document.querySelectorAll('script[src*="pun_options"], script[src*="quickpost"]');
  badScripts.forEach(script => script.remove());
 
- // Запускаем менеджер тем
  setTimeout(() => ThemeManager.init(), 100);
 });
