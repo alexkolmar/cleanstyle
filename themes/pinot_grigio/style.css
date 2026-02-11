@@ -2550,6 +2550,13 @@ font-family: verdana;
 font-size: 12px;
 }
 
+.link {
+  display: flex;
+  gap: 10px;
+  padding: 0 15px;
+  justify-content: center;
+}
+
 .link a {
 background-image: -moz-linear-gradient( 90deg, rgb(53,42,31) 0%, rgb(62,49,36) 100%);
 background-image: -webkit-linear-gradient( 90deg, rgb(53,42,31) 0%, rgb(62,49,36) 100%);
@@ -2561,7 +2568,7 @@ height: 24px;
 display: inline-flex;
 align-items: center;
 justify-content: center;
-margin: 0 5px;
+margin: 0;
 padding: 0 15px;
 color: #cdbaa3 !important;
 font-family: arial;
