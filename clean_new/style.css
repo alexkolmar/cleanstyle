@@ -344,9 +344,41 @@ textarea,
   padding-left: calc(var(--mwidth) + 20px);
 }
 
+.punbb-admin .adformal h2 {
+  text-align: center;
+}
+
 .punbb-admin #pun-adnav {
   width: var(--mwidth);
   margin-left: calc(var(--mwidth) * -1);
+}
+
+.punbb-admin #pun-adnav li.isactive a {
+  color: var(--link-hover);
+}
+
+.punbb-admin #pun-adnav .isactive ul.adsubnav a {
+  text-decoration: none;
+  color: var(--link);
+}
+
+.punbb-admin #pun-adnav .isactive ul.adsubnav a:hover,
+.punbb-admin sup.new {
+  color: var(--link-hover);
+}
+
+.punbb-admin #pun-admain fieldset .handle, .punbb-admin #pun-admain fieldset p {
+  border-color: var(--border);
+  background-color: var(--sec-bg);
+}
+
+.punbb-admin #pun-admain fieldset {
+  border-color: var(--body-bg);
+}
+
+.punbb-admin #pun-admain legend span {
+  background-color: var(--body-bg);
+  color: var(--sec-bg);
 }
 
 
