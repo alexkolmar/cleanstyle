@@ -66,6 +66,7 @@
   --link: cadetblue;
   --link-hover: mediumseagreen;
   --pwidth: 240px;
+  --mwidth: 180px;
   --pad1: 10px 20px;
   --pad2: 5px 20px;
   --pad3: 5px 10px;
@@ -335,6 +336,17 @@ textarea,
 .punbb-admin .adcontainer,
 .punbb-admin .adformal {
   border: none;
+}
+
+/* боковое меню админки */
+
+.punbb-admin .adminmain {
+  padding-left: calc(var(--mwidth) + 20px);
+}
+
+.punbb-admin #pun-adnav {
+  width: var(--mwidth);
+  margin-left: calc(var(--mwidth) * -1);
 }
 
 
@@ -1020,14 +1032,14 @@ pre {
 ------------------------------------------*/
 
 #profile .container {
-  padding-left: 200px;
+  padding-left: calc(var(--mwidth) + 20px);
   min-height: 100px;
 }
 
 #profilenav {
   float: left;
-  width: 180px;
-  margin-left: -180px;
+  width: var(--mwidth);
+  margin-left: calc(var(--mwidth) * -1);
 }
 
 #viewprofile h2,
