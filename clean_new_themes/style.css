@@ -1526,3 +1526,133 @@ div .mylike .post-rating p:before {
 #theme_switcher li input[type="radio"]:checked {
     color: var(--accent-2);
 }
+
+
+/************************* 
+Стиль для Быстрой смены аккаунтов 
+Deff 
+*************************/
+
+/*Cкрытие формы входа без клика*/
+#pun-navlinks a:not(.NextShow)+span.odd, #pun-navlinks a:not(.NextShow)+span.odd+a#New-exit {
+  display: none !important;
+}
+
+li#navlogout .odd, li#navlogin .odd {
+  position: absolute !important;
+  margin-top: 25px;
+  background: var(--sec-bg);
+  padding: 15px;
+  border: 1px solid var(--border);
+  z-index: 110;
+}
+
+#form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  max-width: 200px;
+}
+
+#pun:not(.gid3) #form-login > p {
+  display: none;
+}
+
+#pun-navlinks li#navlogout {
+  display: inline-flex;
+  align-items: flex-start;
+  z-index: 120;
+}
+
+#New-exit {
+  margin: auto;
+  display: inline-flex;
+  height: 15px;
+  width: auto;
+  position: relative;
+}
+
+#New-exit img {
+  position: absolute;
+  height: 15px;
+  margin-left: 10px;
+  mask-image: url(https://forumstatic.ru/files/0016/01/4e/34290.svg);
+  background: var(--link);
+  width: 15px;
+}
+
+#List-UserNames, #List-UserNames ul {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 5px;
+}
+
+#List-UserNames ul li {
+  position: relative;
+  padding: 0;
+  display: flex;
+  transition: all .2s linear 0s;
+  justify-content: space-between;
+  background: var(--pun-bg);
+  box-shadow: 0 2px var(--border);
+  border: 1px solid var(--border);
+}
+
+#List-UserNames ul li b, #List-UserNames ul li span {
+  cursor: pointer;
+  transition: all .2s linear 0s;
+  color: var(--text);
+}
+
+#List-UserNames ul li b {
+  padding: 5px 10px;
+  display: flex;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+#List-UserNames ul li span {
+  font-size: 1.6em;
+  position: absolute;
+  right: 0;
+  display: flex;
+  height: 100%;
+  width: 25px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+#List-UserNames ul li b:hover, #List-UserNames ul li span:hover {
+  color: var(--link-hover);
+}
+
+#List-UserNames > span {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+#Paste-And-Copy {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+#List-UserNames span.a1-copy, #List-UserNames span.a1-paste {
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all .2s linear 0s;
+  padding: 5px 10px;
+  background: var(--pun-bg);
+  box-shadow: 0 2px var(--border);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+#List-UserNames ul li:hover, #List-UserNames span.a1-copy:hover, #List-UserNames span.a1-paste:hover {
+  transform: translateY(2px);
+  box-shadow: none;
+}
