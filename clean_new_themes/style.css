@@ -59,12 +59,19 @@
 /* Основные переменные
 ------------------------------------------*/
 
+/* Светлая тема */
+
 :root {
   --body-bg: darkseagreen;
   --pun-bg: ivory;
   --sec-bg: cornsilk;
+  --text: #333;
+  --textarea: lightyellow;
   --link: cadetblue;
   --link-hover: mediumseagreen;
+  --border: blanchedalmond;
+  --accent-1: goldenrod;
+  --accent-2: tomato;
   --pwidth: 240px;
   --mwidth: 180px;
   --pad1: 10px 20px;
@@ -72,6 +79,36 @@
   --pad3: 5px 10px;
   --msr: "Material Symbols Rounded";
   --fa: "Font Awesome 6 Pro", "Font Awesome 6 Brands";
+}
+
+/* Средняя тема */
+
+.medium {
+  --body-bg: #2d3e3e;
+  --pun-bg: #f7ead0;
+  --sec-bg: #cddac7;
+  --text: #090509;
+  --textarea: lightyellow;
+  --link: #2d3e3e;
+  --link-hover: #4e7877;
+  --border: #71b9b5;
+  --accent1: #d0b7a8;
+  --accent2: #a98681;
+}
+
+/* Тёмная тема */
+
+.dark {
+  --body-bg: #033;
+  --pun-bg: #2d3e3e;
+  --sec-bg: #333;
+  --text: whitesmoke;
+  --textarea: #366;
+  --link: lightskyblue;
+  --link-hover: cyan;
+  --border: lightslategray;
+  --accent1: goldenrod;
+  --accent2: tomato;
 }
 
 /* Global
@@ -234,13 +271,15 @@ textarea,
 select {
   padding: 2px 5px;
   border: 1px solid var(--link-hover);
+  background: var(--textarea);
+  color: var(--text);
 }
 
 textarea,
 input,
 select,
 optgroup {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 optgroup {
@@ -419,6 +458,7 @@ body::before {
 
 .punbb {
   font: 12px Arial, Verdana;
+  color: var(--text);
 }
 
 /* настройки внутренних блоков */
@@ -557,7 +597,7 @@ div.icon {
 }
 
 tr.inew div.icon {
-  background: var(--link) url() no-repeat top center;
+  background: var(--border) url() no-repeat top center;
 }
 
 tr.isticky div.icon {
@@ -565,7 +605,7 @@ tr.isticky div.icon {
 }
 
 tr.iclosed div.icon {
-  background: var(--body-bg) url() no-repeat top center;
+  background: var(--accent3) url() no-repeat top center;
 }
 
 
@@ -1169,16 +1209,18 @@ img.avatardemo {
 /* Кнопки вверх-вниз
 -------------------------------------------------------*/
 
-.go-up,
-.go-down {
+.go-up, .go-down {
   cursor: pointer;
-  opacity: .5;
   z-index: 9999;
   display: none;
   position: fixed;
   margin-left: 1000px !important;
   box-sizing: border-box;
   transition: all .3s linear 0s;
+  padding: 15px 5px;
+  background: var(--pun-bg);
+  border-block: 2px solid var(--border);
+  border-right: 2px solid var(--border);
 }
 
 .go-up {
@@ -1431,4 +1473,56 @@ div .mylike .post-rating p:before {
 
 .isguest .post .post-rating {
   pointer-events: none;
+}
+
+
+/* Theme switcher © max, the murderer! */
+
+#theme_switcher {
+  text-align: right;
+  padding: var(--pad1);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  color: var(--accent-1);
+}
+
+#theme_switcher li {
+    display: inline-block;
+}
+
+#theme_switcher li label {
+    display: none;
+}
+
+#theme_switcher li input {
+    -webkit-appearance: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+#theme_switcher li input::before {
+  font: 400 16px/100% var(--fa);
+  margin-right: 4px;
+  cursor: pointer;
+  transition: all .3s linear 0s;
+}
+
+#theme_switcher li input#light::before {
+    content: '\f185';
+}
+
+#theme_switcher li input#medium::before {
+    content: '\f6c4';
+}
+
+#theme_switcher li input#dark::before {
+    content: '\f755';
+}
+
+#theme_switcher li input:hover::before,
+#theme_switcher li input[type="radio"]:checked {
+    color: var(--accent-2);
 }

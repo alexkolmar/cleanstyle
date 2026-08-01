@@ -1,0 +1,48 @@
+<!-- Смена стиля v1.0 © max, the murderer! -->
+<ul id="theme_switcher"></ul>
+<script type="text/javascript">
+// Задаём темы
+var array = [
+    { class: 'light',
+      title: 'Светлая тема' },
+      
+    { class: 'medium',
+      title: 'Средняя тема' },
+      
+    { class: 'dark',
+      title: 'Тёмная тема' } // Последняя тема без запятой
+];
+
+// Задаём радио
+var switchers = '';
+$.each(array, function(index, value) {
+    switchers += '<li title="'+value.title+'"><span class="radio"><input type="radio" name="switcher" id="'+value.class+'" value="'+value.class+'"><label for="'+value.class+'">'+value.title+'</label></span></li>';
+});
+$('#theme_switcher').append(switchers);
+
+// Отслеживаем нажатие на радио
+$('#theme_switcher input').on('click', function () {
+    // Получаем значение нажатого радио
+    var selectedTheme = $(this).val();
+    // Очищаем html от предыдущих тем и устанавливаем новую в моменте
+    $('html').removeClass().addClass(selectedTheme);
+    // Запоминаем
+    localStorage.setItem('selectedTheme', selectedTheme);
+});
+// Проверяем выбирались ли ранее темы
+if (localStorage.getItem('selectedTheme') !== null) {
+    // Получаем выбранную тему
+    var currentTheme = localStorage.getItem('selectedTheme');
+    // Устанавливаем выбранную тему
+    $('html').addClass(currentTheme);
+    // Включаем радио выбранной темы
+    $('#theme_switcher input[value="' + currentTheme + '"').prop('checked', true);
+} 
+// Если не выбирались
+else {
+    // Добавляем дефолтную тему
+    $('html').addClass('light');
+    // Включаем радио дефолтной темы
+    $('#theme_switcher input[value="light"]').prop('checked', true);
+};
+</script>
