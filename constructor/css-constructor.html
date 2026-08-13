@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Конструктор стилей форума</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>
+        ⚙️ Конструктор CSS для форума
+        <small>включай / выключай блоки, меняй ширину</small>
+    </h1>
+
+    <!-- ========================================================= -->
+    <!--  БЛОК 1: КОЛОНКИ (с автоматическим пересчётом ширины)      -->
+    <!-- ========================================================= -->
+    <div class="panel" id="panel-columns">
+        <h2>
+            📐 Колонки (4 шт.)
+            <span class="badge">ширина пересчитывается автоматически</span>
+        </h2>
+        <div class="setting-group" id="columns-group">
+            <!-- Строки будут добавлены JS -->
+        </div>
+        <div style="font-size:13px; color:#888; margin-top:6px;">
+            ⚡ Сними галочку — колонка скроется, ширина пересчитается.
+            Измени число вручную — остальные подстроятся.
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!--  БЛОК 2: ЭЛЕМЕНТЫ ПОСТА (просто вкл/выкл)                -->
+    <!-- ========================================================= -->
+    <div class="panel" id="panel-elements">
+        <h2>
+            🧩 Элементы внутри поста
+            <span class="badge">display: none</span>
+        </h2>
+        <div class="setting-group" id="elements-group">
+            <!-- Строки будут добавлены JS -->
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!--  БЛОК 3: ГЛОБАЛЬНЫЕ ПЕРЕКЛЮЧАТЕЛИ                        -->
+    <!-- ========================================================= -->
+    <div class="panel" id="panel-global">
+        <h2>
+            🌐 Глобальные фичи
+            <span class="badge">одиночные правила</span>
+        </h2>
+        <div class="setting-group" id="global-group">
+            <!-- Строки будут добавлены JS -->
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!--  КНОПКИ УПРАВЛЕНИЯ                                        -->
+    <!-- ========================================================= -->
+    <div class="actions">
+        <button class="success" id="btn-export">📤 Экспорт JSON</button>
+        <button class="primary" id="btn-import">📥 Импорт JSON</button>
+        <button class="danger" id="btn-reset">🔄 Сбросить всё</button>
+        <input type="file" id="file-input" accept=".json" style="display:none" />
+    </div>
+
+    <!-- ========================================================= -->
+    <!--  ВЫВОД ГОТОВОГО CSS                                       -->
+    <!-- ========================================================= -->
+    <div class="css-output">
+        <div class="header">
+            <span>📋 Сгенерированный CSS (скопируй и вставь в стили форума)</span>
+            <button id="btn-copy">📄 Копировать</button>
+        </div>
+        <pre id="css-preview">/* CSS появится после настроек */</pre>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
