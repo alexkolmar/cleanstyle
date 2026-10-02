@@ -1129,7 +1129,7 @@ const CSS_ONLINE_OFFLINE = `.pa-online, .pa-offline {
 .pa-online strong, .pa-last-visit {
   position: absolute;
   margin-right: -50%;
-  transform: translate(-50%, 100%);
+  transform: translateX(-50%);
   padding: 5px 10px;
   left: 50%;
   top: 24px;
