@@ -1,500 +1,1842 @@
-
-
 // ================================================================
-// 1.  ОПИСАНИЕ ВСЕХ НАСТРОЕК (ТЫ МОЖЕШЬ ДОБАВЛЯТЬ СВОИ!)
-// ================================================================
-// ВСЯ МАГИЯ ЗДЕСЬ.  Чтобы добавить новый переключатель —
-// просто добавь объект в нужный массив (columns, elements, global).
-// Структура объекта:
-//   id          — уникальный ключ (строка)
-//   label       — текст рядом с чекбоксом
-//   selector    — CSS-селектор (строка). Для колонок можно массив.
-//   default     — true/false (включен по умолчанию?)
-//   width       — только для колонок! число (процент)
+// 1.  БАЗОВЫЙ CSS (уже вырезаны опциональные блоки)
 // ================================================================
 
-// Конфигурация колонок (с шириной)
-const COLUMNS_CONFIG = [
-  { id: 'col1', label: 'Колонка 1 ( .tc1 )', selector: '.tc1', default: true, width: 25 },
-  { id: 'col2', label: 'Колонка 2 ( .tc2 )', selector: '.tc2', default: true, width: 25 },
-  { id: 'col3', label: 'Колонка 3 ( .tc3 )', selector: '.tc3', default: true, width: 25 },
-  { id: 'col4', label: 'Колонка 4 ( .tc4 )', selector: '.tc4', default: true, width: 25 },
+const BASE_CSS = `@import url(style_cs.css);
+
+/* Иконический шрифт */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+/* Font Awesome */
+@import url("https://kit-pro.fontawesome.com/releases/v6.6.0/css/pro.min.css");
+
+
+/****************************************
+Чистый стиль by Alex Kolmar (бродяга)
+****************************************/
+
+/* Полезные сервисные настройки
+-------------------------------------------------------------*/
+
+.acchide,
+#pun-index #pun-main h1,
+#pun-navlinks h2,
+#pun-pagelinks h2,
+#pun-status h2,
+#pun-ulinks h2,
+.punbb .forum h2,
+.punbb .multipage .topic h2,
+.punbb dl.post-sig dt span,
+.punbb p.crumbs strong,
+.punbb .divider hr,
+.punbb .required label em,
+.punbb .formsubmit label,
+.punbb .submitfield label,
+.punbb .modmenu label,
+#pun-userlist .main h2 {
+  font-size: 0;
+  height: 0;
+  width: 0;
+  line-height: 0.0;
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+}
+
+#pun:after,
+.punbb .container:after,
+.punbb .post-links ul:after,
+.punbb .main div.inline:after,
+.punbb .post-box:after,
+.punbb .linksb:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  line-height: 0.0;
+  font-size: 0;
+}
+
+
+/* Основные переменные
+------------------------------------------*/
+
+:root {
+  --body-bg: darkseagreen;
+  --pun-bg: ivory;
+  --sec-bg: cornsilk;
+  --text: #333;
+  --textarea: lightyellow;
+  --link: cadetblue;
+  --link-hover: mediumseagreen;
+  --border: blanchedalmond;
+  --accent-1: goldenrod;
+  --accent-2: tomato;
+  --pwidth: 240px;
+  --mwidth: 180px;
+  --pad1: 10px 20px;
+  --pad2: 5px 20px;
+  --pad3: 5px 10px;
+  --msr: "Material Symbols Rounded";
+  --fa: "Font Awesome 6 Pro", "Font Awesome 6 Brands";
+}
+
+/* Global
+------------------------------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* прокрутка 
+-------------------------------------------------- */
+
+@supports selector(::-webkit-scrollbar) {
+  *::-webkit-scrollbar-thumb {
+    background: var(--link);
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--link-hover);
+    cursor: default;
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--sec-bg);
+  }
+  *::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--link-hover) var(--sec-bg);
+  }
+}
+
+/* выделение текста */
+
+::selection {
+  background: var(--link);
+  color: var(--pun-bg);
+}
+
+:focus {
+  outline: none;
+}
+
+/* все ссылки */
+
+a,
+.punbb #pun-admain a {
+  text-decoration: none;
+  color: var(--link);
+  transition: all .2s linear 0s;
+}
+
+a:hover,
+.punbb #pun-admain a:hover {
+  color: var(--link-hover);
+}
+
+/* все заголовки */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre {
+  margin: 0;
+}
+
+h1,
+h2 {
+  padding: var(--pad1);
+  font-weight: normal;
+  text-align: center;
+}
+
+ul,
+dl,
+li,
+dd,
+dt {
+  list-style: none;
+}
+
+address,
+em {
+  font-style: normal;
+}
+
+/* выключить список модераторов, отредактировано etc */
+
+.modlist,
+.lastedit,
+.punbb div#pun-live-rusff,
+.punbb .topic a.sharelink {
+  display: none;
+}
+
+/* модальные окна, репутация, закладки etc */
+
+#tags .container,
+.post_report,
+.post_reputation,
+#MyBookmarks,
+.inner.popup_graffiti,
+.pun-modal .modal-inner,
+.punbb-admin #pun-admin-award-form .inner {
+  background: var(--sec-bg);
+}
+
+/* Формы
+------------------------------------------- */
+
+button.button,
+input.button,
+#pun-admain input.button,
+#sub4,
+input[type="button"],
+input[type="submit"] {
+  padding: 2px 10px;
+  border: 1px solid currentColor;
+  cursor: pointer;
+  transition: all .2s linear 0s;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  padding: 2px 5px;
+  border: 1px solid var(--link-hover);
+  background: var(--textarea);
+  color: var(--text);
+}
+
+textarea,
+input,
+select,
+optgroup {
+  font-size: 12px;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+.checkfield input[type="checkbox"],
+.radiofield input[type="radio"] {
+  margin: 0 3px;
+}
+
+p[class="checkfield"] *,
+div[class="checkfield"] *,
+fieldset[class="radiofield"] * {
+  height: 20px;
+  vertical-align: middle;
+}
+
+.formal .container {
+  padding: var(--pad1);
+}
+
+.formsubmit {
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.formsubmit input,
+.formsubmit a,
+.formsubmit span {
+  margin: 0 6px 0 0;
+}
+
+fieldset {
+  border: none;
+}
+
+fieldset legend {
+  font-weight: bold;
+}
+
+fieldset fieldset {
+  border: none;
+  margin: 0;
+  padding: 0 0 8px 0
+}
+
+.fs-box {
+  padding: 5px 0;
+}
+
+.fs-box p,
+.fs-box fieldset {
+  padding: 0 0 8px 0;
+}
+
+.inline .inputfield,
+.inline .selectfield,
+.inline .passfield {
+  float: left;
+  margin-right: 10px;
+}
+
+.inline .infofield {
+  clear: both
+}
+
+.datafield br {
+  display: none
+}
+
+.required label,
+.datafield span.input {
+  font-size: 10px;
+}
+
+textarea,
+.longinput input {
+  width: 64%;
+  margin: 0;
+}
+
+.hashelp {
+  position: relative;
+}
+
+
+/* Админка
+------------------------------------------*/
+
+.punbb-admin .adcontainer,
+.punbb-admin .adformal {
+  border: none;
+}
+
+.punbb-admin .adminmain {
+  padding-left: calc(var(--mwidth) + 20px);
+}
+
+.punbb-admin .adformal h2 {
+  text-align: center;
+}
+
+.punbb-admin #pun-adnav {
+  width: var(--mwidth);
+  margin-left: calc(var(--mwidth) * -1);
+}
+
+.punbb-admin #pun-adnav li.isactive a {
+  color: var(--link-hover);
+}
+
+.punbb-admin #pun-adnav .isactive ul.adsubnav a {
+  text-decoration: none;
+  color: var(--link);
+}
+
+.punbb-admin #pun-adnav .isactive ul.adsubnav a:hover,
+.punbb-admin sup.new {
+  color: var(--link-hover);
+}
+
+.punbb-admin #pun-admain fieldset .handle, .punbb-admin #pun-admain fieldset p {
+  border-color: var(--border);
+  background-color: var(--sec-bg);
+}
+
+.punbb-admin #pun-admain fieldset {
+  border-color: var(--body-bg);
+}
+
+.punbb-admin #pun-admain legend span {
+  background-color: var(--body-bg);
+  color: var(--sec-bg);
+}
+
+
+/* Тело форума
+------------------------------------------*/
+
+html {
+  background: var(--body-bg) url() no-repeat top center;
+}
+
+#pun {
+  margin: 30px auto;
+  width: 1000px;
+  background: var(--pun-bg);
+}
+
+.punbb {
+  font: 12px Arial, Verdana;
+  color: var(--text);
+}
+
+.punbb > div .container {
+  padding: var(--pad1);
+}
+
+/* Навигационные ссылки */
+
+#pun-navlinks .container {
+  text-align: center;
+}
+
+#pun-navlinks .container:after {
+  display: none;
+}
+
+#pun-navlinks li {
+  padding: 0 5px;
+  display: inline;
+}
+
+/* Пользовательские ссылки */
+
+#pun-ulinks .container {
+  text-align: center;
+}
+
+#pun-ulinks li {
+  padding: 0 5px;
+  display: inline;
+}
+
+/* Статус */
+
+#pun-status span {
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+/* Копирайт */
+
+#pun-about .container {
+  text-align: center;
+}
+
+
+/* Основная форумная таблица
+------------------------------------------*/
+
+.main table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.main th {
+  padding: 5px 10px;
+}
+
+.main td {
+  padding: 10px;
+}
+
+.tcl {
+  width: 50%;
+}
+
+.tc2,
+.tc3,
+.tcmod {
+  text-align: center;
+  width: 10%;
+}
+
+.tcr {
+  width: 30%;
+}
+
+#pun-searchtopics .tcl,
+#pun-modviewforum .tcl {
+  width: 40%
+}
+
+#pun-searchtopics .tc2 {
+  text-align: left;
+  width: 20%;
+}
+
+#pun-debug table .tcl {
+  width: 15%;
+}
+
+#pun-debug .tcr {
+  width: 90%;
+}
+
+tbody.hasicon td.tcl {
+  padding-left: 40px;
+}
+
+/* Иконки */
+
+div.icon {
+  position: absolute;
+  margin-left: -30px;
+  width: 20px;
+  height: 20px;
+  background: var(--sec-bg) url() no-repeat top center;
+}
+
+tr.inew div.icon {
+  background: var(--border) url() no-repeat top center;
+}
+
+tr.isticky div.icon {
+  background: var(--link-hover) url() no-repeat top center;
+}
+
+tr.iclosed div.icon {
+  background: var(--accent3) url() no-repeat top center;
+}
+
+
+/* Пагинация
+--------------------------------------------------------------------------------------------------- */
+
+.multipage {
+  margin-top: 10px;
+}
+
+.linkst {
+  position: relative;
+  padding: var(--pad2);
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkst .postlink {
+  text-align: right;
+}
+
+.linksb {
+  position: relative;
+  padding: var(--pad2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.linksb .pagelink {
+  order: -1;
+}
+
+.subscribelink {
+  width: 100%;
+  text-align: right;
+}
+
+.linksb noindex {
+  order: 1;
+}
+
+.linksb .postlink {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* Модераторское меню, RSS, Atom */
+
+.modmenu .container {
+  padding: var(--pad3);
+  text-align: right;
+}
+
+.modmenu .container strong {
+  float: left;
+}
+
+.modmenu input {
+  margin-left: 10px;
+}
+
+#topic-users-in a:not(:last-child)::after {
+  content: ',';
+}
+
+/* Главная страница
+------------------------------------------*/
+
+#pun-index tbody.hasicon td.tcl {
+  padding: 10px;
+}
+
+#pun-index .intd {
+  display: flex;
+  gap: 10px;
+}
+
+#pun-index div.icon {
+  position: relative;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+#pun-index td .user-avatar a {
+  display: inline-block;
+  position: relative;
+}
+
+/* Статистика — базовые правила, которые нужны всегда */
+li#onlinelist {
+  margin-top: 10px;
+  text-align: justify;
+}
+
+/* Шапка
+------------------------------------------*/
+
+#pun-title {}
+
+/* скрыть заголовок в шапке */
+
+#pun-title .title-logo {
+  display: none;
+}
+
+/* содержимое шапки в html-верх */
+
+.tablica {}
+
+/* Объявление
+------------------------------------------*/
+
+#pun-announcement {}
+
+/* скрываем слово "объявление" */
+
+#pun-announcement h2 {
+  display: none;
+}
+
+/* Топик
+------------------------------------------*/
+
+.post {
+  margin-top: 10px;
+}
+
+.toppost,
+.topicpost {
+  margin-top: 0;
+}
+
+.post .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+}
+
+.post h3 {
+  padding: var(--pad2);
+}
+
+.post h3 span {
+  display: block;
+}
+
+.post h3 strong {
+  float: right;
+  text-align: right;
+  font-weight: normal;
+}
+
+.post-author {
+  position: relative;
+  margin: 0 0 15px;
+  width: var(--pwidth);
+  text-align: center;
+  box-sizing: border-box;
+  background: var(--sec-bg);
+}
+
+.post-author ul {
+  padding: 10px;
+}
+
+.pa-title {
+  margin: 10px 0;
+}
+
+.lz {
+  margin: 10px 0;
+}
+
+.lz .name {
+  margin: 0 auto 5px;
+  display: block;
+}
+
+/* Тело поста */
+
+.post-body {
+  width: calc(100% - var(--pwidth));
+}
+
+.post-box {
+  padding: 0 0 10px 10px;
+}
+
+.post-links {
+  margin-left: var(--pwidth);
+  width: 100%;
+}
+
+.post-links ul {
+  padding: 0;
+  margin-left: calc(var(--pwidth) * -1);
+  text-align: right;
+}
+
+.post-links li {
+  display: inline;
+}
+
+.post-links li:not(:first-of-type) {
+  padding-left: 10px;
+}
+
+.pl-email,
+.pl-website {
+  float: left;
+}
+
+.clearer {
+  clear: both;
+  height: 0;
+  font-size: 0;
+}
+
+
+/* Контент поста */
+
+.punbb .post td {
+  border: 0px transparent !important;
+}
+
+pre {
+  font: 12px/140% monaco, "bitstream vera sans mono", "courier new", courier, monospace;
+}
+
+.post-content em {
+  font-style: italic;
+}
+
+.post .post-content td {
+  border-width: 0px !important;
+}
+
+.post-content em.bbuline {
+  font-style: normal;
+  text-decoration: underline;
+}
+
+.post-content p {
+  margin: 0;
+  padding: 0 0 12px 0;
+  line-height: 150%;
+  text-align: justify;
+}
+
+.post-content img {
+  vertical-align: middle;
+}
+
+.scrollbox {
+  width: 100%;
+  overflow: auto;
+  max-height: 200px;
+}
+
+.quote-box,
+.code-box {
+  margin: 4px 10px 10px;
+  padding: 5px;
+  border: 1px solid var(--link-hover);
+  background: var(--sec-bg);
+}
+
+.quote-box cite, .code-box strong.legend {
+  display: block;
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.post-sig dt {
+  border-bottom: 1px solid var(--border);
+  width: 300px;
+  margin: 10px auto;
+}
+
+.punbb .reactions-root {
+  padding: 0 0 10px;
+}
+
+.punbb .reactions-container {
+  position: relative;
+  justify-content: flex-end;
+}
+
+.punbb .reaction-picker {
+  order: 1;
+}
+
+.punbb .reaction-picker-panel {
+  right: 0;
+}
+
+#main-reply {
+  box-sizing: border-box;
+}
+
+#tags {
+  position: relative;
+}
+
+#tags .container {
+  padding: var(--pad3) !important;
+  top: 0 !important;
+  max-height: 300px;
+  overflow: auto;
+}
+
+
+/* Профиль + ЛС
+------------------------------------------*/
+
+#profile .container {
+  padding-left: calc(var(--mwidth) + 20px);
+  min-height: 100px;
+}
+
+#profilenav {
+  float: left;
+  width: var(--mwidth);
+  margin-left: calc(var(--mwidth) * -1);
+}
+
+#viewprofile h2,
+#profilenav h2 {
+  padding: 0;
+  margin: 0;
+}
+
+#profilenav li {
+  padding: 0 0 5px;
+}
+
+#viewprofile li {
+  padding: 5px 0;
+}
+
+#profile-right li {
+  display: flex;
+}
+
+#profile-right li span {
+  width: 150px;
+  flex-shrink: 0;
+}
+
+#profile-left li strong, #profile-right li strong {
+  font-weight: normal !important;
+}
+
+img.avatardemo {
+  float: right;
+  margin: 0 0 8px 18px;
+}
+
+#pun-messages .clearer {
+  display: none;
+}
+
+/* Прочие страницы
+------------------------------------------*/
+
+#pun-userlist .formal,
+#pun-userlist .formal .container {
+  margin-bottom: 0;
+}
+
+#pun-userlist .tc2 {
+  text-align: left;
+  width: 20%;
+}
+
+#pun-userlist .tcl {
+  width: 40%
+}
+
+.info .container {
+  padding: var(--pad3);
+}
+
+.info .container .backlink {
+  padding-top: 8px;
+}
+
+.info-box {
+  margin: 0 0 10px 0;
+}
+
+.info-box * {
+  padding: 0 0 5px 0;
+}
+
+.info-box .legend {
+  font-weight: bold;
+}
+
+.jGrowl-notification .jGrowl-close {
+  position: relative;
+  right: 6px;
+}
+
+.tipsy #respect figcaption {
+  margin-top: 0;
+}
+
+/* Кнопки вверх-вниз
+-------------------------------------------------------*/
+
+.go-up, .go-down {
+  cursor: pointer;
+  z-index: 9999;
+  display: none;
+  position: fixed;
+  margin-left: 1000px !important;
+  box-sizing: border-box;
+  transition: all .3s linear 0s;
+  padding: 15px 5px;
+  background: var(--pun-bg);
+  border-block: 2px solid var(--border);
+  border-right: 2px solid var(--border);
+}
+
+.go-up {
+  top: 260px;
+}
+
+.go-down {
+  top: 320px;
+}
+
+.go-down:hover,
+.go-up:hover {
+  opacity: 1;
+}
+
+/* Form Buttons © max, the murderer!
+----------------------------------------------------------------------- */
+
+#form-buttons table {
+    width: 100% !important;
+}
+
+#form-buttons table tr {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+#form-buttons td {
+    position: relative;
+    background: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+#form-buttons td::before {
+    font-family: var(--fa);
+    font-size: 16px;
+    font-weight: 400;
+    position: absolute;
+    color: var(--link);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#form-buttons td:hover::before {
+    color: var(--link-hover);
+}
+
+#button-font::before { content: '\\f031'; }
+#button-size::before { content: '\\f894'; }
+#button-bold::before { content: '\\f032'; }
+#button-italic::before { content: '\\f033'; }
+#button-underline::before { content: '\\f0cd'; }
+#button-strike::before { content: '\\f0cc'; }
+#button-left::before { content: '\\f036'; }
+#button-right::before { content: '\\f038'; }
+#button-center::before { content: '\\f037'; }
+#button-link::before { content: '\\f0c1'; }
+#button-spoiler::before { content: '\\f518'; }
+#button-image::before { content: '\\f302'; }
+#button-video::before { content: '\\f144'; }
+#button-hide::before { content: '\\f30d'; }
+#button-quote::before { content: '\\f27a'; }
+#button-code::before { content: '\\f121'; }
+#button-color::before { content: '\\f53f'; }
+#button-table::before { content: '\\f009'; }
+#button-smile::before { content: '\\f118'; }
+#button-keyboard::before { content: '\\f11c'; }
+#button-addition::before { content: '\\f0d7'; }
+#form-buttons td#button-files_rusff::before { content: '\\f07b'; }
+#form-buttons td#button-graffiti_rusff::before { content: '\\f5bd'; }
+#button-transL::before { content: '\\f891'; }
+#button-indent::before { content: '\\f878'; }
+#button-justify::before { content: '\\f039'; }
+#floatbut::before { content: '\\f03c'; }
+#form-buttons #button-image ~ #button-image::before { content: '\\f03e' !important; }
+#button-mask::before { content: '\\f630'; }
+
+
+/* Theme switcher © max, the murderer! */
+
+#theme_switcher {
+  text-align: right;
+  padding: var(--pad1);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  color: var(--accent-1);
+}
+
+#theme_switcher li {
+    display: inline-block;
+}
+
+#theme_switcher li label {
+    display: none;
+}
+
+#theme_switcher li input {
+    -webkit-appearance: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+#theme_switcher li input::before {
+  font: 400 16px/100% var(--fa);
+  margin-right: 4px;
+  cursor: pointer;
+  transition: all .3s linear 0s;
+}
+
+#theme_switcher li input#light::before { content: '\\f185'; }
+#theme_switcher li input#medium::before { content: '\\f6c4'; }
+#theme_switcher li input#dark::before { content: '\\f755'; }
+
+#theme_switcher li input:hover::before,
+#theme_switcher li input[type="radio"]:checked {
+    color: var(--accent-2);
+}
+`;
+
+// ================================================================
+// 2.  ДЛИННЫЕ CSS-БЛОКИ
+// ================================================================
+
+const CSS_MEDIUM_THEME = `.medium {
+  --body-bg: #2d3e3e;
+  --pun-bg: #f7ead0;
+  --sec-bg: #cddac7;
+  --text: #090509;
+  --textarea: lightyellow;
+  --link: #2d3e3e;
+  --link-hover: #4e7877;
+  --border: #71b9b5;
+  --accent1: #d0b7a8;
+  --accent2: #a98681;
+}`;
+
+const CSS_DARK_THEME = `.dark {
+  --body-bg: #033;
+  --pun-bg: #2d3e3e;
+  --sec-bg: #333;
+  --text: whitesmoke;
+  --textarea: #366;
+  --link: lightskyblue;
+  --link-hover: cyan;
+  --border: lightslategray;
+  --accent1: goldenrod;
+  --accent2: tomato;
+}`;
+
+const CSS_FIXED_BG = `body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -10;
+  background: var(--body-bg) url() no-repeat top center/cover;
+}`;
+
+const CSS_ONLINE_OFFLINE = `.pa-online, .pa-offline {
+  position: relative;
+  margin: 10px auto 0;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.pa-online:before {
+  content: "online";
+  font-weight: bold;
+}
+
+.pa-offline:before {
+  content: "offline";
+}
+
+.pa-online strong, .pa-last-visit {
+  position: absolute;
+  margin-right: -50%;
+  transform: translate(-50%, 100%);
+  padding: 5px 10px;
+  left: 50%;
+  top: 24px;
+  opacity: 0;
+  background: rgba(0,0,0,.7);
+  box-sizing: border-box;
+  white-space: nowrap;
+  transition: opacity .2s linear 0s;
+  pointer-events: none;
+  color: var(--pun-bg);
+}
+
+.pa-online strong::after, .pa-last-visit::after {
+  content: '';
+  width: 0;
+  height: 0;
+  display: block;
+  position: absolute;
+  z-index: 10;
+  border: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  margin-left: -10px;
+  left: 50%;
+  border-bottom: 10px solid rgba(0,0,0,.7);
+  top: -10px;
+}
+
+.pa-online:hover strong, .pa-offline:hover .pa-last-visit {
+  opacity: 1;
+}`;
+
+const CSS_FOOTER = `#html-footer .container { padding: 0; }
+
+.banners {
+  padding: var(--pad1);
+}
+
+.banners a {
+  opacity: .7;
+}
+
+.banners a:hover {
+  opacity: 1;
+}`;
+
+const CSS_POST_RATING = `body div.post-rating,
+body div.post-vote {
+  float: right;
+  position: relative;
+  line-height: initial;
+}
+
+body div.post-rating p,
+body div.post-vote p {
+  float: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+div .post-rating p > a {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 11px/100% verdana, arial, sans-serif !important;
+  color: var(--link);
+}
+
+div.post-vote p > a {
+  font-size: 0 !important;
+}
+
+div .post-rating p::before, div .post-vote p a::before {
+  content: '\\f004';
+  font-family: var(--fa);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  color: var(--sec-bg);
+  transition: all .2s linear 0s;
+  text-stroke: 1px var(--link);
+  -webkit-text-stroke: 1px var(--link);
+}
+
+div .post-vote p a:before {
+  content: '\\f075';
+}
+
+div .post-rating p:hover:before,
+div .post-vote p:hover a:before {
+  color: var(--link);
+}
+
+div .post-rating p:hover > a,
+div .mylike .post-rating p > a {
+  color: var(--pun-bg);
+}
+
+div .mylike .post-rating p:before {
+  color: var(--link);
+}
+
+.post[data-group-id="3"] .post-rating {
+  display: none;
+}
+
+.isguest .post .post-rating {
+  pointer-events: none;
+}`;
+
+const CSS_FAST_SWITCH = `#pun-navlinks a:not(.NextShow)+span.odd, #pun-navlinks a:not(.NextShow)+span.odd+a#New-exit {
+  display: none !important;
+}
+
+li#navlogout .odd, li#navlogin .odd {
+  position: absolute !important;
+  margin-top: 25px;
+  background: var(--sec-bg);
+  padding: 15px;
+  border: 1px solid var(--border);
+  z-index: 110;
+}
+
+#form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  max-width: 200px;
+}
+
+#pun:not(.gid3) #form-login > p {
+  display: none;
+}
+
+#pun-navlinks li#navlogout {
+  display: inline-flex;
+  align-items: flex-start;
+  z-index: 120;
+}
+
+#New-exit {
+  margin: auto;
+  display: inline-flex;
+  height: 15px;
+  width: auto;
+  position: relative;
+}
+
+#New-exit img {
+  position: absolute;
+  height: 15px;
+  margin-left: 10px;
+  mask-image: url(https://forumstatic.ru/files/0016/01/4e/34290.svg);
+  background: var(--link);
+  width: 15px;
+}
+
+#List-UserNames, #List-UserNames ul {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 5px;
+}
+
+#List-UserNames ul li {
+  position: relative;
+  padding: 0;
+  display: flex;
+  transition: all .2s linear 0s;
+  justify-content: space-between;
+  background: var(--pun-bg);
+  box-shadow: 0 2px var(--border);
+  border: 1px solid var(--border);
+}
+
+#List-UserNames ul li b, #List-UserNames ul li span {
+  cursor: pointer;
+  transition: all .2s linear 0s;
+  color: var(--text);
+}
+
+#List-UserNames ul li b {
+  padding: 5px 10px;
+  display: flex;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+#List-UserNames ul li span {
+  font-size: 1.6em;
+  position: absolute;
+  right: 0;
+  display: flex;
+  height: 100%;
+  width: 25px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+#List-UserNames ul li b:hover, #List-UserNames ul li span:hover {
+  color: var(--link-hover);
+}
+
+#List-UserNames > span {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+#Paste-And-Copy {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+#List-UserNames span.a1-copy, #List-UserNames span.a1-paste {
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all .2s linear 0s;
+  padding: 5px 10px;
+  background: var(--pun-bg);
+  box-shadow: 0 2px var(--border);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+#List-UserNames ul li:hover, #List-UserNames span.a1-copy:hover, #List-UserNames span.a1-paste:hover {
+  transform: translateY(2px);
+  box-shadow: none;
+}`;
+
+// ---- CSS для статистики ----
+
+const CSS_STATS_NEW = `#pun-stats .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 20px;
+}
+
+li#onlinelist {
+  width: 100%;
+}`;
+
+const CSS_STATS_OLD = `#pun-stats li.item1,
+#pun-stats li.item2 {
+  float: left;
+  clear: both;
+}
+
+#pun-stats li.item3,
+#pun-stats li.item4 {
+  text-align: right;
+}`;
+
+// ---- CSS для профиля (pa-posts / pa-respect) ----
+
+const CSS_PA_INLINE = `.pa-posts,
+.pa-respect {
+  display: inline-block;
+  margin: 0 10px 5px;
+}`;
+
+const CSS_PA_BLOCK = `.pa-posts .fld-name,
+.pa-respect .fld-name {
+  display: block;
+}`;
+
+const CSS_PA_ICONS = `.pa-posts .fld-name,
+.pa-respect .fld-name {
+  font-size: 0;
+}
+
+.pa-posts .fld-name:before,
+.gid3 .pa-respect .fld-name:before, .pa-respect .fld-name a:before {
+  content: "";
+  font-family: var(--fa);
+  font-size: 16px;
+}
+
+.pa-posts .fld-name:before {
+  content: "\\f0e0";
+}
+
+.gid3 .pa-respect .fld-name:before, .pa-respect .fld-name a:before {
+  content: "\\f004";
+}`;
+
+// ================================================================
+// 3.  ОПЦИОНАЛЬНЫЕ БЛОКИ
+// ================================================================
+// Типы блоков:
+//   - обычный: { id, label, css }
+//   - родитель+дети: { id, label, children: [...] }
+//   - radio: { id, label, type: 'radio', default: '...', options: [{value, label, css}] }
+//   - subchecks: { id, label, type: 'subchecks', subs: [{id, label, css}] }
+// ================================================================
+
+const OPTIONAL_BLOCKS = [
+    {
+        id: 'theme_switcher_block',
+        label: '🎨 Переключатель тем (включить выбор тем)',
+        children: [
+            { id: 'theme_medium', label: 'Средняя тема (.medium)', css: CSS_MEDIUM_THEME },
+            { id: 'theme_dark', label: 'Тёмная тема (.dark)', css: CSS_DARK_THEME }
+        ]
+    },
+    {
+        id: 'hide_index_thead',
+        label: '📋 Скрыть «форум, тем, сообщений» (thead) на главной',
+        css: `#pun-index thead { display: none; }`
+    },
+    {
+        id: 'hide_index_tc23',
+        label: '📋 Скрыть колонки tc2, tc3 на главной',
+        css: `#pun-index .tc2, #pun-index .tc3 { display: none; }`
+    },
+    {
+        id: 'fixed_bg',
+        label: '🖼️ Заплатка для фиксированного фона (body::before)',
+        css: CSS_FIXED_BG
+    },
+    {
+        id: 'online_offline',
+        label: '🟢 Онлайн-оффлайн статус (.pa-online/.pa-offline)',
+        css: CSS_ONLINE_OFFLINE
+    },
+    {
+        id: 'footer',
+        label: '📎 Футер (баннеры, #html-footer)',
+        css: CSS_FOOTER
+    },
+    {
+        id: 'post_rating',
+        label: '❤️ Рейтинг поста',
+        css: CSS_POST_RATING
+    },
+    {
+        id: 'fast_switch',
+        label: '👥 Быстрая смена аккаунтов',
+        css: CSS_FAST_SWITCH
+    },
+    // ---- Новые блоки ----
+    {
+        id: 'stats_style',
+        label: '📊 Стиль статистики',
+        type: 'radio',
+        default: 'new',
+        options: [
+            { value: 'new', label: 'Новый — в строку (flex)', css: CSS_STATS_NEW },
+            { value: 'old', label: 'Старый — по сторонам (float)', css: CSS_STATS_OLD }
+        ]
+    },
+    {
+        id: 'profile_pa',
+        label: '👤 Стилизация профиля (сообщения и уважение)',
+        type: 'subchecks',
+        subs: [
+            { id: 'pa_inline', label: 'Элементы в одну строку (display: inline-block)', css: CSS_PA_INLINE },
+            { id: 'pa_block', label: 'Названия полей над значением (display: block)', css: CSS_PA_BLOCK },
+            { id: 'pa_icons', label: 'Заменить названия на иконки (Font Awesome)', css: CSS_PA_ICONS }
+        ]
+    }
 ];
 
-// Конфигурация элементов (просто вкл/выкл, без ширины)
-const ELEMENTS_CONFIG = [
-  { id: 'avatar', label: 'Аватарка ( .avatar )', selector: '.avatar', default: true },
-  { id: 'signature', label: 'Подпись ( .signature )', selector: '.signature', default: true },
-  { id: 'postdate', label: 'Дата ( .post-date )', selector: '.post-date', default: true },
-  { id: 'postbody', label: 'Тело сообщения ( .post-body )', selector: '.post-body', default: true },
-];
-
-// Конфигурация глобальных фич (одиночные правила)
-const GLOBAL_CONFIG = [
-  { id: 'hide_header', label: 'Скрыть шапку ( .forum-header )', selector: '.forum-header', default: false },
-  { id: 'hide_footer', label: 'Скрыть подвал ( .forum-footer )', selector: '.forum-footer', default: false },
-  { id: 'hide_borders', label: 'Убрать рамки у таблиц ( table )', selector: 'table', default: false },
-];
-
 // ================================================================
-// 2.  СОСТОЯНИЕ (ХРАНИЛИЩЕ)
-// ================================================================
-// state хранит текущие значения для ВСЕХ настроек.
-// Для колонок: { col1: true, col2: true, ... } + ширина хранится отдельно в widths
-// Для элементов и глобальных: просто true/false
+// 4.  СОСТОЯНИЕ
 // ================================================================
 
-let state = {};          // { id: true/false } для всех
-let widths = {};         // { col1: 25, col2: 25, ... } только для колонок
+let state = {};        // для простых, родительских и subchecks галочек
+let radioState = {};   // для radio-блоков: { blockId: 'value' }
 
-// ================================================================
-// 3.  ИНИЦИАЛИЗАЦИЯ
-// ================================================================
-
-function initDefaults() {
-  // Колонки
-  COLUMNS_CONFIG.forEach(c => {
-    state[c.id] = c.default;
-    widths[c.id] = c.width;
-  });
-  // Элементы
-  ELEMENTS_CONFIG.forEach(c => {
-    state[c.id] = c.default;
-  });
-  // Глобальные
-  GLOBAL_CONFIG.forEach(c => {
-    state[c.id] = c.default;
-  });
-}
-
-// ================================================================
-// 4.  ПЕРЕСЧЁТ ШИРИНЫ (УМНАЯ ЛОГИКА)
-// ================================================================
-
-function recalcWidths(changedId, newValue) {
-  // Получаем все активные (включённые) колонки
-  const activeIds = COLUMNS_CONFIG.filter(c => state[c.id] === true).map(c => c.id);
-  if (activeIds.length === 0) {
-    // Если все выключены — ничего не делаем, чтобы не было деления на ноль
-    return;
-  }
-
-  // Если меняли конкретную колонку — применяем её новое значение,
-  // а остальные активные делим поровну.
-  if (changedId && activeIds.includes(changedId)) {
-    // Проверяем, что новое значение валидное (0-100)
-    let val = parseFloat(newValue);
-    if (isNaN(val) || val < 0) val = 0;
-    if (val > 100) val = 100;
-    widths[changedId] = val;
-
-    // Остаток делим между остальными активными
-    const others = activeIds.filter(id => id !== changedId);
-    if (others.length > 0) {
-      const remainder = 100 - val;
-      const share = remainder / others.length;
-      others.forEach(id => {
-        widths[id] = Math.round(share * 100) / 100; // округляем до 2 знаков
-      });
-    }
-    // Корректируем сумму до 100% (из-за округлений)
-    normalizeWidths(activeIds);
-    return;
-  }
-
-  // Если changedId не передан (или колонка выключена) — делим поровну между всеми активными
-  const share = 100 / activeIds.length;
-  activeIds.forEach(id => {
-    widths[id] = Math.round(share * 100) / 100;
-  });
-  normalizeWidths(activeIds);
-}
-
-// Функция подгонки суммы до 100% (корректирует последнюю колонку)
-function normalizeWidths(ids) {
-  let sum = ids.reduce((acc, id) => acc + widths[id], 0);
-  if (ids.length === 0) return;
-  // Если сумма не равна 100, корректируем последнюю
-  const diff = 100 - sum;
-  if (Math.abs(diff) > 0.001) {
-    const last = ids[ids.length - 1];
-    widths[last] = Math.round((widths[last] + diff) * 100) / 100;
-    // Если ушли в отрицательные или >100 — пересчитываем всё заново поровну
-    if (widths[last] < 0 || widths[last] > 100) {
-      const share = 100 / ids.length;
-      ids.forEach(id => { widths[id] = Math.round(share * 100) / 100; });
-      // повторная нормализация
-      let s2 = ids.reduce((a, id) => a + widths[id], 0);
-      const d2 = 100 - s2;
-      const last2 = ids[ids.length - 1];
-      widths[last2] = Math.round((widths[last2] + d2) * 100) / 100;
-    }
-  }
-}
-
-// ================================================================
-// 5.  ГЕНЕРАЦИЯ CSS
-// ================================================================
-
-function generateCSS() {
-  const rules = [];
-
-  // ---- Колонки ----
-  // Сначала правила для скрытых колонок (display: none)
-  const hiddenCols = COLUMNS_CONFIG.filter(c => state[c.id] === false);
-  if (hiddenCols.length > 0) {
-    const selectors = hiddenCols.map(c => c.selector).join(', ');
-    rules.push(`${selectors} { display: none; }`);
-  }
-
-  // Правила для ширины активных колонок
-  const activeCols = COLUMNS_CONFIG.filter(c => state[c.id] === true);
-  if (activeCols.length > 0) {
-    activeCols.forEach(c => {
-      const w = widths[c.id] !== undefined ? widths[c.id] : 25;
-      rules.push(`${c.selector} { width: ${w}%; }`);
+function initState() {
+    state = {};
+    radioState = {};
+    OPTIONAL_BLOCKS.forEach(b => {
+        if (b.type === 'radio') {
+            radioState[b.id] = b.default || (b.options[0] && b.options[0].value);
+        } else if (b.type === 'subchecks') {
+            b.subs.forEach(s => { state[s.id] = false; });
+        } else if (b.children) {
+            state[b.id] = false;
+            b.children.forEach(c => { state[c.id] = false; });
+        } else {
+            state[b.id] = false;
+        }
     });
-  }
-
-  // ---- Элементы (просто display: none) ----
-  const hiddenEls = ELEMENTS_CONFIG.filter(c => state[c.id] === false);
-  if (hiddenEls.length > 0) {
-    const selectors = hiddenEls.map(c => c.selector).join(', ');
-    rules.push(`${selectors} { display: none; }`);
-  }
-
-  // ---- Глобальные фичи ----
-  GLOBAL_CONFIG.forEach(c => {
-    if (state[c.id] === true) {
-      // Здесь можно делать разные правила, не только display: none
-      // Для демонстрации сделаем display: none для всех глобальных
-      rules.push(`${c.selector} { display: none; }`);
-    }
-  });
-
-  return rules.join('\n');
 }
 
 // ================================================================
-// 6.  ОТРИСОВКА ИНТЕРФЕЙСА
-// ================================================================
-
-function renderAll() {
-  renderColumns();
-  renderElements();
-  renderGlobal();
-  updateCSSPreview();
-  saveState();
-}
-
-// ----- Колонки -----
-function renderColumns() {
-  const container = document.getElementById('columns-group');
-  container.innerHTML = '';
-  COLUMNS_CONFIG.forEach(c => {
-    const row = document.createElement('div');
-    row.className = 'setting-row';
-
-    // Чекбокс
-    const label = document.createElement('label');
-    const cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.checked = state[c.id] !== undefined ? state[c.id] : c.default;
-    cb.dataset.id = c.id;
-    cb.dataset.type = 'column';
-    label.appendChild(cb);
-    label.append(c.label);
-    row.appendChild(label);
-
-    // Поле ввода ширины (показываем только если активна)
-    const wWrap = document.createElement('div');
-    wWrap.className = 'width-input' + (state[c.id] ? ' active' : '');
-    const inp = document.createElement('input');
-    inp.type = 'number';
-    inp.min = '0';
-    inp.max = '100';
-    inp.step = '0.5';
-    inp.value = widths[c.id] !== undefined ? widths[c.id] : 25;
-    inp.dataset.id = c.id;
-    const span = document.createElement('span');
-    span.textContent = '%';
-    wWrap.appendChild(inp);
-    wWrap.appendChild(span);
-    row.appendChild(wWrap);
-
-    container.appendChild(row);
-
-    // ----- События -----
-    // Чекбокс
-    cb.addEventListener('change', function (e) {
-      const id = this.dataset.id;
-      const checked = this.checked;
-      state[id] = checked;
-
-      // Показываем/скрываем поле ширины
-      const parentRow = this.closest('.setting-row');
-      const wInput = parentRow.querySelector('.width-input');
-      if (checked) {
-        wInput.classList.add('active');
-      } else {
-        wInput.classList.remove('active');
-      }
-
-      // Пересчитываем ширины для оставшихся активных
-      recalcWidths(null, null);
-      // Обновляем значения в полях
-      updateWidthInputs();
-      renderAll();
-    });
-
-    // Поле ввода ширины
-    inp.addEventListener('input', function (e) {
-      const id = this.dataset.id;
-      const val = parseFloat(this.value);
-      if (!isNaN(val) && val >= 0 && val <= 100) {
-        // Пересчитываем ширины с учётом изменённой колонки
-        recalcWidths(id, val);
-        // Обновляем все поля, чтобы отразить изменения
-        updateWidthInputs();
-        updateCSSPreview();
-        saveState();
-      }
-    });
-  });
-}
-
-// Вспомогательная: обновляет значения во всех полях ширины
-function updateWidthInputs() {
-  document.querySelectorAll('#columns-group .setting-row').forEach(row => {
-    const cb = row.querySelector('input[type="checkbox"]');
-    const inp = row.querySelector('.width-input input[type="number"]');
-    if (cb && inp) {
-      const id = cb.dataset.id;
-      if (state[id] && widths[id] !== undefined) {
-        inp.value = Math.round(widths[id] * 100) / 100;
-      }
-    }
-  });
-}
-
-// ----- Элементы -----
-function renderElements() {
-  const container = document.getElementById('elements-group');
-  container.innerHTML = '';
-  ELEMENTS_CONFIG.forEach(c => {
-    const row = document.createElement('div');
-    row.className = 'setting-row';
-    const label = document.createElement('label');
-    const cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.checked = state[c.id] !== undefined ? state[c.id] : c.default;
-    cb.dataset.id = c.id;
-    cb.dataset.type = 'element';
-    label.appendChild(cb);
-    label.append(c.label);
-    row.appendChild(label);
-    container.appendChild(row);
-
-    cb.addEventListener('change', function () {
-      state[this.dataset.id] = this.checked;
-      renderAll();
-    });
-  });
-}
-
-// ----- Глобальные -----
-function renderGlobal() {
-  const container = document.getElementById('global-group');
-  container.innerHTML = '';
-  GLOBAL_CONFIG.forEach(c => {
-    const row = document.createElement('div');
-    row.className = 'setting-row';
-    const label = document.createElement('label');
-    const cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.checked = state[c.id] !== undefined ? state[c.id] : c.default;
-    cb.dataset.id = c.id;
-    cb.dataset.type = 'global';
-    label.appendChild(cb);
-    label.append(c.label);
-    row.appendChild(label);
-    container.appendChild(row);
-
-    cb.addEventListener('change', function () {
-      state[this.dataset.id] = this.checked;
-      renderAll();
-    });
-  });
-}
-
-// ----- Обновление превью CSS -----
-function updateCSSPreview() {
-  const css = generateCSS();
-  document.getElementById('css-preview').textContent = css || '/* Все элементы включены — CSS пуст */';
-}
-
-// ================================================================
-// 7.  СОХРАНЕНИЕ / ЗАГРУЗКА (localStorage + JSON)
+// 5.  СОХРАНЕНИЕ / ЗАГРУЗКА
 // ================================================================
 
 function saveState() {
-  const data = {
-    state: state,
-    widths: widths,
-  };
-  localStorage.setItem('forum_constructor_data', JSON.stringify(data));
+    const data = {
+        state: state,
+        radioState: radioState,
+        baseCSS: document.getElementById('base-css').value
+    };
+    localStorage.setItem('forum_constructor_v3', JSON.stringify(data));
 }
 
 function loadState() {
-  const raw = localStorage.getItem('forum_constructor_data');
-  if (!raw) return false;
-  try {
-    const data = JSON.parse(raw);
-    if (data.state && data.widths) {
-      // Восстанавливаем state
-      Object.keys(data.state).forEach(key => {
-        if (state.hasOwnProperty(key)) {
-          state[key] = data.state[key];
+    const raw = localStorage.getItem('forum_constructor_v3');
+    if (!raw) return false;
+    try {
+        const data = JSON.parse(raw);
+        if (data.state) {
+            Object.keys(data.state).forEach(k => {
+                if (state.hasOwnProperty(k)) state[k] = data.state[k];
+            });
         }
-      });
-      // Восстанавливаем widths
-      Object.keys(data.widths).forEach(key => {
-        if (widths.hasOwnProperty(key)) {
-          widths[key] = data.widths[key];
+        if (data.radioState) {
+            Object.keys(data.radioState).forEach(k => {
+                if (radioState.hasOwnProperty(k)) radioState[k] = data.radioState[k];
+            });
         }
-      });
-      return true;
-    }
-  } catch (e) { }
-  return false;
-}
-
-function resetToDefaults() {
-  if (!confirm('Сбросить все настройки к значениям по умолчанию?')) return;
-  initDefaults();
-  // Пересчитать ширины заново
-  recalcWidths(null, null);
-  renderAll();
+        if (data.baseCSS !== undefined) {
+            document.getElementById('base-css').value = data.baseCSS;
+        }
+        return true;
+    } catch (e) { return false; }
 }
 
 // ================================================================
-// 8.  ЭКСПОРТ / ИМПОРТ JSON
+// 6.  РЕНДЕР
+// ================================================================
+
+function renderOptions() {
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+
+    OPTIONAL_BLOCKS.forEach(block => {
+        // ---- Radio ----
+        if (block.type === 'radio') {
+            const group = document.createElement('div');
+            group.className = 'radio-group';
+            const title = document.createElement('span');
+            title.className = 'radio-title';
+            title.textContent = block.label;
+            group.appendChild(title);
+
+            block.options.forEach(opt => {
+                const optLabel = document.createElement('label');
+                optLabel.className = 'radio-option';
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'radio_' + block.id;
+                radio.value = opt.value;
+                radio.checked = (radioState[block.id] === opt.value);
+                optLabel.appendChild(radio);
+                optLabel.append(opt.label);
+                group.appendChild(optLabel);
+
+                radio.addEventListener('change', function () {
+                    radioState[block.id] = this.value;
+                    updateOutput();
+                    saveState();
+                });
+            });
+            container.appendChild(group);
+            return;
+        }
+
+        // ---- Subchecks ----
+        if (block.type === 'subchecks') {
+            const group = document.createElement('div');
+            group.className = 'subchecks-group';
+            const title = document.createElement('span');
+            title.className = 'sub-title';
+            title.textContent = block.label;
+            group.appendChild(title);
+
+            block.subs.forEach(sub => {
+                const row = document.createElement('label');
+                row.className = 'check-item sub';
+                const cb = document.createElement('input');
+                cb.type = 'checkbox';
+                cb.checked = !!state[sub.id];
+                cb.dataset.id = sub.id;
+                row.appendChild(cb);
+                row.append(sub.label);
+                group.appendChild(row);
+
+                cb.addEventListener('change', function () {
+                    state[sub.id] = this.checked;
+                    updateOutput();
+                    saveState();
+                });
+            });
+            container.appendChild(group);
+            return;
+        }
+
+        // ---- Обычная галочка (с возможными детьми) ----
+        const row = document.createElement('label');
+        row.className = 'check-item';
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = !!state[block.id];
+        cb.dataset.id = block.id;
+        row.appendChild(cb);
+        row.append(block.label);
+        container.appendChild(row);
+
+        cb.addEventListener('change', function () {
+            state[block.id] = this.checked;
+            if (block.children) {
+                block.children.forEach(child => {
+                    const childRow = container.querySelector(`input[data-id="${child.id}"]`)?.closest('.check-item');
+                    if (childRow) {
+                        childRow.classList.toggle('hidden', !this.checked);
+                    }
+                });
+            }
+            updateOutput();
+            saveState();
+        });
+
+        if (block.children) {
+            block.children.forEach(child => {
+                const childRow = document.createElement('label');
+                childRow.className = 'check-item child';
+                if (!state[block.id]) childRow.classList.add('hidden');
+                const childCb = document.createElement('input');
+                childCb.type = 'checkbox';
+                childCb.checked = !!state[child.id];
+                childCb.dataset.id = child.id;
+                childRow.appendChild(childCb);
+                childRow.append(child.label);
+                container.appendChild(childRow);
+
+                childCb.addEventListener('change', function () {
+                    state[child.id] = this.checked;
+                    updateOutput();
+                    saveState();
+                });
+            });
+        }
+    });
+}
+
+// ================================================================
+// 7.  ГЕНЕРАЦИЯ CSS
+// ================================================================
+
+function generateCSS() {
+    const parts = [];
+
+    const base = document.getElementById('base-css').value.trim();
+    if (base) parts.push(base);
+
+    const optionalParts = [];
+
+    OPTIONAL_BLOCKS.forEach(block => {
+        // Radio
+        if (block.type === 'radio') {
+            const chosen = radioState[block.id];
+            const opt = block.options.find(o => o.value === chosen);
+            if (opt && opt.css) optionalParts.push(opt.css);
+            return;
+        }
+        // Subchecks
+        if (block.type === 'subchecks') {
+            block.subs.forEach(sub => {
+                if (state[sub.id] && sub.css) optionalParts.push(sub.css);
+            });
+            return;
+        }
+        // Обычный с детьми
+        if (block.children) {
+            if (state[block.id]) {
+                block.children.forEach(child => {
+                    if (state[child.id] && child.css) optionalParts.push(child.css);
+                });
+            }
+            return;
+        }
+        // Простой
+        if (state[block.id] && block.css) optionalParts.push(block.css);
+    });
+
+    if (optionalParts.length > 0) {
+        parts.push('/* ===== ОПЦИОНАЛЬНЫЕ БЛОКИ ===== */\n' + optionalParts.join('\n\n'));
+    }
+
+    return parts.join('\n\n');
+}
+
+function updateOutput() {
+    document.getElementById('css-preview').textContent = generateCSS();
+}
+
+// ================================================================
+// 8.  ЭКСПОРТ / ИМПОРТ / СБРОС
 // ================================================================
 
 function exportJSON() {
-  const data = {
-    state: state,
-    widths: widths,
-    meta: { exported: new Date().toISOString() }
-  };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'forum_styles_config.json';
-  a.click();
-  URL.revokeObjectURL(url);
+    const data = {
+        state: state,
+        radioState: radioState,
+        baseCSS: document.getElementById('base-css').value,
+        meta: { exported: new Date().toISOString() }
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'forum_styles_config.json';
+    a.click();
+    URL.revokeObjectURL(url);
 }
 
 function importJSON(file) {
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    try {
-      const data = JSON.parse(e.target.result);
-      if (data.state && data.widths) {
-        Object.keys(data.state).forEach(key => {
-          if (state.hasOwnProperty(key)) state[key] = data.state[key];
-        });
-        Object.keys(data.widths).forEach(key => {
-          if (widths.hasOwnProperty(key)) widths[key] = data.widths[key];
-        });
-        renderAll();
-        alert('✅ Настройки импортированы!');
-      } else {
-        alert('❌ Неверный формат JSON.');
-      }
-    } catch (err) {
-      alert('❌ Ошибка чтения файла: ' + err.message);
-    }
-  };
-  reader.readAsText(file);
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            if (data.state) {
+                Object.keys(data.state).forEach(k => {
+                    if (state.hasOwnProperty(k)) state[k] = data.state[k];
+                });
+            }
+            if (data.radioState) {
+                Object.keys(data.radioState).forEach(k => {
+                    if (radioState.hasOwnProperty(k)) radioState[k] = data.radioState[k];
+                });
+            }
+            if (data.baseCSS !== undefined) {
+                document.getElementById('base-css').value = data.baseCSS;
+            }
+            renderOptions();
+            updateOutput();
+            saveState();
+            alert('✅ Настройки импортированы!');
+        } catch (err) {
+            alert('❌ Ошибка: ' + err.message);
+        }
+    };
+    reader.readAsText(file);
+}
+
+function resetAll() {
+    if (!confirm('Сбросить все настройки и базовый CSS?')) return;
+    localStorage.removeItem('forum_constructor_v3');
+    document.getElementById('base-css').value = BASE_CSS;
+    initState();
+    renderOptions();
+    updateOutput();
 }
 
 // ================================================================
-// 9.  КОПИРОВАНИЕ CSS
+// 9.  КОПИРОВАНИЕ
 // ================================================================
 
 function copyCSS() {
-  const pre = document.getElementById('css-preview');
-  const text = pre.textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById('btn-copy');
-    const orig = btn.textContent;
-    btn.textContent = '✅ Скопировано!';
-    setTimeout(() => { btn.textContent = orig; }, 2000);
-  }).catch(() => {
-    // Fallback
-    const range = document.createRange();
-    range.selectNode(pre);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand('copy');
-    alert('CSS скопирован в буфер!');
-  });
+    const text = document.getElementById('css-preview').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('btn-copy');
+        const orig = btn.textContent;
+        btn.textContent = '✅ Скопировано!';
+        setTimeout(() => { btn.textContent = orig; }, 2000);
+    }).catch(() => {
+        const pre = document.getElementById('css-preview');
+        const range = document.createRange();
+        range.selectNode(pre);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        alert('CSS скопирован!');
+    });
 }
 
 // ================================================================
-// 10. ЗАПУСК ПРИ ЗАГРУЗКЕ
+// 10. ЗАПУСК
 // ================================================================
 
-// Инициализируем значения по умолчанию
-initDefaults();
+document.getElementById('base-css').value = BASE_CSS;
+initState();
+loadState();
+renderOptions();
+updateOutput();
 
-// Пробуем загрузить сохранённое состояние
-const loaded = loadState();
-
-// Если загрузилось — пересчитываем ширины, чтобы всё было консистентно
-if (loaded) {
-  // Проверяем, все ли колонки есть в widths
-  COLUMNS_CONFIG.forEach(c => {
-    if (widths[c.id] === undefined) widths[c.id] = c.width;
-  });
-  // Пересчитываем ширины на основе активных колонок
-  const activeIds = COLUMNS_CONFIG.filter(c => state[c.id] === true).map(c => c.id);
-  if (activeIds.length > 0) {
-    // Проверяем сумму ширины
-    let sum = activeIds.reduce((acc, id) => acc + (widths[id] || 0), 0);
-    if (Math.abs(sum - 100) > 1) {
-      // Если сумма не 100 — пересчитываем поровну
-      recalcWidths(null, null);
-    }
-  }
-} else {
-  // Если не загрузилось — стартуем с дефолтными ширинами
-  recalcWidths(null, null);
-}
-
-// Рендерим интерфейс
-renderAll();
-
-// После рендера обновляем значения полей ширины (на случай, если были загружены)
-updateWidthInputs();
-
-// ================================================================
-// 11. ПРИВЯЗКА КНОПОК
-// ================================================================
+document.getElementById('base-css').addEventListener('input', function () {
+    updateOutput();
+    saveState();
+});
 
 document.getElementById('btn-export').addEventListener('click', exportJSON);
 document.getElementById('btn-import').addEventListener('click', function () {
-  document.getElementById('file-input').click();
+    document.getElementById('file-input').click();
 });
-document.getElementById('file-input').addEventListener('change', function (e) {
-  if (this.files.length > 0) {
-    importJSON(this.files[0]);
-    this.value = ''; // сбросить, чтобы можно было заново выбрать тот же файл
-  }
+document.getElementById('file-input').addEventListener('change', function () {
+    if (this.files.length > 0) {
+        importJSON(this.files[0]);
+        this.value = '';
+    }
 });
-document.getElementById('btn-reset').addEventListener('click', resetToDefaults);
+document.getElementById('btn-reset').addEventListener('click', resetAll);
 document.getElementById('btn-copy').addEventListener('click', copyCSS);
 
-console.log('✅ Конструктор загружен! Добавляй новые настройки в COLUMNS_CONFIG, ELEMENTS_CONFIG или GLOBAL_CONFIG.');
+console.log('✅ Конструктор v3 загружен.');

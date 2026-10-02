@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Конструктор CSS форума</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>⚙️ Конструктор CSS форума</h1>
+
+<h2>📄 Базовый CSS (всегда включён)</h2>
+<div class="box">
+    <textarea id="base-css" spellcheck="false"></textarea>
+    <div class="hint">Этот код всегда попадает в финальный CSS. Опциональные блоки добавляются после него.</div>
+</div>
+
+<h2>🔧 Опциональные блоки</h2>
+<div class="box" id="options-container"></div>
+
+<div class="actions">
+    <button class="success" id="btn-export">📤 Экспорт JSON</button>
+    <button class="primary" id="btn-import">📥 Импорт JSON</button>
+    <button class="danger" id="btn-reset">🔄 Сбросить</button>
+    <input type="file" id="file-input" accept=".json" style="display:none">
+</div>
+
+<h2>📋 Финальный CSS</h2>
+<div class="output">
+    <div class="head">
+        <span>Скопируй и вставь в стили форума</span>
+        <button id="btn-copy">📄 Копировать</button>
+    </div>
+    <pre id="css-preview"></pre>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
